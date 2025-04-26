@@ -1,0 +1,5828 @@
+Microsoft (R) Macro Assembler Version 14.16.27045.0	    12/05/21 15:24:51
+MASM Template						(main.asm  Page 1 - 1
+
+
+				TITLE MASM Template						(main.asm)
+
+				INCLUDE Irvine32.inc
+			      C ; Include file for Irvine32.lib             (Irvine32.inc)
+			      C 
+			      C ;OPTION CASEMAP:NONE		; optional: make identifiers case-sensitive
+			      C 
+			      C INCLUDE SmallWin.inc		; MS-Windows prototypes, structures, and constants
+			      C .NOLIST
+			      C .LIST
+			      C 
+			      C INCLUDE VirtualKeys.inc
+			      C ; VirtualKeys.inc
+			      C .NOLIST
+			      C .LIST
+			      C 
+			      C 
+			      C .NOLIST
+			      C .LIST
+			      C 
+ 00000000			.data
+
+				;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 00000000 54 68 65 20 79	Introduction BYTE "The year is 2552 CE. The human race is at war with the covenant.", 0dh, 0ah
+	   65 61 72 20 69
+	   73 20 32 35 35
+	   32 20 43 45 2E
+	   20 54 68 65 20
+	   68 75 6D 61 6E
+	   20 72 61 63 65
+	   20 69 73 20 61
+	   74 20 77 61 72
+	   20 77 69 74 68
+	   20 74 68 65 20
+	   63 6F 76 65 6E
+	   61 6E 74 2E 0D
+	   0A
+ 00000042  59 6F 75 72 20					BYTE "Your are a Spartan codenamed Morales-V956, are you are sent by the UNSC with a strike team of four to infiltrate a covenant ship, steal highly classified intel, and escape without being detected.", 0dh, 0ah
+	   61 72 65 20 61
+	   20 53 70 61 72
+	   74 61 6E 20 63
+	   6F 64 65 6E 61
+	   6D 65 64 20 4D
+	   6F 72 61 6C 65
+	   73 2D 56 39 35
+	   36 2C 20 61 72
+	   65 20 79 6F 75
+	   20 61 72 65 20
+	   73 65 6E 74 20
+	   62 79 20 74 68
+	   65 20 55 4E 53
+	   43 20 77 69 74
+	   68 20 61 20 73
+	   74 72 69 6B 65
+	   20 74 65 61 6D
+	   20 6F 66 20 66
+	   6F 75 72 20 74
+	   6F 20 69 6E 66
+	   69 6C 74 72 61
+	   74 65 20 61 20
+	   63 6F 76 65 6E
+	   61 6E 74 20 73
+	   68 69 70 2C 20
+	   73 74 65 61 6C
+	   20 68 69 67 68
+	   6C 79 20 63 6C
+	   61 73 73 69 66
+	   69 65 64 20 69
+	   6E 74 65 6C 2C
+	   20 61 6E 64 20
+	   65 73 63 61 70
+	   65 20 77 69 74
+	   68 6F 75 74 20
+	   62 65 69 6E 67
+	   20 64 65 74 65
+	   63 74 65 64 2E
+	   0D 0A
+ 00000107  59 6F 75 20 61					BYTE "You and your team are equiped with an Assault Rifle, a Magnum as sidearm, and two frag grenades.", 0dh, 0ah
+	   6E 64 20 79 6F
+	   75 72 20 74 65
+	   61 6D 20 61 72
+	   65 20 65 71 75
+	   69 70 65 64 20
+	   77 69 74 68 20
+	   61 6E 20 41 73
+	   73 61 75 6C 74
+	   20 52 69 66 6C
+	   65 2C 20 61 20
+	   4D 61 67 6E 75
+	   6D 20 61 73 20
+	   73 69 64 65 61
+	   72 6D 2C 20 61
+	   6E 64 20 74 77
+	   6F 20 66 72 61
+	   67 20 67 72 65
+	   6E 61 64 65 73
+	   2E 0D 0A
+ 00000169  41 72 72 69 76					BYTE "Arriving at the covenant ship, a marine states that there are three entrances to the ship lightly unguarded: the back of the ship, the bottom, or the right side of the ship.", 0dh, 0ah
+	   69 6E 67 20 61
+	   74 20 74 68 65
+	   20 63 6F 76 65
+	   6E 61 6E 74 20
+	   73 68 69 70 2C
+	   20 61 20 6D 61
+	   72 69 6E 65 20
+	   73 74 61 74 65
+	   73 20 74 68 61
+	   74 20 74 68 65
+	   72 65 20 61 72
+	   65 20 74 68 72
+	   65 65 20 65 6E
+	   74 72 61 6E 63
+	   65 73 20 74 6F
+	   20 74 68 65 20
+	   73 68 69 70 20
+	   6C 69 67 68 74
+	   6C 79 20 75 6E
+	   67 75 61 72 64
+	   65 64 3A 20 74
+	   68 65 20 62 61
+	   63 6B 20 6F 66
+	   20 74 68 65 20
+	   73 68 69 70 2C
+	   20 74 68 65 20
+	   62 6F 74 74 6F
+	   6D 2C 20 6F 72
+	   20 74 68 65 20
+	   72 69 67 68 74
+	   20 73 69 64 65
+	   20 6F 66 20 74
+	   68 65 20 73 68
+	   69 70 2E 0D 0A
+ 00000218  59 6F 75 20 63					BYTE "You choose: ", 0dh, 0ah
+	   68 6F 6F 73 65
+	   3A 20 0D 0A
+ 00000226 31 29 42 61 63	IntroChoice BYTE "1)Back of the ship (South) 2)Bottom of the ship 3)Right side of the ship (East) ", 0dh, 0ah, 0
+	   6B 20 6F 66 20
+	   74 68 65 20 73
+	   68 69 70 20 28
+	   53 6F 75 74 68
+	   29 20 32 29 42
+	   6F 74 74 6F 6D
+	   20 6F 66 20 74
+	   68 65 20 73 68
+	   69 70 20 33 29
+	   52 69 67 68 74
+	   20 73 69 64 65
+	   20 6F 66 20 74
+	   68 65 20 73 68
+	   69 70 20 28 45
+	   61 73 74 29 20
+	   0D 0A 00
+
+				;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 00000279 59 6F 75 20 63	Lv1Choice1Back BYTE "You chose the back of the ship.", 0dh, 0ah
+	   68 6F 73 65 20
+	   74 68 65 20 62
+	   61 63 6B 20 6F
+	   66 20 74 68 65
+	   20 73 68 69 70
+	   2E 0D 0A
+ 0000029A  59 6F 75 20 61					BYTE "You and your team enter the covenant ship undetected and proceed through the corridors looking for the intel.", 0dh, 0ah
+	   6E 64 20 79 6F
+	   75 72 20 74 65
+	   61 6D 20 65 6E
+	   74 65 72 20 74
+	   68 65 20 63 6F
+	   76 65 6E 61 6E
+	   74 20 73 68 69
+	   70 20 75 6E 64
+	   65 74 65 63 74
+	   65 64 20 61 6E
+	   64 20 70 72 6F
+	   63 65 65 64 20
+	   74 68 72 6F 75
+	   67 68 20 74 68
+	   65 20 63 6F 72
+	   72 69 64 6F 72
+	   73 20 6C 6F 6F
+	   6B 69 6E 67 20
+	   66 6F 72 20 74
+	   68 65 20 69 6E
+	   74 65 6C 2E 0D
+	   0A
+ 00000309  41 73 20 79 6F					BYTE "As you explore the corridors, you find an armory room locked by a security key, but a marine states that she can hack the door and open it.", 0dh, 0ah
+	   75 20 65 78 70
+	   6C 6F 72 65 20
+	   74 68 65 20 63
+	   6F 72 72 69 64
+	   6F 72 73 2C 20
+	   79 6F 75 20 66
+	   69 6E 64 20 61
+	   6E 20 61 72 6D
+	   6F 72 79 20 72
+	   6F 6F 6D 20 6C
+	   6F 63 6B 65 64
+	   20 62 79 20 61
+	   20 73 65 63 75
+	   72 69 74 79 20
+	   6B 65 79 2C 20
+	   62 75 74 20 61
+	   20 6D 61 72 69
+	   6E 65 20 73 74
+	   61 74 65 73 20
+	   74 68 61 74 20
+	   73 68 65 20 63
+	   61 6E 20 68 61
+	   63 6B 20 74 68
+	   65 20 64 6F 6F
+	   72 20 61 6E 64
+	   20 6F 70 65 6E
+	   20 69 74 2E 0D
+	   0A
+ 00000396  59 6F 75 20 64					BYTE "You decide to: ", 0dh, 0ah, 0, 0dh, 0ah
+	   65 63 69 64 65
+	   20 74 6F 3A 20
+	   0D 0A 00 0D 0A
+ 000003AA 31 29 20 41 6C	Lv1Choice1BackAns BYTE "1) Allow the marine to hack the door and loot the armory 2) Proceed through the corridor ", 0dh, 0ah, 0
+	   6C 6F 77 20 74
+	   68 65 20 6D 61
+	   72 69 6E 65 20
+	   74 6F 20 68 61
+	   63 6B 20 74 68
+	   65 20 64 6F 6F
+	   72 20 61 6E 64
+	   20 6C 6F 6F 74
+	   20 74 68 65 20
+	   61 72 6D 6F 72
+	   79 20 32 29 20
+	   50 72 6F 63 65
+	   65 64 20 74 68
+	   72 6F 75 67 68
+	   20 74 68 65 20
+	   63 6F 72 72 69
+	   64 6F 72 20 0D
+	   0A 00
+
+				;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 00000406 59 6F 75 20 63	Lv1Choice2Bottom BYTE "You chose the bottom of the ship and upon entering the ship, you find an Elite and a grunt chatting about, unaware of your arrival at the left side of the corridor.", 0dh, 0ah
+	   68 6F 73 65 20
+	   74 68 65 20 62
+	   6F 74 74 6F 6D
+	   20 6F 66 20 74
+	   68 65 20 73 68
+	   69 70 20 61 6E
+	   64 20 75 70 6F
+	   6E 20 65 6E 74
+	   65 72 69 6E 67
+	   20 74 68 65 20
+	   73 68 69 70 2C
+	   20 79 6F 75 20
+	   66 69 6E 64 20
+	   61 6E 20 45 6C
+	   69 74 65 20 61
+	   6E 64 20 61 20
+	   67 72 75 6E 74
+	   20 63 68 61 74
+	   74 69 6E 67 20
+	   61 62 6F 75 74
+	   2C 20 75 6E 61
+	   77 61 72 65 20
+	   6F 66 20 79 6F
+	   75 72 20 61 72
+	   72 69 76 61 6C
+	   20 61 74 20 74
+	   68 65 20 6C 65
+	   66 74 20 73 69
+	   64 65 20 6F 66
+	   20 74 68 65 20
+	   63 6F 72 72 69
+	   64 6F 72 2E 0D
+	   0A
+ 000004AC  59 6F 75 20 68						BYTE "You have the option of eliminating them and go south of the ship through the corridor, or go north of the ship ahead into another corridor.", 0dh, 0ah
+	   61 76 65 20 74
+	   68 65 20 6F 70
+	   74 69 6F 6E 20
+	   6F 66 20 65 6C
+	   69 6D 69 6E 61
+	   74 69 6E 67 20
+	   74 68 65 6D 20
+	   61 6E 64 20 67
+	   6F 20 73 6F 75
+	   74 68 20 6F 66
+	   20 74 68 65 20
+	   73 68 69 70 20
+	   74 68 72 6F 75
+	   67 68 20 74 68
+	   65 20 63 6F 72
+	   72 69 64 6F 72
+	   2C 20 6F 72 20
+	   67 6F 20 6E 6F
+	   72 74 68 20 6F
+	   66 20 74 68 65
+	   20 73 68 69 70
+	   20 61 68 65 61
+	   64 20 69 6E 74
+	   6F 20 61 6E 6F
+	   74 68 65 72 20
+	   63 6F 72 72 69
+	   64 6F 72 2E 0D
+	   0A
+ 00000539  59 6F 75 20 64						BYTE "You decide to: ", 0dh, 0ah
+	   65 63 69 64 65
+	   20 74 6F 3A 20
+	   0D 0A
+ 0000054A 31 29 20 45 6C	Lv1Choice2BottomAns BYTE "1) Eliminate the enemy and proceed South 2) Ignore the enemy and proceed north through the corridor straight ahead", 0dh, 0ah, 0
+	   69 6D 69 6E 61
+	   74 65 20 74 68
+	   65 20 65 6E 65
+	   6D 79 20 61 6E
+	   64 20 70 72 6F
+	   63 65 65 64 20
+	   53 6F 75 74 68
+	   20 32 29 20 49
+	   67 6E 6F 72 65
+	   20 74 68 65 20
+	   65 6E 65 6D 79
+	   20 61 6E 64 20
+	   70 72 6F 63 65
+	   65 64 20 6E 6F
+	   72 74 68 20 74
+	   68 72 6F 75 67
+	   68 20 74 68 65
+	   20 63 6F 72 72
+	   69 64 6F 72 20
+	   73 74 72 61 69
+	   67 68 74 20 61
+	   68 65 61 64 0D
+	   0A 00
+
+				;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 000005BF 59 6F 75 20 63	Lv1Choice3Right BYTE "You chose the right (East) side of the ship and upon entering the covenant ship, you find a jackal walking away from your position, leaving you and your squad alone.", 0dh, 0ah
+	   68 6F 73 65 20
+	   74 68 65 20 72
+	   69 67 68 74 20
+	   28 45 61 73 74
+	   29 20 73 69 64
+	   65 20 6F 66 20
+	   74 68 65 20 73
+	   68 69 70 20 61
+	   6E 64 20 75 70
+	   6F 6E 20 65 6E
+	   74 65 72 69 6E
+	   67 20 74 68 65
+	   20 63 6F 76 65
+	   6E 61 6E 74 20
+	   73 68 69 70 2C
+	   20 79 6F 75 20
+	   66 69 6E 64 20
+	   61 20 6A 61 63
+	   6B 61 6C 20 77
+	   61 6C 6B 69 6E
+	   67 20 61 77 61
+	   79 20 66 72 6F
+	   6D 20 79 6F 75
+	   72 20 70 6F 73
+	   69 74 69 6F 6E
+	   2C 20 6C 65 61
+	   76 69 6E 67 20
+	   79 6F 75 20 61
+	   6E 64 20 79 6F
+	   75 72 20 73 71
+	   75 61 64 20 61
+	   6C 6F 6E 65 2E
+	   0D 0A
+ 00000666  54 68 65 20 63					BYTE "The corridor splits to the left (North) or right (South) from your position.", 0dh, 0ah
+	   6F 72 72 69 64
+	   6F 72 20 73 70
+	   6C 69 74 73 20
+	   74 6F 20 74 68
+	   65 20 6C 65 66
+	   74 20 28 4E 6F
+	   72 74 68 29 20
+	   6F 72 20 72 69
+	   67 68 74 20 28
+	   53 6F 75 74 68
+	   29 20 66 72 6F
+	   6D 20 79 6F 75
+	   72 20 70 6F 73
+	   69 74 69 6F 6E
+	   2E 0D 0A
+ 000006B4  59 6F 75 20 64					BYTE "You decide to: ", 0dh, 0ah
+	   65 63 69 64 65
+	   20 74 6F 3A 20
+	   0D 0A
+ 000006C5 31 29 20 47 6F	Lv1Choice3RightAns BYTE "1) Go to the left (North) 2) Go to the right (South)", 0dh, 0ah, 0
+	   20 74 6F 20 74
+	   68 65 20 6C 65
+	   66 74 20 28 4E
+	   6F 72 74 68 29
+	   20 32 29 20 47
+	   6F 20 74 6F 20
+	   74 68 65 20 72
+	   69 67 68 74 20
+	   28 53 6F 75 74
+	   68 29 0D 0A 00
+
+				;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 000006FC 59 6F 75 20 61	Lv2Choice1Hack BYTE "You allow the marine to hack the door and she successfully opens the door.", 0dh, 0ah
+	   6C 6C 6F 77 20
+	   74 68 65 20 6D
+	   61 72 69 6E 65
+	   20 74 6F 20 68
+	   61 63 6B 20 74
+	   68 65 20 64 6F
+	   6F 72 20 61 6E
+	   64 20 73 68 65
+	   20 73 75 63 63
+	   65 73 73 66 75
+	   6C 6C 79 20 6F
+	   70 65 6E 73 20
+	   74 68 65 20 64
+	   6F 6F 72 2E 0D
+	   0A
+ 00000748  49 6E 73 69 64					BYTE "Inside, you find plasma grenades, carbine rifles, energy pistols, and an active camouflage.", 0dh, 0ah
+	   65 2C 20 79 6F
+	   75 20 66 69 6E
+	   64 20 70 6C 61
+	   73 6D 61 20 67
+	   72 65 6E 61 64
+	   65 73 2C 20 63
+	   61 72 62 69 6E
+	   65 20 72 69 66
+	   6C 65 73 2C 20
+	   65 6E 65 72 67
+	   79 20 70 69 73
+	   74 6F 6C 73 2C
+	   20 61 6E 64 20
+	   61 6E 20 61 63
+	   74 69 76 65 20
+	   63 61 6D 6F 75
+	   66 6C 61 67 65
+	   2E 0D 0A
+ 000007A5  53 69 6E 63 65					BYTE "Since this is a stealth operation, you decide to take the active camo for better stealth options.", 0dh, 0ah
+	   20 74 68 69 73
+	   20 69 73 20 61
+	   20 73 74 65 61
+	   6C 74 68 20 6F
+	   70 65 72 61 74
+	   69 6F 6E 2C 20
+	   79 6F 75 20 64
+	   65 63 69 64 65
+	   20 74 6F 20 74
+	   61 6B 65 20 74
+	   68 65 20 61 63
+	   74 69 76 65 20
+	   63 61 6D 6F 20
+	   66 6F 72 20 62
+	   65 74 74 65 72
+	   20 73 74 65 61
+	   6C 74 68 20 6F
+	   70 74 69 6F 6E
+	   73 2E 0D 0A
+ 00000808  4C 65 61 76 69					BYTE "Leaving the armory, you proceed with your original trajectory further down the hall.", 0dh, 0ah
+	   6E 67 20 74 68
+	   65 20 61 72 6D
+	   6F 72 79 2C 20
+	   79 6F 75 20 70
+	   72 6F 63 65 65
+	   64 20 77 69 74
+	   68 20 79 6F 75
+	   72 20 6F 72 69
+	   67 69 6E 61 6C
+	   20 74 72 61 6A
+	   65 63 74 6F 72
+	   79 20 66 75 72
+	   74 68 65 72 20
+	   64 6F 77 6E 20
+	   74 68 65 20 68
+	   61 6C 6C 2E 0D
+	   0A
+ 0000085E  41 74 20 74 68					BYTE "At the end of the corridor, it only takes you to the right and upon peeking, you find two elites guarding an entrance.", 0dh, 0ah
+	   65 20 65 6E 64
+	   20 6F 66 20 74
+	   68 65 20 63 6F
+	   72 72 69 64 6F
+	   72 2C 20 69 74
+	   20 6F 6E 6C 79
+	   20 74 61 6B 65
+	   73 20 79 6F 75
+	   20 74 6F 20 74
+	   68 65 20 72 69
+	   67 68 74 20 61
+	   6E 64 20 75 70
+	   6F 6E 20 70 65
+	   65 6B 69 6E 67
+	   2C 20 79 6F 75
+	   20 66 69 6E 64
+	   20 74 77 6F 20
+	   65 6C 69 74 65
+	   73 20 67 75 61
+	   72 64 69 6E 67
+	   20 61 6E 20 65
+	   6E 74 72 61 6E
+	   63 65 2E 0D 0A
+ 000008D6  41 20 6D 61 72					BYTE "A marine states that it is a possibility that they're guarding the intel that they seek.", 0dh, 0ah
+	   69 6E 65 20 73
+	   74 61 74 65 73
+	   20 74 68 61 74
+	   20 69 74 20 69
+	   73 20 61 20 70
+	   6F 73 73 69 62
+	   69 6C 69 74 79
+	   20 74 68 61 74
+	   20 74 68 65 79
+	   27 72 65 20 67
+	   75 61 72 64 69
+	   6E 67 20 74 68
+	   65 20 69 6E 74
+	   65 6C 20 74 68
+	   61 74 20 74 68
+	   65 79 20 73 65
+	   65 6B 2E 0D 0A
+ 00000930  59 6F 75 20 74					BYTE "You think of two options: ", 0dh, 0ah
+	   68 69 6E 6B 20
+	   6F 66 20 74 77
+	   6F 20 6F 70 74
+	   69 6F 6E 73 3A
+	   20 0D 0A
+ 0000094C 31 29 20 59 6F	Lv2Choice1HackAns BYTE "1) You create a distraction to get their attention, eliminate them and enter the room 2) Use the active camo, eliminate them right on the spot, then enter the room", 0dh, 0ah, 0
+	   75 20 63 72 65
+	   61 74 65 20 61
+	   20 64 69 73 74
+	   72 61 63 74 69
+	   6F 6E 20 74 6F
+	   20 67 65 74 20
+	   74 68 65 69 72
+	   20 61 74 74 65
+	   6E 74 69 6F 6E
+	   2C 20 65 6C 69
+	   6D 69 6E 61 74
+	   65 20 74 68 65
+	   6D 20 61 6E 64
+	   20 65 6E 74 65
+	   72 20 74 68 65
+	   20 72 6F 6F 6D
+	   20 32 29 20 55
+	   73 65 20 74 68
+	   65 20 61 63 74
+	   69 76 65 20 63
+	   61 6D 6F 2C 20
+	   65 6C 69 6D 69
+	   6E 61 74 65 20
+	   74 68 65 6D 20
+	   72 69 67 68 74
+	   20 6F 6E 20 74
+	   68 65 20 73 70
+	   6F 74 2C 20 74
+	   68 65 6E 20 65
+	   6E 74 65 72 20
+	   74 68 65 20 72
+	   6F 6F 6D 0D 0A
+	   00
+
+				;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 000009F2 59 6F 75 20 64	Lv2Choice2Proceed BYTE "You decide to continue and not loot the armory.", 0dh, 0ah
+	   65 63 69 64 65
+	   20 74 6F 20 63
+	   6F 6E 74 69 6E
+	   75 65 20 61 6E
+	   64 20 6E 6F 74
+	   20 6C 6F 6F 74
+	   20 74 68 65 20
+	   61 72 6D 6F 72
+	   79 2E 0D 0A
+ 00000A23  41 73 20 79 6F						BYTE "As you proceed through the corridor, at the end, it only takes you to the right and upon peeking, you find two elites guarding an entrance.", 0dh, 0ah
+	   75 20 70 72 6F
+	   63 65 65 64 20
+	   74 68 72 6F 75
+	   67 68 20 74 68
+	   65 20 63 6F 72
+	   72 69 64 6F 72
+	   2C 20 61 74 20
+	   74 68 65 20 65
+	   6E 64 2C 20 69
+	   74 20 6F 6E 6C
+	   79 20 74 61 6B
+	   65 73 20 79 6F
+	   75 20 74 6F 20
+	   74 68 65 20 72
+	   69 67 68 74 20
+	   61 6E 64 20 75
+	   70 6F 6E 20 70
+	   65 65 6B 69 6E
+	   67 2C 20 79 6F
+	   75 20 66 69 6E
+	   64 20 74 77 6F
+	   20 65 6C 69 74
+	   65 73 20 67 75
+	   61 72 64 69 6E
+	   67 20 61 6E 20
+	   65 6E 74 72 61
+	   6E 63 65 2E 0D
+	   0A
+ 00000AB0  41 20 6D 61 72						BYTE "A marine states that it is possible that they're guarding the intel that they seek.", 0dh, 0ah
+	   69 6E 65 20 73
+	   74 61 74 65 73
+	   20 74 68 61 74
+	   20 69 74 20 69
+	   73 20 70 6F 73
+	   73 69 62 6C 65
+	   20 74 68 61 74
+	   20 74 68 65 79
+	   27 72 65 20 67
+	   75 61 72 64 69
+	   6E 67 20 74 68
+	   65 20 69 6E 74
+	   65 6C 20 74 68
+	   61 74 20 74 68
+	   65 79 20 73 65
+	   65 6B 2E 0D 0A
+ 00000B05  41 6E 6F 74 68						BYTE "Another marine states that checking the armory might be a good idea since the covenant have cloacking technology.", 0dh, 0ah
+	   65 72 20 6D 61
+	   72 69 6E 65 20
+	   73 74 61 74 65
+	   73 20 74 68 61
+	   74 20 63 68 65
+	   63 6B 69 6E 67
+	   20 74 68 65 20
+	   61 72 6D 6F 72
+	   79 20 6D 69 67
+	   68 74 20 62 65
+	   20 61 20 67 6F
+	   6F 64 20 69 64
+	   65 61 20 73 69
+	   6E 63 65 20 74
+	   68 65 20 63 6F
+	   76 65 6E 61 6E
+	   74 20 68 61 76
+	   65 20 63 6C 6F
+	   61 63 6B 69 6E
+	   67 20 74 65 63
+	   68 6E 6F 6C 6F
+	   67 79 2E 0D 0A
+ 00000B78  59 6F 75 20 64						BYTE "You decide to: ", 0dh, 0ah
+	   65 63 69 64 65
+	   20 74 6F 3A 20
+	   0D 0A
+ 00000B89 31 29 20 47 6F	Lv2Choice2ProceedAns BYTE "1) Go back to the armory and check out the loot 2) Proceed to create a distraction to get the elite's attention, eliminate them, and enter the room", 0dh, 0ah, 0
+	   20 62 61 63 6B
+	   20 74 6F 20 74
+	   68 65 20 61 72
+	   6D 6F 72 79 20
+	   61 6E 64 20 63
+	   68 65 63 6B 20
+	   6F 75 74 20 74
+	   68 65 20 6C 6F
+	   6F 74 20 32 29
+	   20 50 72 6F 63
+	   65 65 64 20 74
+	   6F 20 63 72 65
+	   61 74 65 20 61
+	   20 64 69 73 74
+	   72 61 63 74 69
+	   6F 6E 20 74 6F
+	   20 67 65 74 20
+	   74 68 65 20 65
+	   6C 69 74 65 27
+	   73 20 61 74 74
+	   65 6E 74 69 6F
+	   6E 2C 20 65 6C
+	   69 6D 69 6E 61
+	   74 65 20 74 68
+	   65 6D 2C 20 61
+	   6E 64 20 65 6E
+	   74 65 72 20 74
+	   68 65 20 72 6F
+	   6F 6D 0D 0A 00
+
+				;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 00000C1F 59 6F 75 20 64	Lv2Choice1Eliminate BYTE "You decided to eliminate the enemy and the elite drops a red key tag.", 0dh, 0ah
+	   65 63 69 64 65
+	   64 20 74 6F 20
+	   65 6C 69 6D 69
+	   6E 61 74 65 20
+	   74 68 65 20 65
+	   6E 65 6D 79 20
+	   61 6E 64 20 74
+	   68 65 20 65 6C
+	   69 74 65 20 64
+	   72 6F 70 73 20
+	   61 20 72 65 64
+	   20 6B 65 79 20
+	   74 61 67 2E 0D
+	   0A
+ 00000C66  59 6F 75 20 70						BYTE "You pick it up and proceed south through the corridor.", 0dh, 0ah
+	   69 63 6B 20 69
+	   74 20 75 70 20
+	   61 6E 64 20 70
+	   72 6F 63 65 65
+	   64 20 73 6F 75
+	   74 68 20 74 68
+	   72 6F 75 67 68
+	   20 74 68 65 20
+	   63 6F 72 72 69
+	   64 6F 72 2E 0D
+	   0A
+ 00000C9E  41 20 66 65 77						BYTE "A few moments later, you end up at the back of the ship and find a corridor that only leads to the right.", 0dh, 0ah
+	   20 6D 6F 6D 65
+	   6E 74 73 20 6C
+	   61 74 65 72 2C
+	   20 79 6F 75 20
+	   65 6E 64 20 75
+	   70 20 61 74 20
+	   74 68 65 20 62
+	   61 63 6B 20 6F
+	   66 20 74 68 65
+	   20 73 68 69 70
+	   20 61 6E 64 20
+	   66 69 6E 64 20
+	   61 20 63 6F 72
+	   72 69 64 6F 72
+	   20 74 68 61 74
+	   20 6F 6E 6C 79
+	   20 6C 65 61 64
+	   73 20 74 6F 20
+	   74 68 65 20 72
+	   69 67 68 74 2E
+	   0D 0A
+ 00000D09  55 70 6F 6E 20						BYTE "Upon peeking at the other side, you find two elites guarding an entrance.", 0dh, 0ah
+	   70 65 65 6B 69
+	   6E 67 20 61 74
+	   20 74 68 65 20
+	   6F 74 68 65 72
+	   20 73 69 64 65
+	   2C 20 79 6F 75
+	   20 66 69 6E 64
+	   20 74 77 6F 20
+	   65 6C 69 74 65
+	   73 20 67 75 61
+	   72 64 69 6E 67
+	   20 61 6E 20 65
+	   6E 74 72 61 6E
+	   63 65 2E 0D 0A
+ 00000D54  41 20 6D 61 72						BYTE "A marine states that it is a possibility that they're guarding the intel that they seek.", 0dh, 0ah
+	   69 6E 65 20 73
+	   74 61 74 65 73
+	   20 74 68 61 74
+	   20 69 74 20 69
+	   73 20 61 20 70
+	   6F 73 73 69 62
+	   69 6C 69 74 79
+	   20 74 68 61 74
+	   20 74 68 65 79
+	   27 72 65 20 67
+	   75 61 72 64 69
+	   6E 67 20 74 68
+	   65 20 69 6E 74
+	   65 6C 20 74 68
+	   61 74 20 74 68
+	   65 79 20 73 65
+	   65 6B 2E 0D 0A
+ 00000DAE  42 65 66 6F 72						BYTE "Before you decide on a plan, the ship's alarm goes off stating that there is an intruder on board, making everyone on high alert.", 0dh, 0ah
+	   65 20 79 6F 75
+	   20 64 65 63 69
+	   64 65 20 6F 6E
+	   20 61 20 70 6C
+	   61 6E 2C 20 74
+	   68 65 20 73 68
+	   69 70 27 73 20
+	   61 6C 61 72 6D
+	   20 67 6F 65 73
+	   20 6F 66 66 20
+	   73 74 61 74 69
+	   6E 67 20 74 68
+	   61 74 20 74 68
+	   65 72 65 20 69
+	   73 20 61 6E 20
+	   69 6E 74 72 75
+	   64 65 72 20 6F
+	   6E 20 62 6F 61
+	   72 64 2C 20 6D
+	   61 6B 69 6E 67
+	   20 65 76 65 72
+	   79 6F 6E 65 20
+	   6F 6E 20 68 69
+	   67 68 20 61 6C
+	   65 72 74 2E 0D
+	   0A
+ 00000E31  41 20 6D 61 72						BYTE "A marine notices that the two elites that were guarding the entrance go inside the room.", 0dh, 0ah
+	   69 6E 65 20 6E
+	   6F 74 69 63 65
+	   73 20 74 68 61
+	   74 20 74 68 65
+	   20 74 77 6F 20
+	   65 6C 69 74 65
+	   73 20 74 68 61
+	   74 20 77 65 72
+	   65 20 67 75 61
+	   72 64 69 6E 67
+	   20 74 68 65 20
+	   65 6E 74 72 61
+	   6E 63 65 20 67
+	   6F 20 69 6E 73
+	   69 64 65 20 74
+	   68 65 20 72 6F
+	   6F 6D 2E 0D 0A
+ 00000E8B  59 6F 75 20 64						BYTE "You decide to: ", 0dh, 0ah
+	   65 63 69 64 65
+	   20 74 6F 3A 20
+	   0D 0A
+ 00000E9C 31 29 20 43 6F	Lv2Choice1EliminateAns BYTE "1) Continue through the corridor, get into position, and breach (Will alert the ship) 2) Look for another route quickly", 0dh, 0ah, 0
+	   6E 74 69 6E 75
+	   65 20 74 68 72
+	   6F 75 67 68 20
+	   74 68 65 20 63
+	   6F 72 72 69 64
+	   6F 72 2C 20 67
+	   65 74 20 69 6E
+	   74 6F 20 70 6F
+	   73 69 74 69 6F
+	   6E 2C 20 61 6E
+	   64 20 62 72 65
+	   61 63 68 20 28
+	   57 69 6C 6C 20
+	   61 6C 65 72 74
+	   20 74 68 65 20
+	   73 68 69 70 29
+	   20 32 29 20 4C
+	   6F 6F 6B 20 66
+	   6F 72 20 61 6E
+	   6F 74 68 65 72
+	   20 72 6F 75 74
+	   65 20 71 75 69
+	   63 6B 6C 79 0D
+	   0A 00
+
+				;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 00000F16 59 6F 75 20 61	Lv2Choice2Ignore BYTE "You and your squad decide to ignore the enemy and proceed north.", 0dh, 0ah
+	   6E 64 20 79 6F
+	   75 72 20 73 71
+	   75 61 64 20 64
+	   65 63 69 64 65
+	   20 74 6F 20 69
+	   67 6E 6F 72 65
+	   20 74 68 65 20
+	   65 6E 65 6D 79
+	   20 61 6E 64 20
+	   70 72 6F 63 65
+	   65 64 20 6E 6F
+	   72 74 68 2E 0D
+	   0A
+ 00000F58  49 6E 20 74 68						BYTE "In the process, you find the main energy reactor that powers the entire ship.", 0dh, 0ah
+	   65 20 70 72 6F
+	   63 65 73 73 2C
+	   20 79 6F 75 20
+	   66 69 6E 64 20
+	   74 68 65 20 6D
+	   61 69 6E 20 65
+	   6E 65 72 67 79
+	   20 72 65 61 63
+	   74 6F 72 20 74
+	   68 61 74 20 70
+	   6F 77 65 72 73
+	   20 74 68 65 20
+	   65 6E 74 69 72
+	   65 20 73 68 69
+	   70 2E 0D 0A
+ 00000FA7  59 6F 75 20 6E						BYTE "You note this area and keep proceeding.", 0dh, 0ah
+	   6F 74 65 20 74
+	   68 69 73 20 61
+	   72 65 61 20 61
+	   6E 64 20 6B 65
+	   65 70 20 70 72
+	   6F 63 65 65 64
+	   69 6E 67 2E 0D
+	   0A
+ 00000FD0  41 66 74 65 72						BYTE "After traveling a few corridors, you end up at the front of the ship and find the hangar, full of banshees and five type-52 troop carriers.", 0dh, 0ah
+	   20 74 72 61 76
+	   65 6C 69 6E 67
+	   20 61 20 66 65
+	   77 20 63 6F 72
+	   72 69 64 6F 72
+	   73 2C 20 79 6F
+	   75 20 65 6E 64
+	   20 75 70 20 61
+	   74 20 74 68 65
+	   20 66 72 6F 6E
+	   74 20 6F 66 20
+	   74 68 65 20 73
+	   68 69 70 20 61
+	   6E 64 20 66 69
+	   6E 64 20 74 68
+	   65 20 68 61 6E
+	   67 61 72 2C 20
+	   66 75 6C 6C 20
+	   6F 66 20 62 61
+	   6E 73 68 65 65
+	   73 20 61 6E 64
+	   20 66 69 76 65
+	   20 74 79 70 65
+	   2D 35 32 20 74
+	   72 6F 6F 70 20
+	   63 61 72 72 69
+	   65 72 73 2E 0D
+	   0A
+ 0000105D  59 6F 75 20 64						BYTE "You decide to go left and proceed through more corridors.", 0dh, 0ah
+	   65 63 69 64 65
+	   20 74 6F 20 67
+	   6F 20 6C 65 66
+	   74 20 61 6E 64
+	   20 70 72 6F 63
+	   65 65 64 20 74
+	   68 72 6F 75 67
+	   68 20 6D 6F 72
+	   65 20 63 6F 72
+	   72 69 64 6F 72
+	   73 2E 0D 0A
+ 00001098  41 66 74 65 72						BYTE "After traveling a few levels, you end up at the middle level of the ship and find a corridor that leads to a single room unguarded.", 0dh, 0ah
+	   20 74 72 61 76
+	   65 6C 69 6E 67
+	   20 61 20 66 65
+	   77 20 6C 65 76
+	   65 6C 73 2C 20
+	   79 6F 75 20 65
+	   6E 64 20 75 70
+	   20 61 74 20 74
+	   68 65 20 6D 69
+	   64 64 6C 65 20
+	   6C 65 76 65 6C
+	   20 6F 66 20 74
+	   68 65 20 73 68
+	   69 70 20 61 6E
+	   64 20 66 69 6E
+	   64 20 61 20 63
+	   6F 72 72 69 64
+	   6F 72 20 74 68
+	   61 74 20 6C 65
+	   61 64 73 20 74
+	   6F 20 61 20 73
+	   69 6E 67 6C 65
+	   20 72 6F 6F 6D
+	   20 75 6E 67 75
+	   61 72 64 65 64
+	   2E 0D 0A
+ 0000111D  41 20 6D 61 72						BYTE "A marine states that the room might not be where the intel is located and worth going somewhere else.", 0dh, 0ah
+	   69 6E 65 20 73
+	   74 61 74 65 73
+	   20 74 68 61 74
+	   20 74 68 65 20
+	   72 6F 6F 6D 20
+	   6D 69 67 68 74
+	   20 6E 6F 74 20
+	   62 65 20 77 68
+	   65 72 65 20 74
+	   68 65 20 69 6E
+	   74 65 6C 20 69
+	   73 20 6C 6F 63
+	   61 74 65 64 20
+	   61 6E 64 20 77
+	   6F 72 74 68 20
+	   67 6F 69 6E 67
+	   20 73 6F 6D 65
+	   77 68 65 72 65
+	   20 65 6C 73 65
+	   2E 0D 0A
+ 00001184  59 6F 75 20 64						BYTE "You decided to: ", 0dh, 0ah
+	   65 63 69 64 65
+	   64 20 74 6F 3A
+	   20 0D 0A
+ 00001196 31 29 20 4B 65	Lv2Choice2IgnoreAns BYTE "1) Keep exploring the covenant ship 2) Proceed to the unguarded room and check out the room", 0dh, 0ah, 0
+	   65 70 20 65 78
+	   70 6C 6F 72 69
+	   6E 67 20 74 68
+	   65 20 63 6F 76
+	   65 6E 61 6E 74
+	   20 73 68 69 70
+	   20 32 29 20 50
+	   72 6F 63 65 65
+	   64 20 74 6F 20
+	   74 68 65 20 75
+	   6E 67 75 61 72
+	   64 65 64 20 72
+	   6F 6F 6D 20 61
+	   6E 64 20 63 68
+	   65 63 6B 20 6F
+	   75 74 20 74 68
+	   65 20 72 6F 6F
+	   6D 0D 0A 00
+
+				;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 000011F4 59 6F 75 20 64	Lv2Choice1Left BYTE "You decide to go to the left side and proceed north of the ship.", 0dh, 0ah
+	   65 63 69 64 65
+	   20 74 6F 20 67
+	   6F 20 74 6F 20
+	   74 68 65 20 6C
+	   65 66 74 20 73
+	   69 64 65 20 61
+	   6E 64 20 70 72
+	   6F 63 65 65 64
+	   20 6E 6F 72 74
+	   68 20 6F 66 20
+	   74 68 65 20 73
+	   68 69 70 2E 0D
+	   0A
+ 00001236  49 6E 20 74 68					BYTE "In the process, you find the main energy reactor that powers the entire ship.", 0dh, 0ah
+	   65 20 70 72 6F
+	   63 65 73 73 2C
+	   20 79 6F 75 20
+	   66 69 6E 64 20
+	   74 68 65 20 6D
+	   61 69 6E 20 65
+	   6E 65 72 67 79
+	   20 72 65 61 63
+	   74 6F 72 20 74
+	   68 61 74 20 70
+	   6F 77 65 72 73
+	   20 74 68 65 20
+	   65 6E 74 69 72
+	   65 20 73 68 69
+	   70 2E 0D 0A
+ 00001285  59 6F 75 20 6E					BYTE "You note this area and keep proceeding.", 0dh, 0ah
+	   6F 74 65 20 74
+	   68 69 73 20 61
+	   72 65 61 20 61
+	   6E 64 20 6B 65
+	   65 70 20 70 72
+	   6F 63 65 65 64
+	   69 6E 67 2E 0D
+	   0A
+ 000012AE  48 61 6C 66 77					BYTE "Halfway of the ship you hear footsteps in the distant and decide to fall back.", 0dh, 0ah
+	   61 79 20 6F 66
+	   20 74 68 65 20
+	   73 68 69 70 20
+	   79 6F 75 20 68
+	   65 61 72 20 66
+	   6F 6F 74 73 74
+	   65 70 73 20 69
+	   6E 20 74 68 65
+	   20 64 69 73 74
+	   61 6E 74 20 61
+	   6E 64 20 64 65
+	   63 69 64 65 20
+	   74 6F 20 66 61
+	   6C 6C 20 62 61
+	   63 6B 2E 0D 0A
+ 000012FE  41 73 20 79 6F					BYTE "As you and your squad are falling back, you also hear louder footsteps coming from where you came.", 0dh, 0ah
+	   75 20 61 6E 64
+	   20 79 6F 75 72
+	   20 73 71 75 61
+	   64 20 61 72 65
+	   20 66 61 6C 6C
+	   69 6E 67 20 62
+	   61 63 6B 2C 20
+	   79 6F 75 20 61
+	   6C 73 6F 20 68
+	   65 61 72 20 6C
+	   6F 75 64 65 72
+	   20 66 6F 6F 74
+	   73 74 65 70 73
+	   20 63 6F 6D 69
+	   6E 67 20 66 72
+	   6F 6D 20 77 68
+	   65 72 65 20 79
+	   6F 75 20 63 61
+	   6D 65 2E 0D 0A
+ 00001362  59 6F 75 72 20					BYTE "Your marines are getting ready for a fight if sandwiched by both enemy squads.", 0dh, 0ah
+	   6D 61 72 69 6E
+	   65 73 20 61 72
+	   65 20 67 65 74
+	   74 69 6E 67 20
+	   72 65 61 64 79
+	   20 66 6F 72 20
+	   61 20 66 69 67
+	   68 74 20 69 66
+	   20 73 61 6E 64
+	   77 69 63 68 65
+	   64 20 62 79 20
+	   62 6F 74 68 20
+	   65 6E 65 6D 79
+	   20 73 71 75 61
+	   64 73 2E 0D 0A
+ 000013B2  59 6F 75 20 74					BYTE "You take a good look at your surroundings and find two doors, positioned one ahead of you, and one that you just passed.", 0dh, 0ah
+	   61 6B 65 20 61
+	   20 67 6F 6F 64
+	   20 6C 6F 6F 6B
+	   20 61 74 20 79
+	   6F 75 72 20 73
+	   75 72 72 6F 75
+	   6E 64 69 6E 67
+	   73 20 61 6E 64
+	   20 66 69 6E 64
+	   20 74 77 6F 20
+	   64 6F 6F 72 73
+	   2C 20 70 6F 73
+	   69 74 69 6F 6E
+	   65 64 20 6F 6E
+	   65 20 61 68 65
+	   61 64 20 6F 66
+	   20 79 6F 75 2C
+	   20 61 6E 64 20
+	   6F 6E 65 20 74
+	   68 61 74 20 79
+	   6F 75 20 6A 75
+	   73 74 20 70 61
+	   73 73 65 64 2E
+	   0D 0A
+ 0000142C  59 6F 75 20 61					BYTE "You also noticed that there is not much cover for you and your squad where you are.", 0dh, 0ah
+	   6C 73 6F 20 6E
+	   6F 74 69 63 65
+	   64 20 74 68 61
+	   74 20 74 68 65
+	   72 65 20 69 73
+	   20 6E 6F 74 20
+	   6D 75 63 68 20
+	   63 6F 76 65 72
+	   20 66 6F 72 20
+	   79 6F 75 20 61
+	   6E 64 20 79 6F
+	   75 72 20 73 71
+	   75 61 64 20 77
+	   68 65 72 65 20
+	   79 6F 75 20 61
+	   72 65 2E 0D 0A
+ 00001481 59 6F 75 20 64	Lv2Choice1LeftAns BYTE "You decide to 1) Go to the room ahead of you and hide 2) Go to the room that you just passed and hide 3) Stand your ground, use your disposable arsenal and fight both enemy squads", 0dh, 0ah, 0
+	   65 63 69 64 65
+	   20 74 6F 20 31
+	   29 20 47 6F 20
+	   74 6F 20 74 68
+	   65 20 72 6F 6F
+	   6D 20 61 68 65
+	   61 64 20 6F 66
+	   20 79 6F 75 20
+	   61 6E 64 20 68
+	   69 64 65 20 32
+	   29 20 47 6F 20
+	   74 6F 20 74 68
+	   65 20 72 6F 6F
+	   6D 20 74 68 61
+	   74 20 79 6F 75
+	   20 6A 75 73 74
+	   20 70 61 73 73
+	   65 64 20 61 6E
+	   64 20 68 69 64
+	   65 20 33 29 20
+	   53 74 61 6E 64
+	   20 79 6F 75 72
+	   20 67 72 6F 75
+	   6E 64 2C 20 75
+	   73 65 20 79 6F
+	   75 72 20 64 69
+	   73 70 6F 73 61
+	   62 6C 65 20 61
+	   72 73 65 6E 61
+	   6C 20 61 6E 64
+	   20 66 69 67 68
+	   74 20 62 6F 74
+	   68 20 65 6E 65
+	   6D 79 20 73 71
+	   75 61 64 73 0D
+	   0A 00
+
+				;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 00001537 59 6F 75 20 61	Lv2Choice2Right BYTE "You and your squad decide to go right (South) of the ship and proceed through the corridor.", 0dh, 0ah
+	   6E 64 20 79 6F
+	   75 72 20 73 71
+	   75 61 64 20 64
+	   65 63 69 64 65
+	   20 74 6F 20 67
+	   6F 20 72 69 67
+	   68 74 20 28 53
+	   6F 75 74 68 29
+	   20 6F 66 20 74
+	   68 65 20 73 68
+	   69 70 20 61 6E
+	   64 20 70 72 6F
+	   63 65 65 64 20
+	   74 68 72 6F 75
+	   67 68 20 74 68
+	   65 20 63 6F 72
+	   72 69 64 6F 72
+	   2E 0D 0A
+ 00001594  41 20 66 65 77					BYTE "A few moments later, you end up at the back of the ship and find out that the corridor splits to the left or further down the ship.", 0dh, 0ah
+	   20 6D 6F 6D 65
+	   6E 74 73 20 6C
+	   61 74 65 72 2C
+	   20 79 6F 75 20
+	   65 6E 64 20 75
+	   70 20 61 74 20
+	   74 68 65 20 62
+	   61 63 6B 20 6F
+	   66 20 74 68 65
+	   20 73 68 69 70
+	   20 61 6E 64 20
+	   66 69 6E 64 20
+	   6F 75 74 20 74
+	   68 61 74 20 74
+	   68 65 20 63 6F
+	   72 72 69 64 6F
+	   72 20 73 70 6C
+	   69 74 73 20 74
+	   6F 20 74 68 65
+	   20 6C 65 66 74
+	   20 6F 72 20 66
+	   75 72 74 68 65
+	   72 20 64 6F 77
+	   6E 20 74 68 65
+	   20 73 68 69 70
+	   2E 0D 0A
+ 00001619 59 6F 75 20 64	Lv2Choice2RightAns BYTE "You decide to 1) Go left (East) of the ship 2) Keep moving further down", 0dh, 0ah, 0
+	   65 63 69 64 65
+	   20 74 6F 20 31
+	   29 20 47 6F 20
+	   6C 65 66 74 20
+	   28 45 61 73 74
+	   29 20 6F 66 20
+	   74 68 65 20 73
+	   68 69 70 20 32
+	   29 20 4B 65 65
+	   70 20 6D 6F 76
+	   69 6E 67 20 66
+	   75 72 74 68 65
+	   72 20 64 6F 77
+	   6E 0D 0A 00
+
+				;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 00001663 59 6F 75 20 6D	Lv3Attention BYTE "You managed to create a distraction and got the two elites to check it out.", 0dh, 0ah
+	   61 6E 61 67 65
+	   64 20 74 6F 20
+	   63 72 65 61 74
+	   65 20 61 20 64
+	   69 73 74 72 61
+	   63 74 69 6F 6E
+	   20 61 6E 64 20
+	   67 6F 74 20 74
+	   68 65 20 74 77
+	   6F 20 65 6C 69
+	   74 65 73 20 74
+	   6F 20 63 68 65
+	   63 6B 20 69 74
+	   20 6F 75 74 2E
+	   0D 0A
+ 000016B0  59 6F 75 20 73					BYTE "You successfully eliminated them and proceed through the now unguarded room.", 0dh, 0ah
+	   75 63 63 65 73
+	   73 66 75 6C 6C
+	   79 20 65 6C 69
+	   6D 69 6E 61 74
+	   65 64 20 74 68
+	   65 6D 20 61 6E
+	   64 20 70 72 6F
+	   63 65 65 64 20
+	   74 68 72 6F 75
+	   67 68 20 74 68
+	   65 20 6E 6F 77
+	   20 75 6E 67 75
+	   61 72 64 65 64
+	   20 72 6F 6F 6D
+	   2E 0D 0A
+ 000016FE  55 70 6F 6E 20					BYTE "Upon entering, you only find old relics and ancient tech.", 0dh, 0ah
+	   65 6E 74 65 72
+	   69 6E 67 2C 20
+	   79 6F 75 20 6F
+	   6E 6C 79 20 66
+	   69 6E 64 20 6F
+	   6C 64 20 72 65
+	   6C 69 63 73 20
+	   61 6E 64 20 61
+	   6E 63 69 65 6E
+	   74 20 74 65 63
+	   68 2E 0D 0A
+ 00001739  59 6F 75 20 61					BYTE "You and your squad investigate these old relics and ancient tech, only to find them useless.", 0dh, 0ah
+	   6E 64 20 79 6F
+	   75 72 20 73 71
+	   75 61 64 20 69
+	   6E 76 65 73 74
+	   69 67 61 74 65
+	   20 74 68 65 73
+	   65 20 6F 6C 64
+	   20 72 65 6C 69
+	   63 73 20 61 6E
+	   64 20 61 6E 63
+	   69 65 6E 74 20
+	   74 65 63 68 2C
+	   20 6F 6E 6C 79
+	   20 74 6F 20 66
+	   69 6E 64 20 74
+	   68 65 6D 20 75
+	   73 65 6C 65 73
+	   73 2E 0D 0A
+ 00001797  59 6F 75 20 70					BYTE "You pick up an old tech that looks like a blue sphere with circular glass on one end, as if it's an eye.", 0dh, 0ah
+	   69 63 6B 20 75
+	   70 20 61 6E 20
+	   6F 6C 64 20 74
+	   65 63 68 20 74
+	   68 61 74 20 6C
+	   6F 6F 6B 73 20
+	   6C 69 6B 65 20
+	   61 20 62 6C 75
+	   65 20 73 70 68
+	   65 72 65 20 77
+	   69 74 68 20 63
+	   69 72 63 75 6C
+	   61 72 20 67 6C
+	   61 73 73 20 6F
+	   6E 20 6F 6E 65
+	   20 65 6E 64 2C
+	   20 61 73 20 69
+	   66 20 69 74 27
+	   73 20 61 6E 20
+	   65 79 65 2E 0D
+	   0A
+ 00001801  55 70 6F 6E 20					BYTE "Upon further inspection, you think it's just junk and put it back.", 0dh, 0ah
+	   66 75 72 74 68
+	   65 72 20 69 6E
+	   73 70 65 63 74
+	   69 6F 6E 2C 20
+	   79 6F 75 20 74
+	   68 69 6E 6B 20
+	   69 74 27 73 20
+	   6A 75 73 74 20
+	   6A 75 6E 6B 20
+	   61 6E 64 20 70
+	   75 74 20 69 74
+	   20 62 61 63 6B
+	   2E 0D 0A
+ 00001845  41 73 20 73 6F					BYTE "As soon as you put the old tech back where you found it, it suddendly powers up and starts to float.", 0dh, 0ah
+	   6F 6E 20 61 73
+	   20 79 6F 75 20
+	   70 75 74 20 74
+	   68 65 20 6F 6C
+	   64 20 74 65 63
+	   68 20 62 61 63
+	   6B 20 77 68 65
+	   72 65 20 79 6F
+	   75 20 66 6F 75
+	   6E 64 20 69 74
+	   2C 20 69 74 20
+	   73 75 64 64 65
+	   6E 64 6C 79 20
+	   70 6F 77 65 72
+	   73 20 75 70 20
+	   61 6E 64 20 73
+	   74 61 72 74 73
+	   20 74 6F 20 66
+	   6C 6F 61 74 2E
+	   0D 0A
+ 000018AB  53 75 72 70 72					BYTE "Surprised, everyone readies their weapons.", 0dh, 0ah
+	   69 73 65 64 2C
+	   20 65 76 65 72
+	   79 6F 6E 65 20
+	   72 65 61 64 69
+	   65 73 20 74 68
+	   65 69 72 20 77
+	   65 61 70 6F 6E
+	   73 2E 0D 0A
+ 000018D7  54 68 65 20 66					BYTE "The floating blue orb speaks, stating that his name is 210 Guilty Spark and seeks to go back to his home.", 0dh, 0ah
+	   6C 6F 61 74 69
+	   6E 67 20 62 6C
+	   75 65 20 6F 72
+	   62 20 73 70 65
+	   61 6B 73 2C 20
+	   73 74 61 74 69
+	   6E 67 20 74 68
+	   61 74 20 68 69
+	   73 20 6E 61 6D
+	   65 20 69 73 20
+	   32 31 30 20 47
+	   75 69 6C 74 79
+	   20 53 70 61 72
+	   6B 20 61 6E 64
+	   20 73 65 65 6B
+	   73 20 74 6F 20
+	   67 6F 20 62 61
+	   63 6B 20 74 6F
+	   20 68 69 73 20
+	   68 6F 6D 65 2E
+	   0D 0A
+ 00001942  41 20 6D 61 72					BYTE "A marine states that this might be the intel that the UNSC was looking for.", 0dh, 0ah
+	   69 6E 65 20 73
+	   74 61 74 65 73
+	   20 74 68 61 74
+	   20 74 68 69 73
+	   20 6D 69 67 68
+	   74 20 62 65 20
+	   74 68 65 20 69
+	   6E 74 65 6C 20
+	   74 68 61 74 20
+	   74 68 65 20 55
+	   4E 53 43 20 77
+	   61 73 20 6C 6F
+	   6F 6B 69 6E 67
+	   20 66 6F 72 2E
+	   0D 0A
+ 0000198F 59 6F 75 20 64	Lv3AttentionAns BYTE "You decide to 1) Cooperate with Guilty Spark and help the floating machine escape the ship and take him to the UNSC 2) Bring the machine along and keep looking for the actual intel ", 0dh, 0ah, 0
+	   65 63 69 64 65
+	   20 74 6F 20 31
+	   29 20 43 6F 6F
+	   70 65 72 61 74
+	   65 20 77 69 74
+	   68 20 47 75 69
+	   6C 74 79 20 53
+	   70 61 72 6B 20
+	   61 6E 64 20 68
+	   65 6C 70 20 74
+	   68 65 20 66 6C
+	   6F 61 74 69 6E
+	   67 20 6D 61 63
+	   68 69 6E 65 20
+	   65 73 63 61 70
+	   65 20 74 68 65
+	   20 73 68 69 70
+	   20 61 6E 64 20
+	   74 61 6B 65 20
+	   68 69 6D 20 74
+	   6F 20 74 68 65
+	   20 55 4E 53 43
+	   20 32 29 20 42
+	   72 69 6E 67 20
+	   74 68 65 20 6D
+	   61 63 68 69 6E
+	   65 20 61 6C 6F
+	   6E 67 20 61 6E
+	   64 20 6B 65 65
+	   70 20 6C 6F 6F
+	   6B 69 6E 67 20
+	   66 6F 72 20 74
+	   68 65 20 61 63
+	   74 75 61 6C 20
+	   69 6E 74 65 6C
+	   20 0D 0A 00
+
+				;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 00001A47 59 6F 75 20 75	Lv3Camo BYTE "You use the active camo and succesfully eliminate both elites all by yourself and you and your squad proceed to the unguarded room.", 0dh, 0ah
+	   73 65 20 74 68
+	   65 20 61 63 74
+	   69 76 65 20 63
+	   61 6D 6F 20 61
+	   6E 64 20 73 75
+	   63 63 65 73 66
+	   75 6C 6C 79 20
+	   65 6C 69 6D 69
+	   6E 61 74 65 20
+	   62 6F 74 68 20
+	   65 6C 69 74 65
+	   73 20 61 6C 6C
+	   20 62 79 20 79
+	   6F 75 72 73 65
+	   6C 66 20 61 6E
+	   64 20 79 6F 75
+	   20 61 6E 64 20
+	   79 6F 75 72 20
+	   73 71 75 61 64
+	   20 70 72 6F 63
+	   65 65 64 20 74
+	   6F 20 74 68 65
+	   20 75 6E 67 75
+	   61 72 64 65 64
+	   20 72 6F 6F 6D
+	   2E 0D 0A
+ 00001ACC  55 70 6F 6E 20			BYTE "Upon entering, you only find old relics and ancient tech.", 0dh, 0ah
+	   65 6E 74 65 72
+	   69 6E 67 2C 20
+	   79 6F 75 20 6F
+	   6E 6C 79 20 66
+	   69 6E 64 20 6F
+	   6C 64 20 72 65
+	   6C 69 63 73 20
+	   61 6E 64 20 61
+	   6E 63 69 65 6E
+	   74 20 74 65 63
+	   68 2E 0D 0A
+ 00001B07  59 6F 75 20 61			BYTE "You and your squad investigate these old relics and ancient tech, only to find them useless.", 0dh, 0ah
+	   6E 64 20 79 6F
+	   75 72 20 73 71
+	   75 61 64 20 69
+	   6E 76 65 73 74
+	   69 67 61 74 65
+	   20 74 68 65 73
+	   65 20 6F 6C 64
+	   20 72 65 6C 69
+	   63 73 20 61 6E
+	   64 20 61 6E 63
+	   69 65 6E 74 20
+	   74 65 63 68 2C
+	   20 6F 6E 6C 79
+	   20 74 6F 20 66
+	   69 6E 64 20 74
+	   68 65 6D 20 75
+	   73 65 6C 65 73
+	   73 2E 0D 0A
+ 00001B65  59 6F 75 20 70			BYTE "You pick up an old tech that looks like a blue sphere with circular glass on one end, as if it's an eye.", 0dh, 0ah
+	   69 63 6B 20 75
+	   70 20 61 6E 20
+	   6F 6C 64 20 74
+	   65 63 68 20 74
+	   68 61 74 20 6C
+	   6F 6F 6B 73 20
+	   6C 69 6B 65 20
+	   61 20 62 6C 75
+	   65 20 73 70 68
+	   65 72 65 20 77
+	   69 74 68 20 63
+	   69 72 63 75 6C
+	   61 72 20 67 6C
+	   61 73 73 20 6F
+	   6E 20 6F 6E 65
+	   20 65 6E 64 2C
+	   20 61 73 20 69
+	   66 20 69 74 27
+	   73 20 61 6E 20
+	   65 79 65 2E 0D
+	   0A
+ 00001BCF  55 70 6F 6E 20			BYTE "Upon further inspection, you think it's just junk and put it back.", 0dh, 0ah
+	   66 75 72 74 68
+	   65 72 20 69 6E
+	   73 70 65 63 74
+	   69 6F 6E 2C 20
+	   79 6F 75 20 74
+	   68 69 6E 6B 20
+	   69 74 27 73 20
+	   6A 75 73 74 20
+	   6A 75 6E 6B 20
+	   61 6E 64 20 70
+	   75 74 20 69 74
+	   20 62 61 63 6B
+	   2E 0D 0A
+ 00001C13  41 73 20 73 6F			BYTE "As soon as you put the old tech back where you found it, it suddendly powers up and starts to float.", 0dh, 0ah
+	   6F 6E 20 61 73
+	   20 79 6F 75 20
+	   70 75 74 20 74
+	   68 65 20 6F 6C
+	   64 20 74 65 63
+	   68 20 62 61 63
+	   6B 20 77 68 65
+	   72 65 20 79 6F
+	   75 20 66 6F 75
+	   6E 64 20 69 74
+	   2C 20 69 74 20
+	   73 75 64 64 65
+	   6E 64 6C 79 20
+	   70 6F 77 65 72
+	   73 20 75 70 20
+	   61 6E 64 20 73
+	   74 61 72 74 73
+	   20 74 6F 20 66
+	   6C 6F 61 74 2E
+	   0D 0A
+ 00001C79  53 75 72 70 72			BYTE "Surprised, everyone readies their weapons.", 0dh, 0ah
+	   69 73 65 64 2C
+	   20 65 76 65 72
+	   79 6F 6E 65 20
+	   72 65 61 64 69
+	   65 73 20 74 68
+	   65 69 72 20 77
+	   65 61 70 6F 6E
+	   73 2E 0D 0A
+ 00001CA5  54 68 65 20 66			BYTE "The floating blue orb speaks, stating that his name is 210 Guilty Spark and seeks to go back to his home.", 0dh, 0ah
+	   6C 6F 61 74 69
+	   6E 67 20 62 6C
+	   75 65 20 6F 72
+	   62 20 73 70 65
+	   61 6B 73 2C 20
+	   73 74 61 74 69
+	   6E 67 20 74 68
+	   61 74 20 68 69
+	   73 20 6E 61 6D
+	   65 20 69 73 20
+	   32 31 30 20 47
+	   75 69 6C 74 79
+	   20 53 70 61 72
+	   6B 20 61 6E 64
+	   20 73 65 65 6B
+	   73 20 74 6F 20
+	   67 6F 20 62 61
+	   63 6B 20 74 6F
+	   20 68 69 73 20
+	   68 6F 6D 65 2E
+	   0D 0A
+ 00001D10  41 20 6D 61 72			BYTE "A marine states that this might be the intel that the UNSC was looking for.", 0dh, 0ah
+	   69 6E 65 20 73
+	   74 61 74 65 73
+	   20 74 68 61 74
+	   20 74 68 69 73
+	   20 6D 69 67 68
+	   74 20 62 65 20
+	   74 68 65 20 69
+	   6E 74 65 6C 20
+	   74 68 61 74 20
+	   74 68 65 20 55
+	   4E 53 43 20 77
+	   61 73 20 6C 6F
+	   6F 6B 69 6E 67
+	   20 66 6F 72 2E
+	   0D 0A
+ 00001D5D 59 6F 75 20 64	Lv3CamoAns BYTE "You decide to 1) Cooperate with Guilty Spark and help the floating machine escape the ship and take him to the UNSC 2) Bring the machine along and keep looking for the actual intel", 0dh, 0ah, 0
+	   65 63 69 64 65
+	   20 74 6F 20 31
+	   29 20 43 6F 6F
+	   70 65 72 61 74
+	   65 20 77 69 74
+	   68 20 47 75 69
+	   6C 74 79 20 53
+	   70 61 72 6B 20
+	   61 6E 64 20 68
+	   65 6C 70 20 74
+	   68 65 20 66 6C
+	   6F 61 74 69 6E
+	   67 20 6D 61 63
+	   68 69 6E 65 20
+	   65 73 63 61 70
+	   65 20 74 68 65
+	   20 73 68 69 70
+	   20 61 6E 64 20
+	   74 61 6B 65 20
+	   68 69 6D 20 74
+	   6F 20 74 68 65
+	   20 55 4E 53 43
+	   20 32 29 20 42
+	   72 69 6E 67 20
+	   74 68 65 20 6D
+	   61 63 68 69 6E
+	   65 20 61 6C 6F
+	   6E 67 20 61 6E
+	   64 20 6B 65 65
+	   70 20 6C 6F 6F
+	   6B 69 6E 67 20
+	   66 6F 72 20 74
+	   68 65 20 61 63
+	   74 75 61 6C 20
+	   69 6E 74 65 6C
+	   0D 0A 00
+
+				;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 00001E14 59 6F 75 20 64	Lv3Return BYTE "You decide to go back to the armory, only to now find it guarded by two jackals equipped with carbine rifles and shields attached to their left arm.", 0dh, 0ah
+	   65 63 69 64 65
+	   20 74 6F 20 67
+	   6F 20 62 61 63
+	   6B 20 74 6F 20
+	   74 68 65 20 61
+	   72 6D 6F 72 79
+	   2C 20 6F 6E 6C
+	   79 20 74 6F 20
+	   6E 6F 77 20 66
+	   69 6E 64 20 69
+	   74 20 67 75 61
+	   72 64 65 64 20
+	   62 79 20 74 77
+	   6F 20 6A 61 63
+	   6B 61 6C 73 20
+	   65 71 75 69 70
+	   70 65 64 20 77
+	   69 74 68 20 63
+	   61 72 62 69 6E
+	   65 20 72 69 66
+	   6C 65 73 20 61
+	   6E 64 20 73 68
+	   69 65 6C 64 73
+	   20 61 74 74 61
+	   63 68 65 64 20
+	   74 6F 20 74 68
+	   65 69 72 20 6C
+	   65 66 74 20 61
+	   72 6D 2E 0D 0A
+ 00001EAA 4E 6F 77 20 77	Lv3ReturnAns BYTE "Now with fewer options, you decide to 1) Get the Jackals attention and get inside the armory room 2) Get the elites attention and get inside the guarded room", 0dh, 0ah, 0
+	   69 74 68 20 66
+	   65 77 65 72 20
+	   6F 70 74 69 6F
+	   6E 73 2C 20 79
+	   6F 75 20 64 65
+	   63 69 64 65 20
+	   74 6F 20 31 29
+	   20 47 65 74 20
+	   74 68 65 20 4A
+	   61 63 6B 61 6C
+	   73 20 61 74 74
+	   65 6E 74 69 6F
+	   6E 20 61 6E 64
+	   20 67 65 74 20
+	   69 6E 73 69 64
+	   65 20 74 68 65
+	   20 61 72 6D 6F
+	   72 79 20 72 6F
+	   6F 6D 20 32 29
+	   20 47 65 74 20
+	   74 68 65 20 65
+	   6C 69 74 65 73
+	   20 61 74 74 65
+	   6E 74 69 6F 6E
+	   20 61 6E 64 20
+	   67 65 74 20 69
+	   6E 73 69 64 65
+	   20 74 68 65 20
+	   67 75 61 72 64
+	   65 64 20 72 6F
+	   6F 6D 0D 0A 00
+
+				;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 00001F4A 4F 75 74 20 6F	Lv3Continue BYTE "Out of options you decide to continue through the corridor, get into position, and breach.", 0dh, 0ah
+	   66 20 6F 70 74
+	   69 6F 6E 73 20
+	   79 6F 75 20 64
+	   65 63 69 64 65
+	   20 74 6F 20 63
+	   6F 6E 74 69 6E
+	   75 65 20 74 68
+	   72 6F 75 67 68
+	   20 74 68 65 20
+	   63 6F 72 72 69
+	   64 6F 72 2C 20
+	   67 65 74 20 69
+	   6E 74 6F 20 70
+	   6F 73 69 74 69
+	   6F 6E 2C 20 61
+	   6E 64 20 62 72
+	   65 61 63 68 2E
+	   0D 0A
+ 00001FA6  59 6F 75 20 61				BYTE "You and your team successfully breached the room and eliminated both elites.", 0dh, 0ah
+	   6E 64 20 79 6F
+	   75 72 20 74 65
+	   61 6D 20 73 75
+	   63 63 65 73 73
+	   66 75 6C 6C 79
+	   20 62 72 65 61
+	   63 68 65 64 20
+	   74 68 65 20 72
+	   6F 6F 6D 20 61
+	   6E 64 20 65 6C
+	   69 6D 69 6E 61
+	   74 65 64 20 62
+	   6F 74 68 20 65
+	   6C 69 74 65 73
+	   2E 0D 0A
+ 00001FF4  42 75 74 20 62				BYTE "But because you used your weapons, the entire ship knows your location and will try to eliminate all of you.", 0dh, 0ah
+	   65 63 61 75 73
+	   65 20 79 6F 75
+	   20 75 73 65 64
+	   20 79 6F 75 72
+	   20 77 65 61 70
+	   6F 6E 73 2C 20
+	   74 68 65 20 65
+	   6E 74 69 72 65
+	   20 73 68 69 70
+	   20 6B 6E 6F 77
+	   73 20 79 6F 75
+	   72 20 6C 6F 63
+	   61 74 69 6F 6E
+	   20 61 6E 64 20
+	   77 69 6C 6C 20
+	   74 72 79 20 74
+	   6F 20 65 6C 69
+	   6D 69 6E 61 74
+	   65 20 61 6C 6C
+	   20 6F 66 20 79
+	   6F 75 2E 0D 0A
+ 00002062  59 6F 75 20 61				BYTE "You and your squad quickly investigate the room, only to find old relics and ancient tech.", 0dh, 0ah
+	   6E 64 20 79 6F
+	   75 72 20 73 71
+	   75 61 64 20 71
+	   75 69 63 6B 6C
+	   79 20 69 6E 76
+	   65 73 74 69 67
+	   61 74 65 20 74
+	   68 65 20 72 6F
+	   6F 6D 2C 20 6F
+	   6E 6C 79 20 74
+	   6F 20 66 69 6E
+	   64 20 6F 6C 64
+	   20 72 65 6C 69
+	   63 73 20 61 6E
+	   64 20 61 6E 63
+	   69 65 6E 74 20
+	   74 65 63 68 2E
+	   0D 0A
+ 000020BE  59 6F 75 20 6E				BYTE "You notice a small blue circular machine with a round glass for an eye and a old tablet-looking deivce next to the blue machine.", 0dh, 0ah
+	   6F 74 69 63 65
+	   20 61 20 73 6D
+	   61 6C 6C 20 62
+	   6C 75 65 20 63
+	   69 72 63 75 6C
+	   61 72 20 6D 61
+	   63 68 69 6E 65
+	   20 77 69 74 68
+	   20 61 20 72 6F
+	   75 6E 64 20 67
+	   6C 61 73 73 20
+	   66 6F 72 20 61
+	   6E 20 65 79 65
+	   20 61 6E 64 20
+	   61 20 6F 6C 64
+	   20 74 61 62 6C
+	   65 74 2D 6C 6F
+	   6F 6B 69 6E 67
+	   20 64 65 69 76
+	   63 65 20 6E 65
+	   78 74 20 74 6F
+	   20 74 68 65 20
+	   62 6C 75 65 20
+	   6D 61 63 68 69
+	   6E 65 2E 0D 0A
+ 00002140 59 6F 75 20 64	Lv3ContinueAns BYTE "You decide to 1) Take the unknown blue tech and escape 2) Take the unknown tablet and escape", 0dh, 0ah, 0
+	   65 63 69 64 65
+	   20 74 6F 20 31
+	   29 20 54 61 6B
+	   65 20 74 68 65
+	   20 75 6E 6B 6E
+	   6F 77 6E 20 62
+	   6C 75 65 20 74
+	   65 63 68 20 61
+	   6E 64 20 65 73
+	   63 61 70 65 20
+	   32 29 20 54 61
+	   6B 65 20 74 68
+	   65 20 75 6E 6B
+	   6E 6F 77 6E 20
+	   74 61 62 6C 65
+	   74 20 61 6E 64
+	   20 65 73 63 61
+	   70 65 0D 0A 00
+
+				;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 0000219F 59 6F 75 20 64	Lv3Route BYTE "You decide to look for another entrance, only to find enemy squads patrolling the corridors further down.", 0dh, 0ah
+	   65 63 69 64 65
+	   20 74 6F 20 6C
+	   6F 6F 6B 20 66
+	   6F 72 20 61 6E
+	   6F 74 68 65 72
+	   20 65 6E 74 72
+	   61 6E 63 65 2C
+	   20 6F 6E 6C 79
+	   20 74 6F 20 66
+	   69 6E 64 20 65
+	   6E 65 6D 79 20
+	   73 71 75 61 64
+	   73 20 70 61 74
+	   72 6F 6C 6C 69
+	   6E 67 20 74 68
+	   65 20 63 6F 72
+	   72 69 64 6F 72
+	   73 20 66 75 72
+	   74 68 65 72 20
+	   64 6F 77 6E 2E
+	   0D 0A
+ 0000220A  52 65 74 72 61				BYTE "Retrating, you hear loud footsteps coming from where you came and you realize you are getting slowly surrounded by enemy patrols.", 0dh, 0ah
+	   74 69 6E 67 2C
+	   20 79 6F 75 20
+	   68 65 61 72 20
+	   6C 6F 75 64 20
+	   66 6F 6F 74 73
+	   74 65 70 73 20
+	   63 6F 6D 69 6E
+	   67 20 66 72 6F
+	   6D 20 77 68 65
+	   72 65 20 79 6F
+	   75 20 63 61 6D
+	   65 20 61 6E 64
+	   20 79 6F 75 20
+	   72 65 61 6C 69
+	   7A 65 20 79 6F
+	   75 20 61 72 65
+	   20 67 65 74 74
+	   69 6E 67 20 73
+	   6C 6F 77 6C 79
+	   20 73 75 72 72
+	   6F 75 6E 64 65
+	   64 20 62 79 20
+	   65 6E 65 6D 79
+	   20 70 61 74 72
+	   6F 6C 73 2E 0D
+	   0A
+ 0000228D  57 69 74 68 20				BYTE "With little options, you and your squad ready themselves to fight.", 0dh, 0ah
+	   6C 69 74 74 6C
+	   65 20 6F 70 74
+	   69 6F 6E 73 2C
+	   20 79 6F 75 20
+	   61 6E 64 20 79
+	   6F 75 72 20 73
+	   71 75 61 64 20
+	   72 65 61 64 79
+	   20 74 68 65 6D
+	   73 65 6C 76 65
+	   73 20 74 6F 20
+	   66 69 67 68 74
+	   2E 0D 0A
+ 000022D1  54 68 65 20 65				BYTE "The enemy with the loud footsteps were two hunters and you start to open fire towards them, your squad following suit.", 0dh, 0ah
+	   6E 65 6D 79 20
+	   77 69 74 68 20
+	   74 68 65 20 6C
+	   6F 75 64 20 66
+	   6F 6F 74 73 74
+	   65 70 73 20 77
+	   65 72 65 20 74
+	   77 6F 20 68 75
+	   6E 74 65 72 73
+	   20 61 6E 64 20
+	   79 6F 75 20 73
+	   74 61 72 74 20
+	   74 6F 20 6F 70
+	   65 6E 20 66 69
+	   72 65 20 74 6F
+	   77 61 72 64 73
+	   20 74 68 65 6D
+	   2C 20 79 6F 75
+	   72 20 73 71 75
+	   61 64 20 66 6F
+	   6C 6C 6F 77 69
+	   6E 67 20 73 75
+	   69 74 2E 0D 0A
+ 00002349  54 61 6B 69 6E				BYTE "Taking on the hunters was a grave mistake and start to suffer casualties.", 0dh, 0ah
+	   67 20 6F 6E 20
+	   74 68 65 20 68
+	   75 6E 74 65 72
+	   73 20 77 61 73
+	   20 61 20 67 72
+	   61 76 65 20 6D
+	   69 73 74 61 6B
+	   65 20 61 6E 64
+	   20 73 74 61 72
+	   74 20 74 6F 20
+	   73 75 66 66 65
+	   72 20 63 61 73
+	   75 61 6C 74 69
+	   65 73 2E 0D 0A
+ 00002394  4D 6F 6D 65 6E				BYTE "Moments later, the two elites that were guarding the room attacked you from behind and eliminated your entire squad.", 0dh, 0ah
+	   74 73 20 6C 61
+	   74 65 72 2C 20
+	   74 68 65 20 74
+	   77 6F 20 65 6C
+	   69 74 65 73 20
+	   74 68 61 74 20
+	   77 65 72 65 20
+	   67 75 61 72 64
+	   69 6E 67 20 74
+	   68 65 20 72 6F
+	   6F 6D 20 61 74
+	   74 61 63 6B 65
+	   64 20 79 6F 75
+	   20 66 72 6F 6D
+	   20 62 65 68 69
+	   6E 64 20 61 6E
+	   64 20 65 6C 69
+	   6D 69 6E 61 74
+	   65 64 20 79 6F
+	   75 72 20 65 6E
+	   74 69 72 65 20
+	   73 71 75 61 64
+	   2E 0D 0A
+ 0000240A  41 73 20 74 68				BYTE "As the last man standing, you try to eliminate as many enemies as you can, but ultimately you are gunned down and killed in action.", 0dh, 0ah
+	   65 20 6C 61 73
+	   74 20 6D 61 6E
+	   20 73 74 61 6E
+	   64 69 6E 67 2C
+	   20 79 6F 75 20
+	   74 72 79 20 74
+	   6F 20 65 6C 69
+	   6D 69 6E 61 74
+	   65 20 61 73 20
+	   6D 61 6E 79 20
+	   65 6E 65 6D 69
+	   65 73 20 61 73
+	   20 79 6F 75 20
+	   63 61 6E 2C 20
+	   62 75 74 20 75
+	   6C 74 69 6D 61
+	   74 65 6C 79 20
+	   79 6F 75 20 61
+	   72 65 20 67 75
+	   6E 6E 65 64 20
+	   64 6F 77 6E 20
+	   61 6E 64 20 6B
+	   69 6C 6C 65 64
+	   20 69 6E 20 61
+	   63 74 69 6F 6E
+	   2E 0D 0A
+ 0000248F 47 41 4D 45 20	Lv3RouteFin BYTE "GAME OVER", 0dh, 0ah, 0
+	   4F 56 45 52 0D
+	   0A 00
+
+				;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 0000249B 59 6F 75 20 64	Lv3Exploring BYTE "You decide to keep exploring the covenant ship, hoping to find the room where the intel is being kept.", 0dh, 0ah
+	   65 63 69 64 65
+	   20 74 6F 20 6B
+	   65 65 70 20 65
+	   78 70 6C 6F 72
+	   69 6E 67 20 74
+	   68 65 20 63 6F
+	   76 65 6E 61 6E
+	   74 20 73 68 69
+	   70 2C 20 68 6F
+	   70 69 6E 67 20
+	   74 6F 20 66 69
+	   6E 64 20 74 68
+	   65 20 72 6F 6F
+	   6D 20 77 68 65
+	   72 65 20 74 68
+	   65 20 69 6E 74
+	   65 6C 20 69 73
+	   20 62 65 69 6E
+	   67 20 6B 65 70
+	   74 2E 0D 0A
+ 00002503  59 6F 75 20 70					BYTE "You peek at a corridor that is being guarded by two hunters.", 0dh, 0ah
+	   65 65 6B 20 61
+	   74 20 61 20 63
+	   6F 72 72 69 64
+	   6F 72 20 74 68
+	   61 74 20 69 73
+	   20 62 65 69 6E
+	   67 20 67 75 61
+	   72 64 65 64 20
+	   62 79 20 74 77
+	   6F 20 68 75 6E
+	   74 65 72 73 2E
+	   0D 0A
+ 00002541  41 20 6D 61 72					BYTE "A marine states that the intel must be behind that door since it is being guarded by two hunters.", 0dh, 0ah
+	   69 6E 65 20 73
+	   74 61 74 65 73
+	   20 74 68 61 74
+	   20 74 68 65 20
+	   69 6E 74 65 6C
+	   20 6D 75 73 74
+	   20 62 65 20 62
+	   65 68 69 6E 64
+	   20 74 68 61 74
+	   20 64 6F 6F 72
+	   20 73 69 6E 63
+	   65 20 69 74 20
+	   69 73 20 62 65
+	   69 6E 67 20 67
+	   75 61 72 64 65
+	   64 20 62 79 20
+	   74 77 6F 20 68
+	   75 6E 74 65 72
+	   73 2E 0D 0A
+ 000025A4 4B 6E 6F 77 69	Lv3ExploringAns BYTE "Knowing that the enemies are hunters, it is almost impossible to try and kill them stealthly, leaving you with two options 1) Get ready for a fight with the hunters and enter the room (Will alert the ship) 2) Ignore the hunters and continue to explore", 0dh, 0ah, 0
+	   6E 67 20 74 68
+	   61 74 20 74 68
+	   65 20 65 6E 65
+	   6D 69 65 73 20
+	   61 72 65 20 68
+	   75 6E 74 65 72
+	   73 2C 20 69 74
+	   20 69 73 20 61
+	   6C 6D 6F 73 74
+	   20 69 6D 70 6F
+	   73 73 69 62 6C
+	   65 20 74 6F 20
+	   74 72 79 20 61
+	   6E 64 20 6B 69
+	   6C 6C 20 74 68
+	   65 6D 20 73 74
+	   65 61 6C 74 68
+	   6C 79 2C 20 6C
+	   65 61 76 69 6E
+	   67 20 79 6F 75
+	   20 77 69 74 68
+	   20 74 77 6F 20
+	   6F 70 74 69 6F
+	   6E 73 20 31 29
+	   20 47 65 74 20
+	   72 65 61 64 79
+	   20 66 6F 72 20
+	   61 20 66 69 67
+	   68 74 20 77 69
+	   74 68 20 74 68
+	   65 20 68 75 6E
+	   74 65 72 73 20
+	   61 6E 64 20 65
+	   6E 74 65 72 20
+	   74 68 65 20 72
+	   6F 6F 6D 20 28
+	   57 69 6C 6C 20
+	   61 6C 65 72 74
+	   20 74 68 65 20
+	   73 68 69 70 29
+	   20 32 29 20 49
+	   67 6E 6F 72 65
+	   20 74 68 65 20
+	   68 75 6E 74 65
+	   72 73 20 61 6E
+	   64 20 63 6F 6E
+	   74 69 6E 75 65
+	   20 74 6F 20 65
+	   78 70 6C 6F 72
+	   65 0D 0A 00
+
+				;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 000026A2 59 6F 75 20 64	Lv3Proceed BYTE "You decide to proceed to the unguarded room, only to find five elites with energy swords chatting.", 0dh, 0ah
+	   65 63 69 64 65
+	   20 74 6F 20 70
+	   72 6F 63 65 65
+	   64 20 74 6F 20
+	   74 68 65 20 75
+	   6E 67 75 61 72
+	   64 65 64 20 72
+	   6F 6F 6D 2C 20
+	   6F 6E 6C 79 20
+	   74 6F 20 66 69
+	   6E 64 20 66 69
+	   76 65 20 65 6C
+	   69 74 65 73 20
+	   77 69 74 68 20
+	   65 6E 65 72 67
+	   79 20 73 77 6F
+	   72 64 73 20 63
+	   68 61 74 74 69
+	   6E 67 2E 0D 0A
+ 00002706  54 68 65 79 20				BYTE "They are instantly alerted of your prescence and one of them hits the alarm, alerting the entire ship while the other four elites rush you.", 0dh, 0ah
+	   61 72 65 20 69
+	   6E 73 74 61 6E
+	   74 6C 79 20 61
+	   6C 65 72 74 65
+	   64 20 6F 66 20
+	   79 6F 75 72 20
+	   70 72 65 73 63
+	   65 6E 63 65 20
+	   61 6E 64 20 6F
+	   6E 65 20 6F 66
+	   20 74 68 65 6D
+	   20 68 69 74 73
+	   20 74 68 65 20
+	   61 6C 61 72 6D
+	   2C 20 61 6C 65
+	   72 74 69 6E 67
+	   20 74 68 65 20
+	   65 6E 74 69 72
+	   65 20 73 68 69
+	   70 20 77 68 69
+	   6C 65 20 74 68
+	   65 20 6F 74 68
+	   65 72 20 66 6F
+	   75 72 20 65 6C
+	   69 74 65 73 20
+	   72 75 73 68 20
+	   79 6F 75 2E 0D
+	   0A
+ 00002793  59 6F 75 20 61				BYTE "You and your squad open fire at the four elites rushing you, only to notice that they have shields.", 0dh, 0ah
+	   6E 64 20 79 6F
+	   75 72 20 73 71
+	   75 61 64 20 6F
+	   70 65 6E 20 66
+	   69 72 65 20 61
+	   74 20 74 68 65
+	   20 66 6F 75 72
+	   20 65 6C 69 74
+	   65 73 20 72 75
+	   73 68 69 6E 67
+	   20 79 6F 75 2C
+	   20 6F 6E 6C 79
+	   20 74 6F 20 6E
+	   6F 74 69 63 65
+	   20 74 68 61 74
+	   20 74 68 65 79
+	   20 68 61 76 65
+	   20 73 68 69 65
+	   6C 64 73 2E 0D
+	   0A
+ 000027F8  59 6F 75 20 73				BYTE "You successfully kill two elites, while the other two get really close and start to eliminate one of your strike team.", 0dh, 0ah
+	   75 63 63 65 73
+	   73 66 75 6C 6C
+	   79 20 6B 69 6C
+	   6C 20 74 77 6F
+	   20 65 6C 69 74
+	   65 73 2C 20 77
+	   68 69 6C 65 20
+	   74 68 65 20 6F
+	   74 68 65 72 20
+	   74 77 6F 20 67
+	   65 74 20 72 65
+	   61 6C 6C 79 20
+	   63 6C 6F 73 65
+	   20 61 6E 64 20
+	   73 74 61 72 74
+	   20 74 6F 20 65
+	   6C 69 6D 69 6E
+	   61 74 65 20 6F
+	   6E 65 20 6F 66
+	   20 79 6F 75 72
+	   20 73 74 72 69
+	   6B 65 20 74 65
+	   61 6D 2E 0D 0A
+ 00002870  41 66 74 65 72				BYTE "After eliminating the other two elites, you pick up your fallen member and everyone retreats to the hangar while being chased and shot.", 0dh, 0ah
+	   20 65 6C 69 6D
+	   69 6E 61 74 69
+	   6E 67 20 74 68
+	   65 20 6F 74 68
+	   65 72 20 74 77
+	   6F 20 65 6C 69
+	   74 65 73 2C 20
+	   79 6F 75 20 70
+	   69 63 6B 20 75
+	   70 20 79 6F 75
+	   72 20 66 61 6C
+	   6C 65 6E 20 6D
+	   65 6D 62 65 72
+	   20 61 6E 64 20
+	   65 76 65 72 79
+	   6F 6E 65 20 72
+	   65 74 72 65 61
+	   74 73 20 74 6F
+	   20 74 68 65 20
+	   68 61 6E 67 61
+	   72 20 77 68 69
+	   6C 65 20 62 65
+	   69 6E 67 20 63
+	   68 61 73 65 64
+	   20 61 6E 64 20
+	   73 68 6F 74 2E
+	   0D 0A
+ 000028F9  59 6F 75 20 6D				BYTE "You manage to reach the hangar and proceed to hijack a type-52 troop carrier for a fast escape.", 0dh, 0ah
+	   61 6E 61 67 65
+	   20 74 6F 20 72
+	   65 61 63 68 20
+	   74 68 65 20 68
+	   61 6E 67 61 72
+	   20 61 6E 64 20
+	   70 72 6F 63 65
+	   65 64 20 74 6F
+	   20 68 69 6A 61
+	   63 6B 20 61 20
+	   74 79 70 65 2D
+	   35 32 20 74 72
+	   6F 6F 70 20 63
+	   61 72 72 69 65
+	   72 20 66 6F 72
+	   20 61 20 66 61
+	   73 74 20 65 73
+	   63 61 70 65 2E
+	   0D 0A
+ 0000295A  59 6F 75 20 73				BYTE "You successfully hijack the carrier and proceed to escape the covenant ship not with the intel, but with a fallen soldier.", 0dh, 0ah
+	   75 63 63 65 73
+	   73 66 75 6C 6C
+	   79 20 68 69 6A
+	   61 63 6B 20 74
+	   68 65 20 63 61
+	   72 72 69 65 72
+	   20 61 6E 64 20
+	   70 72 6F 63 65
+	   65 64 20 74 6F
+	   20 65 73 63 61
+	   70 65 20 74 68
+	   65 20 63 6F 76
+	   65 6E 61 6E 74
+	   20 73 68 69 70
+	   20 6E 6F 74 20
+	   77 69 74 68 20
+	   74 68 65 20 69
+	   6E 74 65 6C 2C
+	   20 62 75 74 20
+	   77 69 74 68 20
+	   61 20 66 61 6C
+	   6C 65 6E 20 73
+	   6F 6C 64 69 65
+	   72 2E 0D 0A
+ 000029D6 47 41 4D 45 20	Lv3ProceedFin BYTE "GAME OVER", 0dh, 0ah, 0
+	   4F 56 45 52 0D
+	   0A 00
+
+				;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 000029E2 59 6F 75 20 61	Lv3HideAhead BYTE "You and your squad quickly rush to the room ahead of you and hide.", 0dh, 0ah
+	   6E 64 20 79 6F
+	   75 72 20 73 71
+	   75 61 64 20 71
+	   75 69 63 6B 6C
+	   79 20 72 75 73
+	   68 20 74 6F 20
+	   74 68 65 20 72
+	   6F 6F 6D 20 61
+	   68 65 61 64 20
+	   6F 66 20 79 6F
+	   75 20 61 6E 64
+	   20 68 69 64 65
+	   2E 0D 0A
+ 00002A26  49 74 20 69 73					BYTE "It is a small room with little hiding options.", 0dh, 0ah
+	   20 61 20 73 6D
+	   61 6C 6C 20 72
+	   6F 6F 6D 20 77
+	   69 74 68 20 6C
+	   69 74 74 6C 65
+	   20 68 69 64 69
+	   6E 67 20 6F 70
+	   74 69 6F 6E 73
+	   2E 0D 0A
+ 00002A56  59 6F 75 20 68					BYTE "You hear footsteps approach and suddenly the door opens.", 0dh, 0ah
+	   65 61 72 20 66
+	   6F 6F 74 73 74
+	   65 70 73 20 61
+	   70 70 72 6F 61
+	   63 68 20 61 6E
+	   64 20 73 75 64
+	   64 65 6E 6C 79
+	   20 74 68 65 20
+	   64 6F 6F 72 20
+	   6F 70 65 6E 73
+	   2E 0D 0A
+ 00002A90  59 6F 75 20 73					BYTE "You see three jackals surprised of your presence and you quicly eliminate all three of them.", 0dh, 0ah
+	   65 65 20 74 68
+	   72 65 65 20 6A
+	   61 63 6B 61 6C
+	   73 20 73 75 72
+	   70 72 69 73 65
+	   64 20 6F 66 20
+	   79 6F 75 72 20
+	   70 72 65 73 65
+	   6E 63 65 20 61
+	   6E 64 20 79 6F
+	   75 20 71 75 69
+	   63 6C 79 20 65
+	   6C 69 6D 69 6E
+	   61 74 65 20 61
+	   6C 6C 20 74 68
+	   72 65 65 20 6F
+	   66 20 74 68 65
+	   6D 2E 0D 0A
+ 00002AEE  53 69 6E 63 65					BYTE "Since you opened fired, the whole ship is aware of your presence and you quickly run towards your original trajectory.", 0dh, 0ah
+	   20 79 6F 75 20
+	   6F 70 65 6E 65
+	   64 20 66 69 72
+	   65 64 2C 20 74
+	   68 65 20 77 68
+	   6F 6C 65 20 73
+	   68 69 70 20 69
+	   73 20 61 77 61
+	   72 65 20 6F 66
+	   20 79 6F 75 72
+	   20 70 72 65 73
+	   65 6E 63 65 20
+	   61 6E 64 20 79
+	   6F 75 20 71 75
+	   69 63 6B 6C 79
+	   20 72 75 6E 20
+	   74 6F 77 61 72
+	   64 73 20 79 6F
+	   75 72 20 6F 72
+	   69 67 69 6E 61
+	   6C 20 74 72 61
+	   6A 65 63 74 6F
+	   72 79 2E 0D 0A
+ 00002B66  59 6F 75 20 72					BYTE "You reach a room and inside you find the intel that the UNSC was looking for.", 0dh, 0ah
+	   65 61 63 68 20
+	   61 20 72 6F 6F
+	   6D 20 61 6E 64
+	   20 69 6E 73 69
+	   64 65 20 79 6F
+	   75 20 66 69 6E
+	   64 20 74 68 65
+	   20 69 6E 74 65
+	   6C 20 74 68 61
+	   74 20 74 68 65
+	   20 55 4E 53 43
+	   20 77 61 73 20
+	   6C 6F 6F 6B 69
+	   6E 67 20 66 6F
+	   72 2E 0D 0A
+ 00002BB5  59 6F 75 20 71					BYTE "You quickly pick up the intel and rush out of there, back to your ship.", 0dh, 0ah
+	   75 69 63 6B 6C
+	   79 20 70 69 63
+	   6B 20 75 70 20
+	   74 68 65 20 69
+	   6E 74 65 6C 20
+	   61 6E 64 20 72
+	   75 73 68 20 6F
+	   75 74 20 6F 66
+	   20 74 68 65 72
+	   65 2C 20 62 61
+	   63 6B 20 74 6F
+	   20 79 6F 75 72
+	   20 73 68 69 70
+	   2E 0D 0A
+ 00002BFE  59 6F 75 20 6D					BYTE "You managed to evade the hunters, but the whole ship is looking for you.", 0dh, 0ah
+	   61 6E 61 67 65
+	   64 20 74 6F 20
+	   65 76 61 64 65
+	   20 74 68 65 20
+	   68 75 6E 74 65
+	   72 73 2C 20 62
+	   75 74 20 74 68
+	   65 20 77 68 6F
+	   6C 65 20 73 68
+	   69 70 20 69 73
+	   20 6C 6F 6F 6B
+	   69 6E 67 20 66
+	   6F 72 20 79 6F
+	   75 2E 0D 0A
+ 00002C48  59 6F 75 20 65					BYTE "You encounter a corridor that leads either north of the ship, or south of the ship.", 0dh, 0ah
+	   6E 63 6F 75 6E
+	   74 65 72 20 61
+	   20 63 6F 72 72
+	   69 64 6F 72 20
+	   74 68 61 74 20
+	   6C 65 61 64 73
+	   20 65 69 74 68
+	   65 72 20 6E 6F
+	   72 74 68 20 6F
+	   66 20 74 68 65
+	   20 73 68 69 70
+	   2C 20 6F 72 20
+	   73 6F 75 74 68
+	   20 6F 66 20 74
+	   68 65 20 73 68
+	   69 70 2E 0D 0A
+ 00002C9D 55 6E 61 77 61	Lv3HideAheadAns BYTE "Unaware of your ship's location due to running away from the enemy through endless corridors, you 1) Go north 2) Go south", 0dh, 0ah, 0
+	   72 65 20 6F 66
+	   20 79 6F 75 72
+	   20 73 68 69 70
+	   27 73 20 6C 6F
+	   63 61 74 69 6F
+	   6E 20 64 75 65
+	   20 74 6F 20 72
+	   75 6E 6E 69 6E
+	   67 20 61 77 61
+	   79 20 66 72 6F
+	   6D 20 74 68 65
+	   20 65 6E 65 6D
+	   79 20 74 68 72
+	   6F 75 67 68 20
+	   65 6E 64 6C 65
+	   73 73 20 63 6F
+	   72 72 69 64 6F
+	   72 73 2C 20 79
+	   6F 75 20 31 29
+	   20 47 6F 20 6E
+	   6F 72 74 68 20
+	   32 29 20 47 6F
+	   20 73 6F 75 74
+	   68 0D 0A 00
+
+				;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 00002D19 59 6F 75 20 61	Lv3HideBehind BYTE "You and your squad quickly rush to the door that you just passed by and proceed to hide.", 0dh, 0ah
+	   6E 64 20 79 6F
+	   75 72 20 73 71
+	   75 61 64 20 71
+	   75 69 63 6B 6C
+	   79 20 72 75 73
+	   68 20 74 6F 20
+	   74 68 65 20 64
+	   6F 6F 72 20 74
+	   68 61 74 20 79
+	   6F 75 20 6A 75
+	   73 74 20 70 61
+	   73 73 65 64 20
+	   62 79 20 61 6E
+	   64 20 70 72 6F
+	   63 65 65 64 20
+	   74 6F 20 68 69
+	   64 65 2E 0D 0A
+ 00002D73  49 74 20 69 73					BYTE "It is a small room will little hiding options You hear louder footsteps approaching the door and it is suddently opened, revealing two hunters.", 0dh, 0ah
+	   20 61 20 73 6D
+	   61 6C 6C 20 72
+	   6F 6F 6D 20 77
+	   69 6C 6C 20 6C
+	   69 74 74 6C 65
+	   20 68 69 64 69
+	   6E 67 20 6F 70
+	   74 69 6F 6E 73
+	   20 59 6F 75 20
+	   68 65 61 72 20
+	   6C 6F 75 64 65
+	   72 20 66 6F 6F
+	   74 73 74 65 70
+	   73 20 61 70 70
+	   72 6F 61 63 68
+	   69 6E 67 20 74
+	   68 65 20 64 6F
+	   6F 72 20 61 6E
+	   64 20 69 74 20
+	   69 73 20 73 75
+	   64 64 65 6E 74
+	   6C 79 20 6F 70
+	   65 6E 65 64 2C
+	   20 72 65 76 65
+	   61 6C 69 6E 67
+	   20 74 77 6F 20
+	   68 75 6E 74 65
+	   72 73 2E 0D 0A
+ 00002E04  46 69 6E 61 6C					BYTE "Finally caught, you and your squad open fire towards the hunters and manage to eliminate both of them.", 0dh, 0ah
+	   6C 79 20 63 61
+	   75 67 68 74 2C
+	   20 79 6F 75 20
+	   61 6E 64 20 79
+	   6F 75 72 20 73
+	   71 75 61 64 20
+	   6F 70 65 6E 20
+	   66 69 72 65 20
+	   74 6F 77 61 72
+	   64 73 20 74 68
+	   65 20 68 75 6E
+	   74 65 72 73 20
+	   61 6E 64 20 6D
+	   61 6E 61 67 65
+	   20 74 6F 20 65
+	   6C 69 6D 69 6E
+	   61 74 65 20 62
+	   6F 74 68 20 6F
+	   66 20 74 68 65
+	   6D 2E 0D 0A
+ 00002E6C  48 6F 77 65 76					BYTE "However, everyone on the ship is aware of your position and quickly flee further back from where you came from.", 0dh, 0ah
+	   65 72 2C 20 65
+	   76 65 72 79 6F
+	   6E 65 20 6F 6E
+	   20 74 68 65 20
+	   73 68 69 70 20
+	   69 73 20 61 77
+	   61 72 65 20 6F
+	   66 20 79 6F 75
+	   72 20 70 6F 73
+	   69 74 69 6F 6E
+	   20 61 6E 64 20
+	   71 75 69 63 6B
+	   6C 79 20 66 6C
+	   65 65 20 66 75
+	   72 74 68 65 72
+	   20 62 61 63 6B
+	   20 66 72 6F 6D
+	   20 77 68 65 72
+	   65 20 79 6F 75
+	   20 63 61 6D 65
+	   20 66 72 6F 6D
+	   2E 0D 0A
+ 00002EDD  45 6E 65 6D 69					BYTE "Enemies start to block most corridors, forcing you to enter the main energy reactor.", 0dh, 0ah
+	   65 73 20 73 74
+	   61 72 74 20 74
+	   6F 20 62 6C 6F
+	   63 6B 20 6D 6F
+	   73 74 20 63 6F
+	   72 72 69 64 6F
+	   72 73 2C 20 66
+	   6F 72 63 69 6E
+	   67 20 79 6F 75
+	   20 74 6F 20 65
+	   6E 74 65 72 20
+	   74 68 65 20 6D
+	   61 69 6E 20 65
+	   6E 65 72 67 79
+	   20 72 65 61 63
+	   74 6F 72 2E 0D
+	   0A
+ 00002F33  4F 75 74 20 6F					BYTE "Out of options, your squad decides to better blow up the ship and give the UNSC an upper hand in the war rather than fighting the enemy and dying.", 0dh, 0ah
+	   66 20 6F 70 74
+	   69 6F 6E 73 2C
+	   20 79 6F 75 72
+	   20 73 71 75 61
+	   64 20 64 65 63
+	   69 64 65 73 20
+	   74 6F 20 62 65
+	   74 74 65 72 20
+	   62 6C 6F 77 20
+	   75 70 20 74 68
+	   65 20 73 68 69
+	   70 20 61 6E 64
+	   20 67 69 76 65
+	   20 74 68 65 20
+	   55 4E 53 43 20
+	   61 6E 20 75 70
+	   70 65 72 20 68
+	   61 6E 64 20 69
+	   6E 20 74 68 65
+	   20 77 61 72 20
+	   72 61 74 68 65
+	   72 20 74 68 61
+	   6E 20 66 69 67
+	   68 74 69 6E 67
+	   20 74 68 65 20
+	   65 6E 65 6D 79
+	   20 61 6E 64 20
+	   64 79 69 6E 67
+	   2E 0D 0A
+ 00002FC7  59 6F 75 20 61					BYTE "You agree with this selfish idea and proceed to destroy the energy reactor, ultimately blowing up the covenant ship and all its passangers.", 0dh, 0ah
+	   67 72 65 65 20
+	   77 69 74 68 20
+	   74 68 69 73 20
+	   73 65 6C 66 69
+	   73 68 20 69 64
+	   65 61 20 61 6E
+	   64 20 70 72 6F
+	   63 65 65 64 20
+	   74 6F 20 64 65
+	   73 74 72 6F 79
+	   20 74 68 65 20
+	   65 6E 65 72 67
+	   79 20 72 65 61
+	   63 74 6F 72 2C
+	   20 75 6C 74 69
+	   6D 61 74 65 6C
+	   79 20 62 6C 6F
+	   77 69 6E 67 20
+	   75 70 20 74 68
+	   65 20 63 6F 76
+	   65 6E 61 6E 74
+	   20 73 68 69 70
+	   20 61 6E 64 20
+	   61 6C 6C 20 69
+	   74 73 20 70 61
+	   73 73 61 6E 67
+	   65 72 73 2E 0D
+	   0A
+ 00003054  41 6C 74 68 6F					BYTE "Although no intel was retrieved, you delivered a heavy blow to the covenant and gave the UNSC an advantage in the war.", 0dh, 0ah
+	   75 67 68 20 6E
+	   6F 20 69 6E 74
+	   65 6C 20 77 61
+	   73 20 72 65 74
+	   72 69 65 76 65
+	   64 2C 20 79 6F
+	   75 20 64 65 6C
+	   69 76 65 72 65
+	   64 20 61 20 68
+	   65 61 76 79 20
+	   62 6C 6F 77 20
+	   74 6F 20 74 68
+	   65 20 63 6F 76
+	   65 6E 61 6E 74
+	   20 61 6E 64 20
+	   67 61 76 65 20
+	   74 68 65 20 55
+	   4E 53 43 20 61
+	   6E 20 61 64 76
+	   61 6E 74 61 67
+	   65 20 69 6E 20
+	   74 68 65 20 77
+	   61 72 2E 0D 0A
+ 000030CC 47 41 4D 45 20	Lv3HideBehindFin BYTE "GAME OVER", 0dh, 0ah, 0
+	   4F 56 45 52 0D
+	   0A 00
+
+				;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 000030D8 59 6F 75 20 61	Lv3Stand BYTE "You and your squad quickly decide to stand their ground and fight both enemy squads.", 0dh, 0ah
+	   6E 64 20 79 6F
+	   75 72 20 73 71
+	   75 61 64 20 71
+	   75 69 63 6B 6C
+	   79 20 64 65 63
+	   69 64 65 20 74
+	   6F 20 73 74 61
+	   6E 64 20 74 68
+	   65 69 72 20 67
+	   72 6F 75 6E 64
+	   20 61 6E 64 20
+	   66 69 67 68 74
+	   20 62 6F 74 68
+	   20 65 6E 65 6D
+	   79 20 73 71 75
+	   61 64 73 2E 0D
+	   0A
+ 0000312E  59 6F 75 20 73				BYTE "You soon realize that it is three jackals and two hunters on both ends of the corridor, ending up in a violent gunfight.", 0dh, 0ah
+	   6F 6F 6E 20 72
+	   65 61 6C 69 7A
+	   65 20 74 68 61
+	   74 20 69 74 20
+	   69 73 20 74 68
+	   72 65 65 20 6A
+	   61 63 6B 61 6C
+	   73 20 61 6E 64
+	   20 74 77 6F 20
+	   68 75 6E 74 65
+	   72 73 20 6F 6E
+	   20 62 6F 74 68
+	   20 65 6E 64 73
+	   20 6F 66 20 74
+	   68 65 20 63 6F
+	   72 72 69 64 6F
+	   72 2C 20 65 6E
+	   64 69 6E 67 20
+	   75 70 20 69 6E
+	   20 61 20 76 69
+	   6F 6C 65 6E 74
+	   20 67 75 6E 66
+	   69 67 68 74 2E
+	   0D 0A
+ 000031A8  59 6F 75 20 61				BYTE "You and your squad are quickly wiped out by the jackal's precise carbine shots and the hunter's explosive shots.", 0dh, 0ah
+	   6E 64 20 79 6F
+	   75 72 20 73 71
+	   75 61 64 20 61
+	   72 65 20 71 75
+	   69 63 6B 6C 79
+	   20 77 69 70 65
+	   64 20 6F 75 74
+	   20 62 79 20 74
+	   68 65 20 6A 61
+	   63 6B 61 6C 27
+	   73 20 70 72 65
+	   63 69 73 65 20
+	   63 61 72 62 69
+	   6E 65 20 73 68
+	   6F 74 73 20 61
+	   6E 64 20 74 68
+	   65 20 68 75 6E
+	   74 65 72 27 73
+	   20 65 78 70 6C
+	   6F 73 69 76 65
+	   20 73 68 6F 74
+	   73 2E 0D 0A
+ 0000321A 47 41 4D 45 20	Lv3StandFin BYTE "GAME OVER", 0dh, 0ah, 0
+	   4F 56 45 52 0D
+	   0A 00
+
+				;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 00003226 59 6F 75 20 64	Lv3Left BYTE "You decide to go left and find an entrance being guarded by two grunts.", 0dh, 0ah
+	   65 63 69 64 65
+	   20 74 6F 20 67
+	   6F 20 6C 65 66
+	   74 20 61 6E 64
+	   20 66 69 6E 64
+	   20 61 6E 20 65
+	   6E 74 72 61 6E
+	   63 65 20 62 65
+	   69 6E 67 20 67
+	   75 61 72 64 65
+	   64 20 62 79 20
+	   74 77 6F 20 67
+	   72 75 6E 74 73
+	   2E 0D 0A
+ 0000326F  59 6F 75 20 71			BYTE "You quickly dispose of the two grunts with ease and stealth and proceed into the room.", 0dh, 0ah
+	   75 69 63 6B 6C
+	   79 20 64 69 73
+	   70 6F 73 65 20
+	   6F 66 20 74 68
+	   65 20 74 77 6F
+	   20 67 72 75 6E
+	   74 73 20 77 69
+	   74 68 20 65 61
+	   73 65 20 61 6E
+	   64 20 73 74 65
+	   61 6C 74 68 20
+	   61 6E 64 20 70
+	   72 6F 63 65 65
+	   64 20 69 6E 74
+	   6F 20 74 68 65
+	   20 72 6F 6F 6D
+	   2E 0D 0A
+ 000032C7  55 70 6F 6E 20			BYTE "Upon entering, you only find old relics and ancient tech.", 0dh, 0ah
+	   65 6E 74 65 72
+	   69 6E 67 2C 20
+	   79 6F 75 20 6F
+	   6E 6C 79 20 66
+	   69 6E 64 20 6F
+	   6C 64 20 72 65
+	   6C 69 63 73 20
+	   61 6E 64 20 61
+	   6E 63 69 65 6E
+	   74 20 74 65 63
+	   68 2E 0D 0A
+ 00003302  59 6F 75 20 61			BYTE "You and your squad investigate these old relics and ancient tech, only to find them useless.", 0dh, 0ah
+	   6E 64 20 79 6F
+	   75 72 20 73 71
+	   75 61 64 20 69
+	   6E 76 65 73 74
+	   69 67 61 74 65
+	   20 74 68 65 73
+	   65 20 6F 6C 64
+	   20 72 65 6C 69
+	   63 73 20 61 6E
+	   64 20 61 6E 63
+	   69 65 6E 74 20
+	   74 65 63 68 2C
+	   20 6F 6E 6C 79
+	   20 74 6F 20 66
+	   69 6E 64 20 74
+	   68 65 6D 20 75
+	   73 65 6C 65 73
+	   73 2E 0D 0A
+ 00003360  59 6F 75 20 70			BYTE "You pick up an old tech that looks like a blue sphere with circular glass on one end, as if it's an eye.", 0dh, 0ah
+	   69 63 6B 20 75
+	   70 20 61 6E 20
+	   6F 6C 64 20 74
+	   65 63 68 20 74
+	   68 61 74 20 6C
+	   6F 6F 6B 73 20
+	   6C 69 6B 65 20
+	   61 20 62 6C 75
+	   65 20 73 70 68
+	   65 72 65 20 77
+	   69 74 68 20 63
+	   69 72 63 75 6C
+	   61 72 20 67 6C
+	   61 73 73 20 6F
+	   6E 20 6F 6E 65
+	   20 65 6E 64 2C
+	   20 61 73 20 69
+	   66 20 69 74 27
+	   73 20 61 6E 20
+	   65 79 65 2E 0D
+	   0A
+ 000033CA  55 70 6F 6E 20			BYTE "Upon further inspection, you think it's just junk and put it back.", 0dh, 0ah
+	   66 75 72 74 68
+	   65 72 20 69 6E
+	   73 70 65 63 74
+	   69 6F 6E 2C 20
+	   79 6F 75 20 74
+	   68 69 6E 6B 20
+	   69 74 27 73 20
+	   6A 75 73 74 20
+	   6A 75 6E 6B 20
+	   61 6E 64 20 70
+	   75 74 20 69 74
+	   20 62 61 63 6B
+	   2E 0D 0A
+ 0000340E  41 73 20 73 6F			BYTE "As soon as you put the old tech back where you found it, it suddendly powers up and starts to float.", 0dh, 0ah
+	   6F 6E 20 61 73
+	   20 79 6F 75 20
+	   70 75 74 20 74
+	   68 65 20 6F 6C
+	   64 20 74 65 63
+	   68 20 62 61 63
+	   6B 20 77 68 65
+	   72 65 20 79 6F
+	   75 20 66 6F 75
+	   6E 64 20 69 74
+	   2C 20 69 74 20
+	   73 75 64 64 65
+	   6E 64 6C 79 20
+	   70 6F 77 65 72
+	   73 20 75 70 20
+	   61 6E 64 20 73
+	   74 61 72 74 73
+	   20 74 6F 20 66
+	   6C 6F 61 74 2E
+	   0D 0A
+ 00003474  53 75 72 70 72			BYTE "Surprised, everyone readies their weapons.", 0dh, 0ah
+	   69 73 65 64 2C
+	   20 65 76 65 72
+	   79 6F 6E 65 20
+	   72 65 61 64 69
+	   65 73 20 74 68
+	   65 69 72 20 77
+	   65 61 70 6F 6E
+	   73 2E 0D 0A
+ 000034A0  54 68 65 20 66			BYTE "The floating blue orb speaks, stating that his name is 210 Guilty Spark and seeks to go back to his home.", 0dh, 0ah
+	   6C 6F 61 74 69
+	   6E 67 20 62 6C
+	   75 65 20 6F 72
+	   62 20 73 70 65
+	   61 6B 73 2C 20
+	   73 74 61 74 69
+	   6E 67 20 74 68
+	   61 74 20 68 69
+	   73 20 6E 61 6D
+	   65 20 69 73 20
+	   32 31 30 20 47
+	   75 69 6C 74 79
+	   20 53 70 61 72
+	   6B 20 61 6E 64
+	   20 73 65 65 6B
+	   73 20 74 6F 20
+	   67 6F 20 62 61
+	   63 6B 20 74 6F
+	   20 68 69 73 20
+	   68 6F 6D 65 2E
+	   0D 0A
+ 0000350B  41 20 6D 61 72			BYTE "A marine states that this might be the intel that the UNSC was looking for.", 0dh, 0ah
+	   69 6E 65 20 73
+	   74 61 74 65 73
+	   20 74 68 61 74
+	   20 74 68 69 73
+	   20 6D 69 67 68
+	   74 20 62 65 20
+	   74 68 65 20 69
+	   6E 74 65 6C 20
+	   74 68 61 74 20
+	   74 68 65 20 55
+	   4E 53 43 20 77
+	   61 73 20 6C 6F
+	   6F 6B 69 6E 67
+	   20 66 6F 72 2E
+	   0D 0A
+ 00003558 59 6F 75 20 64	Lv3LeftAns BYTE "You decide to 1) Cooperate with Guilty Spark and help the floating machine escape the ship and take him to the UNSC 2) Bring the machine along and keep looking for the actual intel ", 0dh, 0ah, 0
+	   65 63 69 64 65
+	   20 74 6F 20 31
+	   29 20 43 6F 6F
+	   70 65 72 61 74
+	   65 20 77 69 74
+	   68 20 47 75 69
+	   6C 74 79 20 53
+	   70 61 72 6B 20
+	   61 6E 64 20 68
+	   65 6C 70 20 74
+	   68 65 20 66 6C
+	   6F 61 74 69 6E
+	   67 20 6D 61 63
+	   68 69 6E 65 20
+	   65 73 63 61 70
+	   65 20 74 68 65
+	   20 73 68 69 70
+	   20 61 6E 64 20
+	   74 61 6B 65 20
+	   68 69 6D 20 74
+	   6F 20 74 68 65
+	   20 55 4E 53 43
+	   20 32 29 20 42
+	   72 69 6E 67 20
+	   74 68 65 20 6D
+	   61 63 68 69 6E
+	   65 20 61 6C 6F
+	   6E 67 20 61 6E
+	   64 20 6B 65 65
+	   70 20 6C 6F 6F
+	   6B 69 6E 67 20
+	   66 6F 72 20 74
+	   68 65 20 61 63
+	   74 75 61 6C 20
+	   69 6E 74 65 6C
+	   20 0D 0A 00
+
+				;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 00003610 59 6F 75 20 64	Lv3Moving BYTE "You decide to go further down and enter a room that is filled with junk and scrap.", 0dh, 0ah
+	   65 63 69 64 65
+	   20 74 6F 20 67
+	   6F 20 66 75 72
+	   74 68 65 72 20
+	   64 6F 77 6E 20
+	   61 6E 64 20 65
+	   6E 74 65 72 20
+	   61 20 72 6F 6F
+	   6D 20 74 68 61
+	   74 20 69 73 20
+	   66 69 6C 6C 65
+	   64 20 77 69 74
+	   68 20 6A 75 6E
+	   6B 20 61 6E 64
+	   20 73 63 72 61
+	   70 2E 0D 0A
+ 00003664  59 6F 75 20 73				BYTE "You soon find out that you're at the ship's garbage area.", 0dh, 0ah
+	   6F 6F 6E 20 66
+	   69 6E 64 20 6F
+	   75 74 20 74 68
+	   61 74 20 79 6F
+	   75 27 72 65 20
+	   61 74 20 74 68
+	   65 20 73 68 69
+	   70 27 73 20 67
+	   61 72 62 61 67
+	   65 20 61 72 65
+	   61 2E 0D 0A
+ 0000369F  55 70 6F 6E 20				BYTE "Upon realization, the doors behing close and a big door opposite of the room opens, exposing everyone to the vaccum of space.", 0dh, 0ah
+	   72 65 61 6C 69
+	   7A 61 74 69 6F
+	   6E 2C 20 74 68
+	   65 20 64 6F 6F
+	   72 73 20 62 65
+	   68 69 6E 67 20
+	   63 6C 6F 73 65
+	   20 61 6E 64 20
+	   61 20 62 69 67
+	   20 64 6F 6F 72
+	   20 6F 70 70 6F
+	   73 69 74 65 20
+	   6F 66 20 74 68
+	   65 20 72 6F 6F
+	   6D 20 6F 70 65
+	   6E 73 2C 20 65
+	   78 70 6F 73 69
+	   6E 67 20 65 76
+	   65 72 79 6F 6E
+	   65 20 74 6F 20
+	   74 68 65 20 76
+	   61 63 63 75 6D
+	   20 6F 66 20 73
+	   70 61 63 65 2E
+	   0D 0A
+ 0000371E  54 68 65 20 6D				BYTE "The marines unnequiped with any kind of space suit are quickly eliminated due to lack of oxygen.", 0dh, 0ah
+	   61 72 69 6E 65
+	   73 20 75 6E 6E
+	   65 71 75 69 70
+	   65 64 20 77 69
+	   74 68 20 61 6E
+	   79 20 6B 69 6E
+	   64 20 6F 66 20
+	   73 70 61 63 65
+	   20 73 75 69 74
+	   20 61 72 65 20
+	   71 75 69 63 6B
+	   6C 79 20 65 6C
+	   69 6D 69 6E 61
+	   74 65 64 20 64
+	   75 65 20 74 6F
+	   20 6C 61 63 6B
+	   20 6F 66 20 6F
+	   78 79 67 65 6E
+	   2E 0D 0A
+ 00003780  59 6F 75 72 20				BYTE "Your Spartan suit, however can keep you alive in the vacuum of space for a few hours.", 0dh, 0ah
+	   53 70 61 72 74
+	   61 6E 20 73 75
+	   69 74 2C 20 68
+	   6F 77 65 76 65
+	   72 20 63 61 6E
+	   20 6B 65 65 70
+	   20 79 6F 75 20
+	   61 6C 69 76 65
+	   20 69 6E 20 74
+	   68 65 20 76 61
+	   63 75 75 6D 20
+	   6F 66 20 73 70
+	   61 63 65 20 66
+	   6F 72 20 61 20
+	   66 65 77 20 68
+	   6F 75 72 73 2E
+	   0D 0A
+ 000037D7  59 6F 75 20 73				BYTE "You signal a rescue team, which hours later arrive.", 0dh, 0ah
+	   69 67 6E 61 6C
+	   20 61 20 72 65
+	   73 63 75 65 20
+	   74 65 61 6D 2C
+	   20 77 68 69 63
+	   68 20 68 6F 75
+	   72 73 20 6C 61
+	   74 65 72 20 61
+	   72 72 69 76 65
+	   2E 0D 0A
+ 0000380C  59 6F 75 20 61				BYTE "You are rescued, while your whole strike team was killed with no intel at hand.", 0dh, 0ah
+	   72 65 20 72 65
+	   73 63 75 65 64
+	   2C 20 77 68 69
+	   6C 65 20 79 6F
+	   75 72 20 77 68
+	   6F 6C 65 20 73
+	   74 72 69 6B 65
+	   20 74 65 61 6D
+	   20 77 61 73 20
+	   6B 69 6C 6C 65
+	   64 20 77 69 74
+	   68 20 6E 6F 20
+	   69 6E 74 65 6C
+	   20 61 74 20 68
+	   61 6E 64 2E 0D
+	   0A
+ 0000385D 47 41 4D 45 20	Lv3MovingFin BYTE "GAME OVER", 0dh, 0ah, 0
+	   4F 56 45 52 0D
+	   0A 00
+
+				;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 00003869 59 6F 75 20 64	Lv4Cooperate BYTE "You decide to cooperate with Guilty Spark and take him to the UNSC.", 0dh, 0ah
+	   65 63 69 64 65
+	   20 74 6F 20 63
+	   6F 6F 70 65 72
+	   61 74 65 20 77
+	   69 74 68 20 47
+	   75 69 6C 74 79
+	   20 53 70 61 72
+	   6B 20 61 6E 64
+	   20 74 61 6B 65
+	   20 68 69 6D 20
+	   74 6F 20 74 68
+	   65 20 55 4E 53
+	   43 2E 0D 0A
+ 000038AE  59 6F 75 20 74					BYTE "You try to trace your steps back to the ship, but you're caught by a patrol and quickly gun them down.", 0dh, 0ah
+	   72 79 20 74 6F
+	   20 74 72 61 63
+	   65 20 79 6F 75
+	   72 20 73 74 65
+	   70 73 20 62 61
+	   63 6B 20 74 6F
+	   20 74 68 65 20
+	   73 68 69 70 2C
+	   20 62 75 74 20
+	   79 6F 75 27 72
+	   65 20 63 61 75
+	   67 68 74 20 62
+	   79 20 61 20 70
+	   61 74 72 6F 6C
+	   20 61 6E 64 20
+	   71 75 69 63 6B
+	   6C 79 20 67 75
+	   6E 20 74 68 65
+	   6D 20 64 6F 77
+	   6E 2E 0D 0A
+ 00003916  54 68 69 73 20					BYTE "This ultimately alerted the entire ship and you rush to your escape ship.", 0dh, 0ah
+	   75 6C 74 69 6D
+	   61 74 65 6C 79
+	   20 61 6C 65 72
+	   74 65 64 20 74
+	   68 65 20 65 6E
+	   74 69 72 65 20
+	   73 68 69 70 20
+	   61 6E 64 20 79
+	   6F 75 20 72 75
+	   73 68 20 74 6F
+	   20 79 6F 75 72
+	   20 65 73 63 61
+	   70 65 20 73 68
+	   69 70 2E 0D 0A
+ 00003961  41 73 20 73 6F					BYTE "As soon as you are arriving to your ship, you find an enemy squad of three grunts and two elites between you and your ship, while multiple enemies are approaching from behind.", 0dh, 0ah
+	   6F 6E 20 61 73
+	   20 79 6F 75 20
+	   61 72 65 20 61
+	   72 72 69 76 69
+	   6E 67 20 74 6F
+	   20 79 6F 75 72
+	   20 73 68 69 70
+	   2C 20 79 6F 75
+	   20 66 69 6E 64
+	   20 61 6E 20 65
+	   6E 65 6D 79 20
+	   73 71 75 61 64
+	   20 6F 66 20 74
+	   68 72 65 65 20
+	   67 72 75 6E 74
+	   73 20 61 6E 64
+	   20 74 77 6F 20
+	   65 6C 69 74 65
+	   73 20 62 65 74
+	   77 65 65 6E 20
+	   79 6F 75 20 61
+	   6E 64 20 79 6F
+	   75 72 20 73 68
+	   69 70 2C 20 77
+	   68 69 6C 65 20
+	   6D 75 6C 74 69
+	   70 6C 65 20 65
+	   6E 65 6D 69 65
+	   73 20 61 72 65
+	   20 61 70 70 72
+	   6F 61 63 68 69
+	   6E 67 20 66 72
+	   6F 6D 20 62 65
+	   68 69 6E 64 2E
+	   0D 0A
+ 00003A12  59 6F 75 20 61					BYTE "You are running out of options and getting Guilty Spark might be the only hope in winning the war against the covenant.", 0dh, 0ah
+	   72 65 20 72 75
+	   6E 6E 69 6E 67
+	   20 6F 75 74 20
+	   6F 66 20 6F 70
+	   74 69 6F 6E 73
+	   20 61 6E 64 20
+	   67 65 74 74 69
+	   6E 67 20 47 75
+	   69 6C 74 79 20
+	   53 70 61 72 6B
+	   20 6D 69 67 68
+	   74 20 62 65 20
+	   74 68 65 20 6F
+	   6E 6C 79 20 68
+	   6F 70 65 20 69
+	   6E 20 77 69 6E
+	   6E 69 6E 67 20
+	   74 68 65 20 77
+	   61 72 20 61 67
+	   61 69 6E 73 74
+	   20 74 68 65 20
+	   63 6F 76 65 6E
+	   61 6E 74 2E 0D
+	   0A
+ 00003A8B 59 6F 75 20 75	Lv4CooperateAns BYTE "You ultimately 1) Use the active camo on Guilty Spark and command it to fly to the ship and escape to the UNSC 2) Fight your way through", 0dh, 0ah, 0
+	   6C 74 69 6D 61
+	   74 65 6C 79 20
+	   31 29 20 55 73
+	   65 20 74 68 65
+	   20 61 63 74 69
+	   76 65 20 63 61
+	   6D 6F 20 6F 6E
+	   20 47 75 69 6C
+	   74 79 20 53 70
+	   61 72 6B 20 61
+	   6E 64 20 63 6F
+	   6D 6D 61 6E 64
+	   20 69 74 20 74
+	   6F 20 66 6C 79
+	   20 74 6F 20 74
+	   68 65 20 73 68
+	   69 70 20 61 6E
+	   64 20 65 73 63
+	   61 70 65 20 74
+	   6F 20 74 68 65
+	   20 55 4E 53 43
+	   20 32 29 20 46
+	   69 67 68 74 20
+	   79 6F 75 72 20
+	   77 61 79 20 74
+	   68 72 6F 75 67
+	   68 0D 0A 00
+
+				;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 00003B16 59 6F 75 20 64	Lv4Intel BYTE "You decide to bring the machine along and try to find the actual intel, only to find opposition ahead of you and from where you came from.", 0dh, 0ah
+	   65 63 69 64 65
+	   20 74 6F 20 62
+	   72 69 6E 67 20
+	   74 68 65 20 6D
+	   61 63 68 69 6E
+	   65 20 61 6C 6F
+	   6E 67 20 61 6E
+	   64 20 74 72 79
+	   20 74 6F 20 66
+	   69 6E 64 20 74
+	   68 65 20 61 63
+	   74 75 61 6C 20
+	   69 6E 74 65 6C
+	   2C 20 6F 6E 6C
+	   79 20 74 6F 20
+	   66 69 6E 64 20
+	   6F 70 70 6F 73
+	   69 74 69 6F 6E
+	   20 61 68 65 61
+	   64 20 6F 66 20
+	   79 6F 75 20 61
+	   6E 64 20 66 72
+	   6F 6D 20 77 68
+	   65 72 65 20 79
+	   6F 75 20 63 61
+	   6D 65 20 66 72
+	   6F 6D 2E 0D 0A
+ 00003BA2  57 69 74 68 20				BYTE "With no other options, you enter a gunfight with the enemy squad in front of you, eliminating 3 grunts.", 0dh, 0ah
+	   6E 6F 20 6F 74
+	   68 65 72 20 6F
+	   70 74 69 6F 6E
+	   73 2C 20 79 6F
+	   75 20 65 6E 74
+	   65 72 20 61 20
+	   67 75 6E 66 69
+	   67 68 74 20 77
+	   69 74 68 20 74
+	   68 65 20 65 6E
+	   65 6D 79 20 73
+	   71 75 61 64 20
+	   69 6E 20 66 72
+	   6F 6E 74 20 6F
+	   66 20 79 6F 75
+	   2C 20 65 6C 69
+	   6D 69 6E 61 74
+	   69 6E 67 20 33
+	   20 67 72 75 6E
+	   74 73 2E 0D 0A
+ 00003C0B  4E 6F 77 20 74				BYTE "Now that the whole ship is aware of your location, you rush towards your escape ship, only to find your exit blocked by two elites and an entire army behind you.", 0dh, 0ah
+	   68 61 74 20 74
+	   68 65 20 77 68
+	   6F 6C 65 20 73
+	   68 69 70 20 69
+	   73 20 61 77 61
+	   72 65 20 6F 66
+	   20 79 6F 75 72
+	   20 6C 6F 63 61
+	   74 69 6F 6E 2C
+	   20 79 6F 75 20
+	   72 75 73 68 20
+	   74 6F 77 61 72
+	   64 73 20 79 6F
+	   75 72 20 65 73
+	   63 61 70 65 20
+	   73 68 69 70 2C
+	   20 6F 6E 6C 79
+	   20 74 6F 20 66
+	   69 6E 64 20 79
+	   6F 75 72 20 65
+	   78 69 74 20 62
+	   6C 6F 63 6B 65
+	   64 20 62 79 20
+	   74 77 6F 20 65
+	   6C 69 74 65 73
+	   20 61 6E 64 20
+	   61 6E 20 65 6E
+	   74 69 72 65 20
+	   61 72 6D 79 20
+	   62 65 68 69 6E
+	   64 20 79 6F 75
+	   2E 0D 0A
+ 00003CAE 57 69 74 68 20	Lv4IntelAns BYTE "With little options at hand, you ultimately 1) Deal with both elites by yourself and give your squad and Guilty Spark a chance to escape 2) Fight your way through", 0dh, 0ah, 0
+	   6C 69 74 74 6C
+	   65 20 6F 70 74
+	   69 6F 6E 73 20
+	   61 74 20 68 61
+	   6E 64 2C 20 79
+	   6F 75 20 75 6C
+	   74 69 6D 61 74
+	   65 6C 79 20 31
+	   29 20 44 65 61
+	   6C 20 77 69 74
+	   68 20 62 6F 74
+	   68 20 65 6C 69
+	   74 65 73 20 62
+	   79 20 79 6F 75
+	   72 73 65 6C 66
+	   20 61 6E 64 20
+	   67 69 76 65 20
+	   79 6F 75 72 20
+	   73 71 75 61 64
+	   20 61 6E 64 20
+	   47 75 69 6C 74
+	   79 20 53 70 61
+	   72 6B 20 61 20
+	   63 68 61 6E 63
+	   65 20 74 6F 20
+	   65 73 63 61 70
+	   65 20 32 29 20
+	   46 69 67 68 74
+	   20 79 6F 75 72
+	   20 77 61 79 20
+	   74 68 72 6F 75
+	   67 68 0D 0A 00
+
+				;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 00003D53 59 6F 75 20 74	Lv4Jackals BYTE "You try to get the two jackals attention and successfully eliminate both.", 0dh, 0ah
+	   72 79 20 74 6F
+	   20 67 65 74 20
+	   74 68 65 20 74
+	   77 6F 20 6A 61
+	   63 6B 61 6C 73
+	   20 61 74 74 65
+	   6E 74 69 6F 6E
+	   20 61 6E 64 20
+	   73 75 63 63 65
+	   73 73 66 75 6C
+	   6C 79 20 65 6C
+	   69 6D 69 6E 61
+	   74 65 20 62 6F
+	   74 68 2E 0D 0A
+ 00003D9E  55 70 6F 6E 20				BYTE "Upon inspection of the dead jackals, you find that one of them had a device in their neck flashing.", 0dh, 0ah
+	   69 6E 73 70 65
+	   63 74 69 6F 6E
+	   20 6F 66 20 74
+	   68 65 20 64 65
+	   61 64 20 6A 61
+	   63 6B 61 6C 73
+	   2C 20 79 6F 75
+	   20 66 69 6E 64
+	   20 74 68 61 74
+	   20 6F 6E 65 20
+	   6F 66 20 74 68
+	   65 6D 20 68 61
+	   64 20 61 20 64
+	   65 76 69 63 65
+	   20 69 6E 20 74
+	   68 65 69 72 20
+	   6E 65 63 6B 20
+	   66 6C 61 73 68
+	   69 6E 67 2E 0D
+	   0A
+ 00003E03  41 6C 6C 20 6F				BYTE "All of a sudden, the entire ship goes into lockdown and you hear shots from a carbine rifle from the other end of the corridor and start hitting your squad.", 0dh, 0ah
+	   66 20 61 20 73
+	   75 64 64 65 6E
+	   2C 20 74 68 65
+	   20 65 6E 74 69
+	   72 65 20 73 68
+	   69 70 20 67 6F
+	   65 73 20 69 6E
+	   74 6F 20 6C 6F
+	   63 6B 64 6F 77
+	   6E 20 61 6E 64
+	   20 79 6F 75 20
+	   68 65 61 72 20
+	   73 68 6F 74 73
+	   20 66 72 6F 6D
+	   20 61 20 63 61
+	   72 62 69 6E 65
+	   20 72 69 66 6C
+	   65 20 66 72 6F
+	   6D 20 74 68 65
+	   20 6F 74 68 65
+	   72 20 65 6E 64
+	   20 6F 66 20 74
+	   68 65 20 63 6F
+	   72 72 69 64 6F
+	   72 20 61 6E 64
+	   20 73 74 61 72
+	   74 20 68 69 74
+	   74 69 6E 67 20
+	   79 6F 75 72 20
+	   73 71 75 61 64
+	   2E 0D 0A
+ 00003EA1  59 6F 75 20 73				BYTE "You soon realized that the flashing device was actually an alert to the ship.", 0dh, 0ah
+	   6F 6F 6E 20 72
+	   65 61 6C 69 7A
+	   65 64 20 74 68
+	   61 74 20 74 68
+	   65 20 66 6C 61
+	   73 68 69 6E 67
+	   20 64 65 76 69
+	   63 65 20 77 61
+	   73 20 61 63 74
+	   75 61 6C 6C 79
+	   20 61 6E 20 61
+	   6C 65 72 74 20
+	   74 6F 20 74 68
+	   65 20 73 68 69
+	   70 2E 0D 0A
+ 00003EF0  53 6F 6F 6E 20				BYTE "Soon outmanned, outgunned, and nowhere to hide, you are wiped and eliminated.", 0dh, 0ah
+	   6F 75 74 6D 61
+	   6E 6E 65 64 2C
+	   20 6F 75 74 67
+	   75 6E 6E 65 64
+	   2C 20 61 6E 64
+	   20 6E 6F 77 68
+	   65 72 65 20 74
+	   6F 20 68 69 64
+	   65 2C 20 79 6F
+	   75 20 61 72 65
+	   20 77 69 70 65
+	   64 20 61 6E 64
+	   20 65 6C 69 6D
+	   69 6E 61 74 65
+	   64 2E 0D 0A
+ 00003F3F 47 41 4D 45 20	Lv4JackalsFin BYTE "GAME OVER", 0dh, 0ah, 0
+	   4F 56 45 52 0D
+	   0A 00
+
+				;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 00003F4B 59 6F 75 20 64	Lv4UnknownTech BYTE "You decide to take the unknown blue tech and escape with it while the opportunity is present.", 0dh, 0ah
+	   65 63 69 64 65
+	   20 74 6F 20 74
+	   61 6B 65 20 74
+	   68 65 20 75 6E
+	   6B 6E 6F 77 6E
+	   20 62 6C 75 65
+	   20 74 65 63 68
+	   20 61 6E 64 20
+	   65 73 63 61 70
+	   65 20 77 69 74
+	   68 20 69 74 20
+	   77 68 69 6C 65
+	   20 74 68 65 20
+	   6F 70 70 6F 72
+	   74 75 6E 69 74
+	   79 20 69 73 20
+	   70 72 65 73 65
+	   6E 74 2E 0D 0A
+ 00003FAA  42 65 66 6F 72					BYTE "Before arriving to your ship, you see a squad of two elites guarding your only exit and more enemy squads heading to your position from all corridors.", 0dh, 0ah
+	   65 20 61 72 72
+	   69 76 69 6E 67
+	   20 74 6F 20 79
+	   6F 75 72 20 73
+	   68 69 70 2C 20
+	   79 6F 75 20 73
+	   65 65 20 61 20
+	   73 71 75 61 64
+	   20 6F 66 20 74
+	   77 6F 20 65 6C
+	   69 74 65 73 20
+	   67 75 61 72 64
+	   69 6E 67 20 79
+	   6F 75 72 20 6F
+	   6E 6C 79 20 65
+	   78 69 74 20 61
+	   6E 64 20 6D 6F
+	   72 65 20 65 6E
+	   65 6D 79 20 73
+	   71 75 61 64 73
+	   20 68 65 61 64
+	   69 6E 67 20 74
+	   6F 20 79 6F 75
+	   72 20 70 6F 73
+	   69 74 69 6F 6E
+	   20 66 72 6F 6D
+	   20 61 6C 6C 20
+	   63 6F 72 72 69
+	   64 6F 72 73 2E
+	   0D 0A
+ 00004042  41 6C 6C 20 6F					BYTE "All of a sudden, the blue orb wakes up and states that his name is Guilty Spark and wants to go home.", 0dh, 0ah
+	   66 20 61 20 73
+	   75 64 64 65 6E
+	   2C 20 74 68 65
+	   20 62 6C 75 65
+	   20 6F 72 62 20
+	   77 61 6B 65 73
+	   20 75 70 20 61
+	   6E 64 20 73 74
+	   61 74 65 73 20
+	   74 68 61 74 20
+	   68 69 73 20 6E
+	   61 6D 65 20 69
+	   73 20 47 75 69
+	   6C 74 79 20 53
+	   70 61 72 6B 20
+	   61 6E 64 20 77
+	   61 6E 74 73 20
+	   74 6F 20 67 6F
+	   20 68 6F 6D 65
+	   2E 0D 0A
+ 000040A9  59 6F 75 20 6C					BYTE "You later realize that this could be the intel that the UNSC wants.", 0dh, 0ah
+	   61 74 65 72 20
+	   72 65 61 6C 69
+	   7A 65 20 74 68
+	   61 74 20 74 68
+	   69 73 20 63 6F
+	   75 6C 64 20 62
+	   65 20 74 68 65
+	   20 69 6E 74 65
+	   6C 20 74 68 61
+	   74 20 74 68 65
+	   20 55 4E 53 43
+	   20 77 61 6E 74
+	   73 2E 0D 0A
+ 000040EE 57 69 74 68 20	Lv4UnknownTechAns BYTE "With all out of options you 1) Fight the elites by yourself to allow your squad to escape with Guilty Spark 2) Fight your way through", 0dh, 0ah, 0
+	   61 6C 6C 20 6F
+	   75 74 20 6F 66
+	   20 6F 70 74 69
+	   6F 6E 73 20 79
+	   6F 75 20 31 29
+	   20 46 69 67 68
+	   74 20 74 68 65
+	   20 65 6C 69 74
+	   65 73 20 62 79
+	   20 79 6F 75 72
+	   73 65 6C 66 20
+	   74 6F 20 61 6C
+	   6C 6F 77 20 79
+	   6F 75 72 20 73
+	   71 75 61 64 20
+	   74 6F 20 65 73
+	   63 61 70 65 20
+	   77 69 74 68 20
+	   47 75 69 6C 74
+	   79 20 53 70 61
+	   72 6B 20 32 29
+	   20 46 69 67 68
+	   74 20 79 6F 75
+	   72 20 77 61 79
+	   20 74 68 72 6F
+	   75 67 68 0D 0A
+	   00
+
+				;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 00004176 59 6F 75 20 64	Lv4UnknownTablet BYTE "You decide to take the unknown tablet and escape with it while the opportunity is present.", 0dh, 0ah
+	   65 63 69 64 65
+	   20 74 6F 20 74
+	   61 6B 65 20 74
+	   68 65 20 75 6E
+	   6B 6E 6F 77 6E
+	   20 74 61 62 6C
+	   65 74 20 61 6E
+	   64 20 65 73 63
+	   61 70 65 20 77
+	   69 74 68 20 69
+	   74 20 77 68 69
+	   6C 65 20 74 68
+	   65 20 6F 70 70
+	   6F 72 74 75 6E
+	   69 74 79 20 69
+	   73 20 70 72 65
+	   73 65 6E 74 2E
+	   0D 0A
+ 000041D2  42 65 66 6F 72						BYTE "Before arriving to your ship, you see a squad of three elites guarding your only exit and more enemy squads heading to your position from all corridors.", 0dh, 0ah
+	   65 20 61 72 72
+	   69 76 69 6E 67
+	   20 74 6F 20 79
+	   6F 75 72 20 73
+	   68 69 70 2C 20
+	   79 6F 75 20 73
+	   65 65 20 61 20
+	   73 71 75 61 64
+	   20 6F 66 20 74
+	   68 72 65 65 20
+	   65 6C 69 74 65
+	   73 20 67 75 61
+	   72 64 69 6E 67
+	   20 79 6F 75 72
+	   20 6F 6E 6C 79
+	   20 65 78 69 74
+	   20 61 6E 64 20
+	   6D 6F 72 65 20
+	   65 6E 65 6D 79
+	   20 73 71 75 61
+	   64 73 20 68 65
+	   61 64 69 6E 67
+	   20 74 6F 20 79
+	   6F 75 72 20 70
+	   6F 73 69 74 69
+	   6F 6E 20 66 72
+	   6F 6D 20 61 6C
+	   6C 20 63 6F 72
+	   72 69 64 6F 72
+	   73 2E 0D 0A
+ 0000426C 57 69 74 68 20	LV4UnknownTabletAns BYTE "With out of options you 1) Fight the elites by yourself to allow your squad to escape with the tablet 2) Fight your way through", 0dh, 0ah, 0
+	   6F 75 74 20 6F
+	   66 20 6F 70 74
+	   69 6F 6E 73 20
+	   79 6F 75 20 31
+	   29 20 46 69 67
+	   68 74 20 74 68
+	   65 20 65 6C 69
+	   74 65 73 20 62
+	   79 20 79 6F 75
+	   72 73 65 6C 66
+	   20 74 6F 20 61
+	   6C 6C 6F 77 20
+	   79 6F 75 72 20
+	   73 71 75 61 64
+	   20 74 6F 20 65
+	   73 63 61 70 65
+	   20 77 69 74 68
+	   20 74 68 65 20
+	   74 61 62 6C 65
+	   74 20 32 29 20
+	   46 69 67 68 74
+	   20 79 6F 75 72
+	   20 77 61 79 20
+	   74 68 72 6F 75
+	   67 68 0D 0A 00
+
+				;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 000042EE 59 6F 75 20 64	Lv4Ignore BYTE "You decide to ignore the hunters and continue to explore.", 0dh, 0ah
+	   65 63 69 64 65
+	   20 74 6F 20 69
+	   67 6E 6F 72 65
+	   20 74 68 65 20
+	   68 75 6E 74 65
+	   72 73 20 61 6E
+	   64 20 63 6F 6E
+	   74 69 6E 75 65
+	   20 74 6F 20 65
+	   78 70 6C 6F 72
+	   65 2E 0D 0A
+ 00004329  44 75 65 20 74				BYTE "Due to exploring too much of the ship, you ended up back to your ship.", 0dh, 0ah
+	   6F 20 65 78 70
+	   6C 6F 72 69 6E
+	   67 20 74 6F 6F
+	   20 6D 75 63 68
+	   20 6F 66 20 74
+	   68 65 20 73 68
+	   69 70 2C 20 79
+	   6F 75 20 65 6E
+	   64 65 64 20 75
+	   70 20 62 61 63
+	   6B 20 74 6F 20
+	   79 6F 75 72 20
+	   73 68 69 70 2E
+	   0D 0A
+ 00004371  48 6F 77 65 76				BYTE "However, an elite spots one of your marines and sounds the alarm.", 0dh, 0ah
+	   65 72 2C 20 61
+	   6E 20 65 6C 69
+	   74 65 20 73 70
+	   6F 74 73 20 6F
+	   6E 65 20 6F 66
+	   20 79 6F 75 72
+	   20 6D 61 72 69
+	   6E 65 73 20 61
+	   6E 64 20 73 6F
+	   75 6E 64 73 20
+	   74 68 65 20 61
+	   6C 61 72 6D 2E
+	   0D 0A
+ 000043B4  57 69 74 68 20				BYTE "With the whole ship aware of you and your squad, you quickly engage in a gunfight with the enemy.", 0dh, 0ah
+	   74 68 65 20 77
+	   68 6F 6C 65 20
+	   73 68 69 70 20
+	   61 77 61 72 65
+	   20 6F 66 20 79
+	   6F 75 20 61 6E
+	   64 20 79 6F 75
+	   72 20 73 71 75
+	   61 64 2C 20 79
+	   6F 75 20 71 75
+	   69 63 6B 6C 79
+	   20 65 6E 67 61
+	   67 65 20 69 6E
+	   20 61 20 67 75
+	   6E 66 69 67 68
+	   74 20 77 69 74
+	   68 20 74 68 65
+	   20 65 6E 65 6D
+	   79 2E 0D 0A
+ 00004417  57 69 74 68 20				BYTE "With hunters approaching your location, you have no choice but to return to your ship and escape empty handed before being captured or killed.", 0dh, 0ah
+	   68 75 6E 74 65
+	   72 73 20 61 70
+	   70 72 6F 61 63
+	   68 69 6E 67 20
+	   79 6F 75 72 20
+	   6C 6F 63 61 74
+	   69 6F 6E 2C 20
+	   79 6F 75 20 68
+	   61 76 65 20 6E
+	   6F 20 63 68 6F
+	   69 63 65 20 62
+	   75 74 20 74 6F
+	   20 72 65 74 75
+	   72 6E 20 74 6F
+	   20 79 6F 75 72
+	   20 73 68 69 70
+	   20 61 6E 64 20
+	   65 73 63 61 70
+	   65 20 65 6D 70
+	   74 79 20 68 61
+	   6E 64 65 64 20
+	   62 65 66 6F 72
+	   65 20 62 65 69
+	   6E 67 20 63 61
+	   70 74 75 72 65
+	   64 20 6F 72 20
+	   6B 69 6C 6C 65
+	   64 2E 0D 0A
+ 000044A7  59 6F 75 20 61				BYTE "You and your squad successfully escape empty handed, but one of the marines stated that she placed a tracking beacon inside the ship for the UNSC to track its location.", 0dh, 0ah
+	   6E 64 20 79 6F
+	   75 72 20 73 71
+	   75 61 64 20 73
+	   75 63 63 65 73
+	   73 66 75 6C 6C
+	   79 20 65 73 63
+	   61 70 65 20 65
+	   6D 70 74 79 20
+	   68 61 6E 64 65
+	   64 2C 20 62 75
+	   74 20 6F 6E 65
+	   20 6F 66 20 74
+	   68 65 20 6D 61
+	   72 69 6E 65 73
+	   20 73 74 61 74
+	   65 64 20 74 68
+	   61 74 20 73 68
+	   65 20 70 6C 61
+	   63 65 64 20 61
+	   20 74 72 61 63
+	   6B 69 6E 67 20
+	   62 65 61 63 6F
+	   6E 20 69 6E 73
+	   69 64 65 20 74
+	   68 65 20 73 68
+	   69 70 20 66 6F
+	   72 20 74 68 65
+	   20 55 4E 53 43
+	   20 74 6F 20 74
+	   72 61 63 6B 20
+	   69 74 73 20 6C
+	   6F 63 61 74 69
+	   6F 6E 2E 0D 0A
+ 00004551  59 6F 75 20 6D				BYTE "You may have lost the battle, but not the war.", 0dh, 0ah
+	   61 79 20 68 61
+	   76 65 20 6C 6F
+	   73 74 20 74 68
+	   65 20 62 61 74
+	   74 6C 65 2C 20
+	   62 75 74 20 6E
+	   6F 74 20 74 68
+	   65 20 77 61 72
+	   2E 0D 0A
+ 00004581 47 41 4D 45 20	Lv4IgnoreFin BYTE "GAME OVER", 0dh, 0ah, 0
+	   4F 56 45 52 0D
+	   0A 00
+
+				;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 0000458D 59 6F 75 20 64	Lv4HunterFight BYTE "You decide to fight the two hunters, which resulted in a victory.", 0dh, 0ah
+	   65 63 69 64 65
+	   20 74 6F 20 66
+	   69 67 68 74 20
+	   74 68 65 20 74
+	   77 6F 20 68 75
+	   6E 74 65 72 73
+	   2C 20 77 68 69
+	   63 68 20 72 65
+	   73 75 6C 74 65
+	   64 20 69 6E 20
+	   61 20 76 69 63
+	   74 6F 72 79 2E
+	   0D 0A
+ 000045D0  48 6F 77 65 76					BYTE "However, you lost three of your marines and the whole ship knows your location.", 0dh, 0ah
+	   65 72 2C 20 79
+	   6F 75 20 6C 6F
+	   73 74 20 74 68
+	   72 65 65 20 6F
+	   66 20 79 6F 75
+	   72 20 6D 61 72
+	   69 6E 65 73 20
+	   61 6E 64 20 74
+	   68 65 20 77 68
+	   6F 6C 65 20 73
+	   68 69 70 20 6B
+	   6E 6F 77 73 20
+	   79 6F 75 72 20
+	   6C 6F 63 61 74
+	   69 6F 6E 2E 0D
+	   0A
+ 00004621  59 6F 75 20 64					BYTE "You decide to enter the room that was guarded by the now dead hunters and find an armory.", 0dh, 0ah
+	   65 63 69 64 65
+	   20 74 6F 20 65
+	   6E 74 65 72 20
+	   74 68 65 20 72
+	   6F 6F 6D 20 74
+	   68 61 74 20 77
+	   61 73 20 67 75
+	   61 72 64 65 64
+	   20 62 79 20 74
+	   68 65 20 6E 6F
+	   77 20 64 65 61
+	   64 20 68 75 6E
+	   74 65 72 73 20
+	   61 6E 64 20 66
+	   69 6E 64 20 61
+	   6E 20 61 72 6D
+	   6F 72 79 2E 0D
+	   0A
+ 0000467C  4B 6E 6F 77 69					BYTE "Knowing fully that the entire ship is coming to get you, you and the last marine decide to shake hands and hold their ground with both their weapons and the covenant's weapons at their disposal in their room.", 0dh, 0ah
+	   6E 67 20 66 75
+	   6C 6C 79 20 74
+	   68 61 74 20 74
+	   68 65 20 65 6E
+	   74 69 72 65 20
+	   73 68 69 70 20
+	   69 73 20 63 6F
+	   6D 69 6E 67 20
+	   74 6F 20 67 65
+	   74 20 79 6F 75
+	   2C 20 79 6F 75
+	   20 61 6E 64 20
+	   74 68 65 20 6C
+	   61 73 74 20 6D
+	   61 72 69 6E 65
+	   20 64 65 63 69
+	   64 65 20 74 6F
+	   20 73 68 61 6B
+	   65 20 68 61 6E
+	   64 73 20 61 6E
+	   64 20 68 6F 6C
+	   64 20 74 68 65
+	   69 72 20 67 72
+	   6F 75 6E 64 20
+	   77 69 74 68 20
+	   62 6F 74 68 20
+	   74 68 65 69 72
+	   20 77 65 61 70
+	   6F 6E 73 20 61
+	   6E 64 20 74 68
+	   65 20 63 6F 76
+	   65 6E 61 6E 74
+	   27 73 20 77 65
+	   61 70 6F 6E 73
+	   20 61 74 20 74
+	   68 65 69 72 20
+	   64 69 73 70 6F
+	   73 61 6C 20 69
+	   6E 20 74 68 65
+	   69 72 20 72 6F
+	   6F 6D 2E 0D 0A
+ 0000474E  59 6F 75 20 68					BYTE "You held one final stance and fought the enemy for hours, until they ultimately killed you and your last marine.", 0dh, 0ah
+	   65 6C 64 20 6F
+	   6E 65 20 66 69
+	   6E 61 6C 20 73
+	   74 61 6E 63 65
+	   20 61 6E 64 20
+	   66 6F 75 67 68
+	   74 20 74 68 65
+	   20 65 6E 65 6D
+	   79 20 66 6F 72
+	   20 68 6F 75 72
+	   73 2C 20 75 6E
+	   74 69 6C 20 74
+	   68 65 79 20 75
+	   6C 74 69 6D 61
+	   74 65 6C 79 20
+	   6B 69 6C 6C 65
+	   64 20 79 6F 75
+	   20 61 6E 64 20
+	   79 6F 75 72 20
+	   6C 61 73 74 20
+	   6D 61 72 69 6E
+	   65 2E 0D 0A
+ 000047C0  59 6F 75 20 6D					BYTE "You managed to cripple their numbers by a lot and striked fear in the covenant showing what a Spartan is capable of doing if given a powerful arsenal.", 0dh, 0ah
+	   61 6E 61 67 65
+	   64 20 74 6F 20
+	   63 72 69 70 70
+	   6C 65 20 74 68
+	   65 69 72 20 6E
+	   75 6D 62 65 72
+	   73 20 62 79 20
+	   61 20 6C 6F 74
+	   20 61 6E 64 20
+	   73 74 72 69 6B
+	   65 64 20 66 65
+	   61 72 20 69 6E
+	   20 74 68 65 20
+	   63 6F 76 65 6E
+	   61 6E 74 20 73
+	   68 6F 77 69 6E
+	   67 20 77 68 61
+	   74 20 61 20 53
+	   70 61 72 74 61
+	   6E 20 69 73 20
+	   63 61 70 61 62
+	   6C 65 20 6F 66
+	   20 64 6F 69 6E
+	   67 20 69 66 20
+	   67 69 76 65 6E
+	   20 61 20 70 6F
+	   77 65 72 66 75
+	   6C 20 61 72 73
+	   65 6E 61 6C 2E
+	   0D 0A
+ 00004858 47 41 4D 45 20	Lv4HunterFightFin BYTE "GAME OVER", 0dh, 0ah, 0
+	   4F 56 45 52 0D
+	   0A 00
+
+				;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 00004864 59 6F 75 20 64	Lv4North BYTE "You decide to go north and pass through the main energy reactor again.", 0dh, 0ah
+	   65 63 69 64 65
+	   20 74 6F 20 67
+	   6F 20 6E 6F 72
+	   74 68 20 61 6E
+	   64 20 70 61 73
+	   73 20 74 68 72
+	   6F 75 67 68 20
+	   74 68 65 20 6D
+	   61 69 6E 20 65
+	   6E 65 72 67 79
+	   20 72 65 61 63
+	   74 6F 72 20 61
+	   67 61 69 6E 2E
+	   0D 0A
+ 000048AC  46 75 72 74 68				BYTE "Further ahead, you find the hangar full of banshees and type-52 troop carriers.", 0dh, 0ah
+	   65 72 20 61 68
+	   65 61 64 2C 20
+	   79 6F 75 20 66
+	   69 6E 64 20 74
+	   68 65 20 68 61
+	   6E 67 61 72 20
+	   66 75 6C 6C 20
+	   6F 66 20 62 61
+	   6E 73 68 65 65
+	   73 20 61 6E 64
+	   20 74 79 70 65
+	   2D 35 32 20 74
+	   72 6F 6F 70 20
+	   63 61 72 72 69
+	   65 72 73 2E 0D
+	   0A
+ 000048FD  59 6F 75 20 61				BYTE "You and your squad decide to hijack a troop carrier rather than fleeing back to their ship in order to evade any further gunfights and getting killed.", 0dh, 0ah
+	   6E 64 20 79 6F
+	   75 72 20 73 71
+	   75 61 64 20 64
+	   65 63 69 64 65
+	   20 74 6F 20 68
+	   69 6A 61 63 6B
+	   20 61 20 74 72
+	   6F 6F 70 20 63
+	   61 72 72 69 65
+	   72 20 72 61 74
+	   68 65 72 20 74
+	   68 61 6E 20 66
+	   6C 65 65 69 6E
+	   67 20 62 61 63
+	   6B 20 74 6F 20
+	   74 68 65 69 72
+	   20 73 68 69 70
+	   20 69 6E 20 6F
+	   72 64 65 72 20
+	   74 6F 20 65 76
+	   61 64 65 20 61
+	   6E 79 20 66 75
+	   72 74 68 65 72
+	   20 67 75 6E 66
+	   69 67 68 74 73
+	   20 61 6E 64 20
+	   67 65 74 74 69
+	   6E 67 20 6B 69
+	   6C 6C 65 64 2E
+	   0D 0A
+ 00004995  59 6F 75 20 73				BYTE "You successfully hijack the carrier and proceed to destroy as many banshees as you can and fight off any enemy troops shooting back at you.", 0dh, 0ah
+	   75 63 63 65 73
+	   73 66 75 6C 6C
+	   79 20 68 69 6A
+	   61 63 6B 20 74
+	   68 65 20 63 61
+	   72 72 69 65 72
+	   20 61 6E 64 20
+	   70 72 6F 63 65
+	   65 64 20 74 6F
+	   20 64 65 73 74
+	   72 6F 79 20 61
+	   73 20 6D 61 6E
+	   79 20 62 61 6E
+	   73 68 65 65 73
+	   20 61 73 20 79
+	   6F 75 20 63 61
+	   6E 20 61 6E 64
+	   20 66 69 67 68
+	   74 20 6F 66 66
+	   20 61 6E 79 20
+	   65 6E 65 6D 79
+	   20 74 72 6F 6F
+	   70 73 20 73 68
+	   6F 6F 74 69 6E
+	   67 20 62 61 63
+	   6B 20 61 74 20
+	   79 6F 75 2E 0D
+	   0A
+ 00004A22  59 6F 75 20 65				BYTE "You escape the covenant ship all alive with the intel and return to the UNSC to present the intel.", 0dh, 0ah
+	   73 63 61 70 65
+	   20 74 68 65 20
+	   63 6F 76 65 6E
+	   61 6E 74 20 73
+	   68 69 70 20 61
+	   6C 6C 20 61 6C
+	   69 76 65 20 77
+	   69 74 68 20 74
+	   68 65 20 69 6E
+	   74 65 6C 20 61
+	   6E 64 20 72 65
+	   74 75 72 6E 20
+	   74 6F 20 74 68
+	   65 20 55 4E 53
+	   43 20 74 6F 20
+	   70 72 65 73 65
+	   6E 74 20 74 68
+	   65 20 69 6E 74
+	   65 6C 2E 0D 0A
+ 00004A86  54 68 65 20 69				BYTE "The intel was secret tech that the convenant was working on, and now under the UNSC hands, they can implement secret covenant technology to their Spartans and marines alike.", 0dh, 0ah
+	   6E 74 65 6C 20
+	   77 61 73 20 73
+	   65 63 72 65 74
+	   20 74 65 63 68
+	   20 74 68 61 74
+	   20 74 68 65 20
+	   63 6F 6E 76 65
+	   6E 61 6E 74 20
+	   77 61 73 20 77
+	   6F 72 6B 69 6E
+	   67 20 6F 6E 2C
+	   20 61 6E 64 20
+	   6E 6F 77 20 75
+	   6E 64 65 72 20
+	   74 68 65 20 55
+	   4E 53 43 20 68
+	   61 6E 64 73 2C
+	   20 74 68 65 79
+	   20 63 61 6E 20
+	   69 6D 70 6C 65
+	   6D 65 6E 74 20
+	   73 65 63 72 65
+	   74 20 63 6F 76
+	   65 6E 61 6E 74
+	   20 74 65 63 68
+	   6E 6F 6C 6F 67
+	   79 20 74 6F 20
+	   74 68 65 69 72
+	   20 53 70 61 72
+	   74 61 6E 73 20
+	   61 6E 64 20 6D
+	   61 72 69 6E 65
+	   73 20 61 6C 69
+	   6B 65 2E 0D 0A
+ 00004B35  59 6F 75 20 61				BYTE "You and your strike team are awarded the medal of honor for risking their lives for the future of humanity in the war.", 0dh, 0ah
+	   6E 64 20 79 6F
+	   75 72 20 73 74
+	   72 69 6B 65 20
+	   74 65 61 6D 20
+	   61 72 65 20 61
+	   77 61 72 64 65
+	   64 20 74 68 65
+	   20 6D 65 64 61
+	   6C 20 6F 66 20
+	   68 6F 6E 6F 72
+	   20 66 6F 72 20
+	   72 69 73 6B 69
+	   6E 67 20 74 68
+	   65 69 72 20 6C
+	   69 76 65 73 20
+	   66 6F 72 20 74
+	   68 65 20 66 75
+	   74 75 72 65 20
+	   6F 66 20 68 75
+	   6D 61 6E 69 74
+	   79 20 69 6E 20
+	   74 68 65 20 77
+	   61 72 2E 0D 0A
+ 00004BAD 47 41 4D 45 20	Lv4NorthFin BYTE "GAME OVER. VICTORY.", 0dh, 0ah, 0
+	   4F 56 45 52 2E
+	   20 56 49 43 54
+	   4F 52 59 2E 0D
+	   0A 00
+
+				;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 00004BC3 59 6F 75 20 64	Lv4South BYTE "You decided to go south in hopes of finding your ship.", 0dh, 0ah
+	   65 63 69 64 65
+	   64 20 74 6F 20
+	   67 6F 20 73 6F
+	   75 74 68 20 69
+	   6E 20 68 6F 70
+	   65 73 20 6F 66
+	   20 66 69 6E 64
+	   69 6E 67 20 79
+	   6F 75 72 20 73
+	   68 69 70 2E 0D
+	   0A
+ 00004BFB  59 6F 75 20 6B				BYTE "You kept stumbling to enemy troops, slowly resulting in friendly cassualties, to the point where it was just yourself running for your life.", 0dh, 0ah
+	   65 70 74 20 73
+	   74 75 6D 62 6C
+	   69 6E 67 20 74
+	   6F 20 65 6E 65
+	   6D 79 20 74 72
+	   6F 6F 70 73 2C
+	   20 73 6C 6F 77
+	   6C 79 20 72 65
+	   73 75 6C 74 69
+	   6E 67 20 69 6E
+	   20 66 72 69 65
+	   6E 64 6C 79 20
+	   63 61 73 73 75
+	   61 6C 74 69 65
+	   73 2C 20 74 6F
+	   20 74 68 65 20
+	   70 6F 69 6E 74
+	   20 77 68 65 72
+	   65 20 69 74 20
+	   77 61 73 20 6A
+	   75 73 74 20 79
+	   6F 75 72 73 65
+	   6C 66 20 72 75
+	   6E 6E 69 6E 67
+	   20 66 6F 72 20
+	   79 6F 75 72 20
+	   6C 69 66 65 2E
+	   0D 0A
+ 00004C89  59 6F 75 20 75				BYTE "You ultimately found the ship, but was guarded by two hunters.", 0dh, 0ah
+	   6C 74 69 6D 61
+	   74 65 6C 79 20
+	   66 6F 75 6E 64
+	   20 74 68 65 20
+	   73 68 69 70 2C
+	   20 62 75 74 20
+	   77 61 73 20 67
+	   75 61 72 64 65
+	   64 20 62 79 20
+	   74 77 6F 20 68
+	   75 6E 74 65 72
+	   73 2E 0D 0A
+ 00004CC9  59 6F 75 20 74				BYTE "You tried to fight them off with everything, including your frag grenades, but ultamitely got bested by the hunters.", 0dh, 0ah
+	   72 69 65 64 20
+	   74 6F 20 66 69
+	   67 68 74 20 74
+	   68 65 6D 20 6F
+	   66 66 20 77 69
+	   74 68 20 65 76
+	   65 72 79 74 68
+	   69 6E 67 2C 20
+	   69 6E 63 6C 75
+	   64 69 6E 67 20
+	   79 6F 75 72 20
+	   66 72 61 67 20
+	   67 72 65 6E 61
+	   64 65 73 2C 20
+	   62 75 74 20 75
+	   6C 74 61 6D 69
+	   74 65 6C 79 20
+	   67 6F 74 20 62
+	   65 73 74 65 64
+	   20 62 79 20 74
+	   68 65 20 68 75
+	   6E 74 65 72 73
+	   2E 0D 0A
+ 00004D3F 47 41 4D 45 20	Lv4SouthFin BYTE "GAME OVER", 0dh, 0ah, 0
+	   4F 56 45 52 0D
+	   0A 00
+
+				;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 00004D4B 59 6F 75 20 75	Lv5UseCamo BYTE "You use the active camo on Guilty Spark and successfully reaches the ship undetected.", 0dh, 0ah
+	   73 65 20 74 68
+	   65 20 61 63 74
+	   69 76 65 20 63
+	   61 6D 6F 20 6F
+	   6E 20 47 75 69
+	   6C 74 79 20 53
+	   70 61 72 6B 20
+	   61 6E 64 20 73
+	   75 63 63 65 73
+	   73 66 75 6C 6C
+	   79 20 72 65 61
+	   63 68 65 73 20
+	   74 68 65 20 73
+	   68 69 70 20 75
+	   6E 64 65 74 65
+	   63 74 65 64 2E
+	   0D 0A
+ 00004DA2  49 6E 20 6F 72				BYTE "In order to buy Guilty Spark some time for his escape, you and your squad decide to hold the line.", 0dh, 0ah
+	   64 65 72 20 74
+	   6F 20 62 75 79
+	   20 47 75 69 6C
+	   74 79 20 53 70
+	   61 72 6B 20 73
+	   6F 6D 65 20 74
+	   69 6D 65 20 66
+	   6F 72 20 68 69
+	   73 20 65 73 63
+	   61 70 65 2C 20
+	   79 6F 75 20 61
+	   6E 64 20 79 6F
+	   75 72 20 73 71
+	   75 61 64 20 64
+	   65 63 69 64 65
+	   20 74 6F 20 68
+	   6F 6C 64 20 74
+	   68 65 20 6C 69
+	   6E 65 2E 0D 0A
+ 00004E06  57 69 74 68 20				BYTE "With almost every single enemy soldier shooting at you, you start to suffer heavy casualties.", 0dh, 0ah
+	   61 6C 6D 6F 73
+	   74 20 65 76 65
+	   72 79 20 73 69
+	   6E 67 6C 65 20
+	   65 6E 65 6D 79
+	   20 73 6F 6C 64
+	   69 65 72 20 73
+	   68 6F 6F 74 69
+	   6E 67 20 61 74
+	   20 79 6F 75 2C
+	   20 79 6F 75 20
+	   73 74 61 72 74
+	   20 74 6F 20 73
+	   75 66 66 65 72
+	   20 68 65 61 76
+	   79 20 63 61 73
+	   75 61 6C 74 69
+	   65 73 2E 0D 0A
+ 00004E65  59 6F 75 20 6D				BYTE "You make the ultimate sacrifice and stay on the covenant ship with your fallen marines to keep fighting off the enemy and watch Guilty Spark escape safely.", 0dh, 0ah
+	   61 6B 65 20 74
+	   68 65 20 75 6C
+	   74 69 6D 61 74
+	   65 20 73 61 63
+	   72 69 66 69 63
+	   65 20 61 6E 64
+	   20 73 74 61 79
+	   20 6F 6E 20 74
+	   68 65 20 63 6F
+	   76 65 6E 61 6E
+	   74 20 73 68 69
+	   70 20 77 69 74
+	   68 20 79 6F 75
+	   72 20 66 61 6C
+	   6C 65 6E 20 6D
+	   61 72 69 6E 65
+	   73 20 74 6F 20
+	   6B 65 65 70 20
+	   66 69 67 68 74
+	   69 6E 67 20 6F
+	   66 66 20 74 68
+	   65 20 65 6E 65
+	   6D 79 20 61 6E
+	   64 20 77 61 74
+	   63 68 20 47 75
+	   69 6C 74 79 20
+	   53 70 61 72 6B
+	   20 65 73 63 61
+	   70 65 20 73 61
+	   66 65 6C 79 2E
+	   0D 0A
+ 00004F02  47 75 69 6C 74				BYTE "Guilty Spark later reached the UNSC and reported everything what happened.", 0dh, 0ah
+	   79 20 53 70 61
+	   72 6B 20 6C 61
+	   74 65 72 20 72
+	   65 61 63 68 65
+	   64 20 74 68 65
+	   20 55 4E 53 43
+	   20 61 6E 64 20
+	   72 65 70 6F 72
+	   74 65 64 20 65
+	   76 65 72 79 74
+	   68 69 6E 67 20
+	   77 68 61 74 20
+	   68 61 70 70 65
+	   6E 65 64 2E 0D
+	   0A
+ 00004F4E  48 65 20 61 6C				BYTE "He also revealed that he was created by a race called the Forerunners with technology way advanced that of the humans and covenant.", 0dh, 0ah
+	   73 6F 20 72 65
+	   76 65 61 6C 65
+	   64 20 74 68 61
+	   74 20 68 65 20
+	   77 61 73 20 63
+	   72 65 61 74 65
+	   64 20 62 79 20
+	   61 20 72 61 63
+	   65 20 63 61 6C
+	   6C 65 64 20 74
+	   68 65 20 46 6F
+	   72 65 72 75 6E
+	   6E 65 72 73 20
+	   77 69 74 68 20
+	   74 65 63 68 6E
+	   6F 6C 6F 67 79
+	   20 77 61 79 20
+	   61 64 76 61 6E
+	   63 65 64 20 74
+	   68 61 74 20 6F
+	   66 20 74 68 65
+	   20 68 75 6D 61
+	   6E 73 20 61 6E
+	   64 20 63 6F 76
+	   65 6E 61 6E 74
+	   2E 0D 0A
+ 00004FD3  47 75 69 6C 74				BYTE "Guilty Spark guides the UNSC to its home planet and find ancient and powerful tech created by the Forerunners.", 0dh, 0ah
+	   79 20 53 70 61
+	   72 6B 20 67 75
+	   69 64 65 73 20
+	   74 68 65 20 55
+	   4E 53 43 20 74
+	   6F 20 69 74 73
+	   20 68 6F 6D 65
+	   20 70 6C 61 6E
+	   65 74 20 61 6E
+	   64 20 66 69 6E
+	   64 20 61 6E 63
+	   69 65 6E 74 20
+	   61 6E 64 20 70
+	   6F 77 65 72 66
+	   75 6C 20 74 65
+	   63 68 20 63 72
+	   65 61 74 65 64
+	   20 62 79 20 74
+	   68 65 20 46 6F
+	   72 65 72 75 6E
+	   6E 65 72 73 2E
+	   0D 0A
+ 00005043  54 68 65 20 55				BYTE "The UNSC uses this technology and gives them an unfair advantage in the war, quickly turning the tide.", 0dh, 0ah
+	   4E 53 43 20 75
+	   73 65 73 20 74
+	   68 69 73 20 74
+	   65 63 68 6E 6F
+	   6C 6F 67 79 20
+	   61 6E 64 20 67
+	   69 76 65 73 20
+	   74 68 65 6D 20
+	   61 6E 20 75 6E
+	   66 61 69 72 20
+	   61 64 76 61 6E
+	   74 61 67 65 20
+	   69 6E 20 74 68
+	   65 20 77 61 72
+	   2C 20 71 75 69
+	   63 6B 6C 79 20
+	   74 75 72 6E 69
+	   6E 67 20 74 68
+	   65 20 74 69 64
+	   65 2E 0D 0A
+ 000050AB  4C 61 74 65 72				BYTE "Later on, the UNSC erected statues of you and your fallen marines in memory of your ultimate sacrifice and the turning point of the covenant war.", 0dh, 0ah
+	   20 6F 6E 2C 20
+	   74 68 65 20 55
+	   4E 53 43 20 65
+	   72 65 63 74 65
+	   64 20 73 74 61
+	   74 75 65 73 20
+	   6F 66 20 79 6F
+	   75 20 61 6E 64
+	   20 79 6F 75 72
+	   20 66 61 6C 6C
+	   65 6E 20 6D 61
+	   72 69 6E 65 73
+	   20 69 6E 20 6D
+	   65 6D 6F 72 79
+	   20 6F 66 20 79
+	   6F 75 72 20 75
+	   6C 74 69 6D 61
+	   74 65 20 73 61
+	   63 72 69 66 69
+	   63 65 20 61 6E
+	   64 20 74 68 65
+	   20 74 75 72 6E
+	   69 6E 67 20 70
+	   6F 69 6E 74 20
+	   6F 66 20 74 68
+	   65 20 63 6F 76
+	   65 6E 61 6E 74
+	   20 77 61 72 2E
+	   0D 0A
+ 0000513E 47 41 4D 45 20	Lv5UseCamoFin BYTE "GAME OVER. VICTORY", 0dh, 0ah, 0
+	   4F 56 45 52 2E
+	   20 56 49 43 54
+	   4F 52 59 0D 0A
+	   00
+
+				;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 00005153 59 6F 75 20 64	Lv5FightElite BYTE "You deal with the two elites all by yourself, buying Guilty Spark and your squad some time to get to the ship and escape.", 0dh, 0ah
+	   65 61 6C 20 77
+	   69 74 68 20 74
+	   68 65 20 74 77
+	   6F 20 65 6C 69
+	   74 65 73 20 61
+	   6C 6C 20 62 79
+	   20 79 6F 75 72
+	   73 65 6C 66 2C
+	   20 62 75 79 69
+	   6E 67 20 47 75
+	   69 6C 74 79 20
+	   53 70 61 72 6B
+	   20 61 6E 64 20
+	   79 6F 75 72 20
+	   73 71 75 61 64
+	   20 73 6F 6D 65
+	   20 74 69 6D 65
+	   20 74 6F 20 67
+	   65 74 20 74 6F
+	   20 74 68 65 20
+	   73 68 69 70 20
+	   61 6E 64 20 65
+	   73 63 61 70 65
+	   2E 0D 0A
+ 000051CE  59 6F 75 20 64					BYTE "You decided to stay and hold the enemy off while they all safely escaped.", 0dh, 0ah
+	   65 63 69 64 65
+	   64 20 74 6F 20
+	   73 74 61 79 20
+	   61 6E 64 20 68
+	   6F 6C 64 20 74
+	   68 65 20 65 6E
+	   65 6D 79 20 6F
+	   66 66 20 77 68
+	   69 6C 65 20 74
+	   68 65 79 20 61
+	   6C 6C 20 73 61
+	   66 65 6C 79 20
+	   65 73 63 61 70
+	   65 64 2E 0D 0A
+ 00005219  59 6F 75 72 20					BYTE "Your strike team and Guilty Spark safely made it back to the UNSC and reported everything what happened.", 0dh, 0ah
+	   73 74 72 69 6B
+	   65 20 74 65 61
+	   6D 20 61 6E 64
+	   20 47 75 69 6C
+	   74 79 20 53 70
+	   61 72 6B 20 73
+	   61 66 65 6C 79
+	   20 6D 61 64 65
+	   20 69 74 20 62
+	   61 63 6B 20 74
+	   6F 20 74 68 65
+	   20 55 4E 53 43
+	   20 61 6E 64 20
+	   72 65 70 6F 72
+	   74 65 64 20 65
+	   76 65 72 79 74
+	   68 69 6E 67 20
+	   77 68 61 74 20
+	   68 61 70 70 65
+	   6E 65 64 2E 0D
+	   0A
+ 00005283  47 75 69 6C 74					BYTE "Guilty Spark also revealed that he was created by a race called the Forerunners with technology way advanced that of the humans and covenant.", 0dh, 0ah
+	   79 20 53 70 61
+	   72 6B 20 61 6C
+	   73 6F 20 72 65
+	   76 65 61 6C 65
+	   64 20 74 68 61
+	   74 20 68 65 20
+	   77 61 73 20 63
+	   72 65 61 74 65
+	   64 20 62 79 20
+	   61 20 72 61 63
+	   65 20 63 61 6C
+	   6C 65 64 20 74
+	   68 65 20 46 6F
+	   72 65 72 75 6E
+	   6E 65 72 73 20
+	   77 69 74 68 20
+	   74 65 63 68 6E
+	   6F 6C 6F 67 79
+	   20 77 61 79 20
+	   61 64 76 61 6E
+	   63 65 64 20 74
+	   68 61 74 20 6F
+	   66 20 74 68 65
+	   20 68 75 6D 61
+	   6E 73 20 61 6E
+	   64 20 63 6F 76
+	   65 6E 61 6E 74
+	   2E 0D 0A
+ 00005312  47 75 69 6C 74					BYTE "Guilty Spark guides the UNSC to its home planet and find ancient and powerful tech created by the Forerunners.", 0dh, 0ah
+	   79 20 53 70 61
+	   72 6B 20 67 75
+	   69 64 65 73 20
+	   74 68 65 20 55
+	   4E 53 43 20 74
+	   6F 20 69 74 73
+	   20 68 6F 6D 65
+	   20 70 6C 61 6E
+	   65 74 20 61 6E
+	   64 20 66 69 6E
+	   64 20 61 6E 63
+	   69 65 6E 74 20
+	   61 6E 64 20 70
+	   6F 77 65 72 66
+	   75 6C 20 74 65
+	   63 68 20 63 72
+	   65 61 74 65 64
+	   20 62 79 20 74
+	   68 65 20 46 6F
+	   72 65 72 75 6E
+	   6E 65 72 73 2E
+	   0D 0A
+ 00005382  54 68 65 20 55					BYTE "The UNSC uses this technology and gives them an unfair advantage in the war, quickly turning the tide.", 0dh, 0ah
+	   4E 53 43 20 75
+	   73 65 73 20 74
+	   68 69 73 20 74
+	   65 63 68 6E 6F
+	   6C 6F 67 79 20
+	   61 6E 64 20 67
+	   69 76 65 73 20
+	   74 68 65 6D 20
+	   61 6E 20 75 6E
+	   66 61 69 72 20
+	   61 64 76 61 6E
+	   74 61 67 65 20
+	   69 6E 20 74 68
+	   65 20 77 61 72
+	   2C 20 71 75 69
+	   63 6B 6C 79 20
+	   74 75 72 6E 69
+	   6E 67 20 74 68
+	   65 20 74 69 64
+	   65 2E 0D 0A
+ 000053EA  4C 61 74 65 72					BYTE "Later on, the UNSC erected a statue of you in memory of your ultimate sacrifice and the turning point of the covenant war.", 0dh, 0ah
+	   20 6F 6E 2C 20
+	   74 68 65 20 55
+	   4E 53 43 20 65
+	   72 65 63 74 65
+	   64 20 61 20 73
+	   74 61 74 75 65
+	   20 6F 66 20 79
+	   6F 75 20 69 6E
+	   20 6D 65 6D 6F
+	   72 79 20 6F 66
+	   20 79 6F 75 72
+	   20 75 6C 74 69
+	   6D 61 74 65 20
+	   73 61 63 72 69
+	   66 69 63 65 20
+	   61 6E 64 20 74
+	   68 65 20 74 75
+	   72 6E 69 6E 67
+	   20 70 6F 69 6E
+	   74 20 6F 66 20
+	   74 68 65 20 63
+	   6F 76 65 6E 61
+	   6E 74 20 77 61
+	   72 2E 0D 0A
+ 00005466 47 41 4D 45 20	Lv5FightEliteFin BYTE "GAME OVER. VICTORY", 0dh, 0ah, 0
+	   4F 56 45 52 2E
+	   20 56 49 43 54
+	   4F 52 59 0D 0A
+	   00
+
+				;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 0000547B 59 6F 75 20 61	Lv5Fight BYTE "You and your squad decide to fight your way through, but are met with heavy oppression because of how long it took to get to the escape ship.", 0dh, 0ah
+	   6E 64 20 79 6F
+	   75 72 20 73 71
+	   75 61 64 20 64
+	   65 63 69 64 65
+	   20 74 6F 20 66
+	   69 67 68 74 20
+	   79 6F 75 72 20
+	   77 61 79 20 74
+	   68 72 6F 75 67
+	   68 2C 20 62 75
+	   74 20 61 72 65
+	   20 6D 65 74 20
+	   77 69 74 68 20
+	   68 65 61 76 79
+	   20 6F 70 70 72
+	   65 73 73 69 6F
+	   6E 20 62 65 63
+	   61 75 73 65 20
+	   6F 66 20 68 6F
+	   77 20 6C 6F 6E
+	   67 20 69 74 20
+	   74 6F 6F 6B 20
+	   74 6F 20 67 65
+	   74 20 74 6F 20
+	   74 68 65 20 65
+	   73 63 61 70 65
+	   20 73 68 69 70
+	   2E 0D 0A
+ 0000550A  59 6F 75 72 20				BYTE "Your marines slowly start to fall and ultimately you are killed in action.", 0dh, 0ah
+	   6D 61 72 69 6E
+	   65 73 20 73 6C
+	   6F 77 6C 79 20
+	   73 74 61 72 74
+	   20 74 6F 20 66
+	   61 6C 6C 20 61
+	   6E 64 20 75 6C
+	   74 69 6D 61 74
+	   65 6C 79 20 79
+	   6F 75 20 61 72
+	   65 20 6B 69 6C
+	   6C 65 64 20 69
+	   6E 20 61 63 74
+	   69 6F 6E 2E 0D
+	   0A
+ 00005556  54 68 65 79 20				BYTE "They retrieve the intel that was taken by you and take it further to covenant lines.", 0dh, 0ah
+	   72 65 74 72 69
+	   65 76 65 20 74
+	   68 65 20 69 6E
+	   74 65 6C 20 74
+	   68 61 74 20 77
+	   61 73 20 74 61
+	   6B 65 6E 20 62
+	   79 20 79 6F 75
+	   20 61 6E 64 20
+	   74 61 6B 65 20
+	   69 74 20 66 75
+	   72 74 68 65 72
+	   20 74 6F 20 63
+	   6F 76 65 6E 61
+	   6E 74 20 6C 69
+	   6E 65 73 2E 0D
+	   0A
+ 000055AC 47 41 4D 45 20	Lv5FightFin BYTE "GAME OVER", 0dh, 0ah, 0
+	   4F 56 45 52 0D
+	   0A 00
+
+				;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 000055B8 59 6F 75 20 64	Lv5Elites BYTE "You deal with the two elites all by yourself, buying your squad some time to get to the ship and escape.", 0dh, 0ah
+	   65 61 6C 20 77
+	   69 74 68 20 74
+	   68 65 20 74 77
+	   6F 20 65 6C 69
+	   74 65 73 20 61
+	   6C 6C 20 62 79
+	   20 79 6F 75 72
+	   73 65 6C 66 2C
+	   20 62 75 79 69
+	   6E 67 20 79 6F
+	   75 72 20 73 71
+	   75 61 64 20 73
+	   6F 6D 65 20 74
+	   69 6D 65 20 74
+	   6F 20 67 65 74
+	   20 74 6F 20 74
+	   68 65 20 73 68
+	   69 70 20 61 6E
+	   64 20 65 73 63
+	   61 70 65 2E 0D
+	   0A
+ 00005622  59 6F 75 20 64				BYTE "You decided to stay and hold the enemy off while they all safely escaped.", 0dh, 0ah
+	   65 63 69 64 65
+	   64 20 74 6F 20
+	   73 74 61 79 20
+	   61 6E 64 20 68
+	   6F 6C 64 20 74
+	   68 65 20 65 6E
+	   65 6D 79 20 6F
+	   66 66 20 77 68
+	   69 6C 65 20 74
+	   68 65 79 20 61
+	   6C 6C 20 73 61
+	   66 65 6C 79 20
+	   65 73 63 61 70
+	   65 64 2E 0D 0A
+ 0000566D  59 6F 75 72 20				BYTE "Your strike team safely made it back to the UNSC and reported everything what happened.", 0dh, 0ah
+	   73 74 72 69 6B
+	   65 20 74 65 61
+	   6D 20 73 61 66
+	   65 6C 79 20 6D
+	   61 64 65 20 69
+	   74 20 62 61 63
+	   6B 20 74 6F 20
+	   74 68 65 20 55
+	   4E 53 43 20 61
+	   6E 64 20 72 65
+	   70 6F 72 74 65
+	   64 20 65 76 65
+	   72 79 74 68 69
+	   6E 67 20 77 68
+	   61 74 20 68 61
+	   70 70 65 6E 65
+	   64 2E 0D 0A
+ 000056C6  54 68 65 20 74				BYTE "The tablet revealed a location far off the galaxy that was home to the Forerunners.", 0dh, 0ah
+	   61 62 6C 65 74
+	   20 72 65 76 65
+	   61 6C 65 64 20
+	   61 20 6C 6F 63
+	   61 74 69 6F 6E
+	   20 66 61 72 20
+	   6F 66 66 20 74
+	   68 65 20 67 61
+	   6C 61 78 79 20
+	   74 68 61 74 20
+	   77 61 73 20 68
+	   6F 6D 65 20 74
+	   6F 20 74 68 65
+	   20 46 6F 72 65
+	   72 75 6E 6E 65
+	   72 73 2E 0D 0A
+ 0000571B  54 68 69 73 20				BYTE "This unknown race had technology way advanced that of the humans and covenant.", 0dh, 0ah
+	   75 6E 6B 6E 6F
+	   77 6E 20 72 61
+	   63 65 20 68 61
+	   64 20 74 65 63
+	   68 6E 6F 6C 6F
+	   67 79 20 77 61
+	   79 20 61 64 76
+	   61 6E 63 65 64
+	   20 74 68 61 74
+	   20 6F 66 20 74
+	   68 65 20 68 75
+	   6D 61 6E 73 20
+	   61 6E 64 20 63
+	   6F 76 65 6E 61
+	   6E 74 2E 0D 0A
+ 0000576B  54 68 65 20 55				BYTE "The UNSC uses the tablet and find the planet full of ancient and powerful tech created by the Forerunners.", 0dh, 0ah
+	   4E 53 43 20 75
+	   73 65 73 20 74
+	   68 65 20 74 61
+	   62 6C 65 74 20
+	   61 6E 64 20 66
+	   69 6E 64 20 74
+	   68 65 20 70 6C
+	   61 6E 65 74 20
+	   66 75 6C 6C 20
+	   6F 66 20 61 6E
+	   63 69 65 6E 74
+	   20 61 6E 64 20
+	   70 6F 77 65 72
+	   66 75 6C 20 74
+	   65 63 68 20 63
+	   72 65 61 74 65
+	   64 20 62 79 20
+	   74 68 65 20 46
+	   6F 72 65 72 75
+	   6E 6E 65 72 73
+	   2E 0D 0A
+ 000057D7  54 68 65 20 55				BYTE "The UNSC uses this technology and gives them an unfair advantage in the war, quickly turning the tide.", 0dh, 0ah
+	   4E 53 43 20 75
+	   73 65 73 20 74
+	   68 69 73 20 74
+	   65 63 68 6E 6F
+	   6C 6F 67 79 20
+	   61 6E 64 20 67
+	   69 76 65 73 20
+	   74 68 65 6D 20
+	   61 6E 20 75 6E
+	   66 61 69 72 20
+	   61 64 76 61 6E
+	   74 61 67 65 20
+	   69 6E 20 74 68
+	   65 20 77 61 72
+	   2C 20 71 75 69
+	   63 6B 6C 79 20
+	   74 75 72 6E 69
+	   6E 67 20 74 68
+	   65 20 74 69 64
+	   65 2E 0D 0A
+ 0000583F  4C 61 74 65 72				BYTE "Later on, the UNSC erected a statue of you in memory of your ultimate sacrifice and the turning point of the covenant war.", 0dh, 0ah
+	   20 6F 6E 2C 20
+	   74 68 65 20 55
+	   4E 53 43 20 65
+	   72 65 63 74 65
+	   64 20 61 20 73
+	   74 61 74 75 65
+	   20 6F 66 20 79
+	   6F 75 20 69 6E
+	   20 6D 65 6D 6F
+	   72 79 20 6F 66
+	   20 79 6F 75 72
+	   20 75 6C 74 69
+	   6D 61 74 65 20
+	   73 61 63 72 69
+	   66 69 63 65 20
+	   61 6E 64 20 74
+	   68 65 20 74 75
+	   72 6E 69 6E 67
+	   20 70 6F 69 6E
+	   74 20 6F 66 20
+	   74 68 65 20 63
+	   6F 76 65 6E 61
+	   6E 74 20 77 61
+	   72 2E 0D 0A
+ 000058BB 47 41 4D 45 20	Lv5ElitesFin BYTE "GAME OVER. VICTORY", 0dh, 0ah, 0
+	   4F 56 45 52 2E
+	   20 56 49 43 54
+	   4F 52 59 0D 0A
+	   00
+
+				;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 000058D0 0000			camouflage word 0
+
+ 00000000			.Code
+
+				;---------- Back of Ship Route
+				;---------- Level 1 dialogue
+
+ 00000000			BackofShip PROC
+
+ 00000000  BA 00000279 R		mov edx, OFFSET Lv1Choice1Back
+ 00000005  E8 00000000 E		call writestring
+ 0000000A  BA 000003AA R		mov edx, OFFSET Lv1Choice1BackAns
+ 0000000F  E8 00000000 E		call writestring
+ 00000014  E8 00000000 E		call readint
+
+ 00000019  83 F8 01			cmp eax, 1
+ 0000001C  74 02			je Hack
+ 0000001E  EB 24			jmp Proceed
+
+				;---------- Level 2 dialogue
+
+ 00000020			Hack:
+ 00000020  BA 000006FC R		mov edx, OFFSET Lv2Choice1Hack
+ 00000025  E8 00000000 E		call writestring
+ 0000002A  BA 0000094C R		mov edx, OFFSET Lv2Choice1HackAns
+					;call writestring
+ 0000002F  E8 00000000 E		call readint
+ 00000034  66| C7 05			mov camouflage, 1
+	   000058D0 R
+	   0001
+
+ 0000003D  83 F8 01			cmp eax, 1
+ 00000040  74 1D			je Attention
+ 00000042  EB 36			jmp ActiveCamo
+
+ 00000044			Proceed:
+ 00000044  BA 000009F2 R		mov edx, OFFSET Lv2Choice2Proceed
+ 00000049  E8 00000000 E		call writestring
+ 0000004E  BA 00000B89 R		mov edx, OFFSET Lv2Choice2ProceedAns
+					;call writestring
+ 00000053  E8 00000000 E		call readint
+
+ 00000058  83 F8 01			cmp eax, 1
+ 0000005B  74 02			je Attention
+ 0000005D  EB 3F			jmp GoBack
+
+				;---------- Level 3 dialogue
+
+ 0000005F			Attention:
+ 0000005F  BA 00001663 R		mov edx, OFFSET Lv3Attention
+ 00000064  E8 00000000 E		call writestring
+ 00000069  BA 0000198F R		mov edx, OFFSET Lv3AttentionAns
+					;call writestring
+ 0000006E  E8 00000000 E		call readint
+
+ 00000073  83 F8 01			cmp eax, 1
+ 00000076  74 41			je Coop
+ 00000078  EB 66			jmp Search
+
+ 0000007A			ActiveCamo:
+ 0000007A  BA 00001A47 R		mov edx, OFFSET Lv3Camo
+ 0000007F  E8 00000000 E		call writestring
+ 00000084  BA 00001D5D R		mov edx, OFFSET Lv3CamoAns
+					;call writestring
+ 00000089  E8 00000000 E		call readint
+ 0000008E  66| C7 05			mov camouflage, 0
+	   000058D0 R
+	   0000
+
+ 00000097  83 F8 01			cmp eax, 1
+ 0000009A  74 1D			je Coop
+ 0000009C  EB 42			jmp Search
+
+ 0000009E			GoBack:
+ 0000009E  BA 00001E14 R		mov edx, OFFSET Lv3Return
+ 000000A3  E8 00000000 E		call writestring
+ 000000A8  BA 00001EAA R		mov edx, OFFSET Lv3ReturnAns
+					;call writestring
+ 000000AD  E8 00000000 E		call readint
+
+ 000000B2  83 F8 01			cmp eax, 1
+ 000000B5  74 A8			je Attention
+ 000000B7  EB 42			jmp Jackals
+
+				;---------- Level 4 dialogue
+
+ 000000B9			Coop:
+ 000000B9  BA 00003869 R		mov edx, OFFSET Lv4Cooperate
+ 000000BE  E8 00000000 E		call writestring
+ 000000C3  BA 00003A8B R		mov edx, OFFSET Lv4CooperateAns
+					;call writestring
+ 000000C8  E8 00000000 E		call readint
+
+ 000000CD  83 F8 01			cmp eax, 1
+ 000000D0  74 02			je CamoInventory
+ 000000D2  EB 53			jmp FightThrough
+
+ 000000D4			CamoInventory:
+ 000000D4  66| 83 3D			cmp camouflage, 1
+	   000058D0 R 01
+ 000000DC  74 33			je UseCamo
+ 000000DE  EB 47			jmp FightThrough
+
+ 000000E0			Search:
+ 000000E0  BA 00003B16 R		mov edx, OFFSET Lv4Intel
+ 000000E5  E8 00000000 E		call writestring
+ 000000EA  BA 00003CAE R		mov edx, OFFSET Lv4IntelAns
+					;call writestring
+ 000000EF  E8 00000000 E		call readint
+
+ 000000F4  83 F8 01			cmp eax, 1
+ 000000F7  74 44			je EliteFight
+ 000000F9  EB 2C			jmp FightThrough
+
+ 000000FB			Jackals:
+ 000000FB  BA 00003D53 R		mov edx, OFFSET Lv4Jackals
+ 00000100  E8 00000000 E		call writestring
+ 00000105  BA 00003F3F R		mov edx, OFFSET Lv4JackalsFin
+					;call writestring
+					exit
+ 0000010A  6A 00	   *	    push   +000000000h
+ 0000010C  E8 00000000 E   *	    call   ExitProcess
+
+				;---------- Level 5 dialogue
+
+ 00000111			UseCamo:
+ 00000111  BA 00004D4B R		mov edx, OFFSET Lv5UseCamo
+ 00000116  E8 00000000 E		call writestring
+ 0000011B  BA 0000513E R		mov edx, OFFSET Lv5UseCamoFin
+					;call writestring
+					exit
+ 00000120  6A 00	   *	    push   +000000000h
+ 00000122  E8 00000000 E   *	    call   ExitProcess
+
+ 00000127			FightThrough:
+ 00000127  BA 0000547B R		mov edx, OFFSET Lv5Fight
+ 0000012C  E8 00000000 E		call writestring
+ 00000131  BA 000055AC R		mov edx, OFFSET Lv5FightFin
+					;call writestring
+					exit
+ 00000136  6A 00	   *	    push   +000000000h
+ 00000138  E8 00000000 E   *	    call   ExitProcess
+
+ 0000013D			EliteFight:
+ 0000013D  BA 00005153 R		mov edx, OFFSET Lv5FightElite
+ 00000142  E8 00000000 E		call writestring
+ 00000147  BA 00005466 R		mov edx, OFFSET Lv5FightEliteFin
+					;call writestring
+					exit
+ 0000014C  6A 00	   *	    push   +000000000h
+ 0000014E  E8 00000000 E   *	    call   ExitProcess
+
+ 00000153  C3			ret
+ 00000154			BackofShip endp
+
+				;---------- Bottom oF Ship Route
+				;---------- Level 1 dialogue
+
+ 00000154			BottomofShip PROC
+
+ 00000154  BA 00000406 R		mov edx, OFFSET Lv1Choice2Bottom
+ 00000159  E8 00000000 E		call writestring
+ 0000015E  BA 0000054A R		mov edx, OFFSET Lv1Choice2BottomAns
+					;call writestring
+ 00000163  E8 00000000 E		call readint
+
+ 00000168  83 F8 01			cmp eax, 1
+ 0000016B  74 02			je Eliminate
+ 0000016D  EB 1B			jmp Ignore
+
+				;---------- Level 2 dialogue
+
+ 0000016F			Eliminate:
+ 0000016F  BA 00000C1F R		mov edx, OFFSET Lv2Choice1Eliminate
+ 00000174  E8 00000000 E		call writestring
+ 00000179  BA 00000E9C R		mov edx, OFFSET Lv2Choice1EliminateAns
+					;call writestring
+ 0000017E  E8 00000000 E		call readint
+
+ 00000183  83 F8 01			cmp eax, 1
+ 00000186  74 1D			je Continue
+ 00000188  EB 36			jmp AnotherRoute
+
+ 0000018A			Ignore:
+ 0000018A  BA 00000F16 R		mov edx, OFFSET Lv2Choice2Ignore
+ 0000018F  E8 00000000 E		call writestring
+ 00000194  BA 00001196 R		mov edx, OFFSET Lv2Choice2IgnoreAns
+					;call writestring
+ 00000199  E8 00000000 E		call readint
+
+ 0000019E  83 F8 01			cmp eax, 1
+ 000001A1  74 33			je KeepExploring
+ 000001A3  EB 4C			jmp Proceed
+
+				;---------- Level 3 dialogue
+
+ 000001A5			Continue:
+ 000001A5  BA 00001F4A R		mov edx, OFFSET Lv3Continue
+ 000001AA  E8 00000000 E		call writestring
+ 000001AF  BA 00002140 R		mov edx, OFFSET Lv3ContinueAns
+					;call writestring
+ 000001B4  E8 00000000 E		call readint
+
+ 000001B9  83 F8 01			cmp eax, 1
+ 000001BC  74 49			je UnknownTech
+ 000001BE  EB 62			jmp UnknownTablet
+
+ 000001C0			AnotherRoute:
+ 000001C0  BA 0000219F R		mov edx, OFFSET Lv3Route
+ 000001C5  E8 00000000 E		call writestring
+ 000001CA  BA 0000248F R		mov edx, OFFSET Lv3RouteFin
+					;call writestring
+					exit
+ 000001CF  6A 00	   *	    push   +000000000h
+ 000001D1  E8 00000000 E   *	    call   ExitProcess
+
+ 000001D6			KeepExploring:
+ 000001D6  BA 0000249B R		mov edx, OFFSET Lv3Exploring
+ 000001DB  E8 00000000 E		call writestring
+ 000001E0  BA 000025A4 R		mov edx, OFFSET Lv3ExploringAns
+					;call writestring
+ 000001E5  E8 00000000 E		call readint
+
+ 000001EA  83 F8 01			cmp eax, 1
+ 000001ED  74 4E			je HunterFight
+ 000001EF  EB 62			jmp IgnoreHunter
+
+ 000001F1			Proceed:
+ 000001F1  BA 000026A2 R		mov edx, OFFSET Lv3Proceed
+ 000001F6  E8 00000000 E		call writestring
+ 000001FB  BA 000029D6 R		mov edx, OFFSET Lv3ProceedFin
+					;call writestring
+					exit
+ 00000200  6A 00	   *	    push   +000000000h
+ 00000202  E8 00000000 E   *	    call   ExitProcess
+
+				;---------- Level 4 dialogue
+
+ 00000207			UnknownTech:
+ 00000207  BA 00003F4B R		mov edx, OFFSET Lv4UnknownTech
+ 0000020C  E8 00000000 E		call writestring
+ 00000211  BA 000040EE R		mov edx, OFFSET Lv4UnknownTechAns
+					;call writestring
+ 00000216  E8 00000000 E		call readint
+
+ 0000021B  83 F8 01			cmp eax, 1
+ 0000021E  74 49			je FightElitesTech
+ 00000220  EB 73			jmp FightThrough
+
+ 00000222			UnknownTablet:
+ 00000222  BA 00004176 R		mov edx, OFFSET Lv4UnknownTablet
+ 00000227  E8 00000000 E		call writestring
+ 0000022C  BA 0000426C R		mov edx, OFFSET Lv4UnknownTabletAns
+					;call writestring
+ 00000231  E8 00000000 E		call readint
+
+ 00000236  83 F8 01			cmp eax, 1
+ 00000239  74 44			je FightElitesTablet
+ 0000023B  EB 58			jmp FightThrough
+
+ 0000023D			HunterFight:
+ 0000023D  BA 0000458D R		mov edx, OFFSET Lv4HunterFight
+ 00000242  E8 00000000 E		call writestring
+ 00000247  BA 00004858 R		mov edx, OFFSET Lv4HunterFightFin
+					;call writestring
+					exit
+ 0000024C  6A 00	   *	    push   +000000000h
+ 0000024E  E8 00000000 E   *	    call   ExitProcess
+
+ 00000253			IgnoreHunter:
+ 00000253  BA 000042EE R		mov edx, OFFSET Lv4Ignore
+ 00000258  E8 00000000 E		call writestring
+ 0000025D  BA 00004581 R		mov edx, OFFSET Lv4IgnoreFin
+					;call writestring
+					exit
+ 00000262  6A 00	   *	    push   +000000000h
+ 00000264  E8 00000000 E   *	    call   ExitProcess
+
+				;---------- Level 5 dialogue
+
+ 00000269			FightElitesTech:
+ 00000269  BA 00005153 R		mov edx, OFFSET Lv5FightElite
+ 0000026E  E8 00000000 E		call writestring
+ 00000273  BA 00005466 R		mov edx, OFFSET Lv5FightEliteFin
+					;call writestring
+					exit
+ 00000278  6A 00	   *	    push   +000000000h
+ 0000027A  E8 00000000 E   *	    call   ExitProcess
+
+ 0000027F			FightElitesTablet:
+ 0000027F  BA 000055B8 R		mov edx, OFFSET Lv5Elites
+ 00000284  E8 00000000 E		call writestring
+ 00000289  BA 000058BB R		mov edx, OFFSET Lv5ElitesFin
+					;call writestring
+					exit
+ 0000028E  6A 00	   *	    push   +000000000h
+ 00000290  E8 00000000 E   *	    call   ExitProcess
+
+ 00000295			FightThrough:
+ 00000295  BA 0000547B R		mov edx, OFFSET Lv5Fight
+ 0000029A  E8 00000000 E		call writestring
+ 0000029F  BA 000055AC R		mov edx, OFFSET Lv5FightFin
+					;call writestring
+					exit
+ 000002A4  6A 00	   *	    push   +000000000h
+ 000002A6  E8 00000000 E   *	    call   ExitProcess
+
+ 000002AB  C3			ret
+ 000002AC			BottomofShip endp
+					
+				;---------- Right oF Ship Route
+				;---------- Level 1 dialogue
+
+ 000002AC			RightofShip PROC
+					
+ 000002AC  BA 000005BF R		mov edx, OFFSET Lv1Choice3Right
+ 000002B1  E8 00000000 E		call writestring
+ 000002B6  BA 000006C5 R		mov edx, OFFSET Lv1Choice3RightAns
+					;call writestring
+ 000002BB  E8 00000000 E		call readint
+
+ 000002C0  83 F8 01			cmp eax, 1
+ 000002C3  74 02			je Left
+ 000002C5  EB 20			jmp Right
+
+				;---------- Level 2 dialogue
+
+ 000002C7			Left:
+ 000002C7  BA 000011F4 R		mov edx, OFFSET Lv2Choice1Left
+ 000002CC  E8 00000000 E		call writestring
+ 000002D1  BA 00001481 R		mov edx, OFFSET Lv2Choice1LeftAns
+					;call writestring
+ 000002D6  E8 00000000 E		call readint
+
+ 000002DB  83 F8 01			cmp eax, 1
+ 000002DE  74 22			je RoomAhead
+ 000002E0  83 F8 02			cmp eax, 2
+ 000002E3  74 38			je RoomBehind
+ 000002E5  EB 4C			jmp StandGround
+
+ 000002E7			Right:
+ 000002E7  BA 00001537 R		mov edx, OFFSET Lv2Choice2Right
+ 000002EC  E8 00000000 E		call writestring
+ 000002F1  BA 00001619 R		mov edx, OFFSET Lv2Choice2RightAns
+					;call writestring
+ 000002F6  E8 00000000 E		call readint
+
+ 000002FB  83 F8 01			cmp eax, 1
+ 000002FE  74 49			je LeftAgain
+ 00000300  EB 62			jmp Further
+
+				;---------- Level 3 dialogue
+
+ 00000302			RoomAhead:
+ 00000302  BA 000029E2 R		mov edx, OFFSET Lv3HideAhead
+ 00000307  E8 00000000 E		call writestring
+ 0000030C  BA 00002C9D R		mov edx, OFFSET Lv3HideAheadAns
+					;call writestring
+ 00000311  E8 00000000 E		call readint
+
+ 00000316  83 F8 01			cmp eax, 1
+ 00000319  74 5F			je North
+ 0000031B  EB 73			jmp South
+
+ 0000031D			RoomBehind:
+ 0000031D  BA 00002D19 R		mov edx, OFFSET Lv3HideBehind
+ 00000322  E8 00000000 E		call writestring
+ 00000327  BA 000030CC R		mov edx, OFFSET Lv3HideBehindFin
+					;call writestring
+					exit
+ 0000032C  6A 00	   *	    push   +000000000h
+ 0000032E  E8 00000000 E   *	    call   ExitProcess
+
+ 00000333			StandGround:
+ 00000333  BA 000030D8 R		mov edx, OFFSET Lv3Stand
+ 00000338  E8 00000000 E		call writestring
+ 0000033D  BA 0000321A R		mov edx, OFFSET Lv3StandFin
+					;call writestring
+					exit
+ 00000342  6A 00	   *	    push   +000000000h
+ 00000344  E8 00000000 E   *	    call   ExitProcess
+
+ 00000349			LeftAgain:
+ 00000349  BA 00003226 R		mov edx, OFFSET Lv3Left
+ 0000034E  E8 00000000 E		call writestring
+ 00000353  BA 00003558 R		mov edx, OFFSET Lv3LeftAns
+					;call writestring
+ 00000358  E8 00000000 E		call readint
+
+ 0000035D  83 F8 01			cmp eax, 1
+ 00000360  74 44			je Coop
+ 00000362  EB 5D			jmp Search
+
+ 00000364			Further:
+ 00000364  BA 00003610 R		mov edx, OFFSET Lv3Moving
+ 00000369  E8 00000000 E		call writestring
+ 0000036E  BA 0000385D R		mov edx, OFFSET Lv3MovingFin
+					;call writestring
+					exit
+ 00000373  6A 00	   *	    push   +000000000h
+ 00000375  E8 00000000 E   *	    call   ExitProcess
+
+				;---------- Level 4 dialogue
+
+ 0000037A			North:
+ 0000037A  BA 00004864 R		mov edx, OFFSET Lv4North
+ 0000037F  E8 00000000 E		call writestring
+ 00000384  BA 00004BAD R		mov edx, OFFSET Lv4NorthFin
+					;call writestring
+					exit
+ 00000389  6A 00	   *	    push   +000000000h
+ 0000038B  E8 00000000 E   *	    call   ExitProcess
+
+ 00000390			South:
+ 00000390  BA 00004BC3 R		mov edx, OFFSET Lv4South
+ 00000395  E8 00000000 E		call writestring
+ 0000039A  BA 00004D3F R		mov edx, OFFSET Lv4SouthFin
+					;call writestring
+					exit
+ 0000039F  6A 00	   *	    push   +000000000h
+ 000003A1  E8 00000000 E   *	    call   ExitProcess
+
+ 000003A6			Coop:
+ 000003A6  BA 00003869 R		mov edx, OFFSET Lv4Cooperate
+ 000003AB  E8 00000000 E		call writestring
+ 000003B0  BA 00003A8B R		mov edx, OFFSET Lv4CooperateAns
+					;call writestring
+ 000003B5  E8 00000000 E		call readint
+
+ 000003BA  83 F8 01			cmp eax, 1
+ 000003BD  74 1D			je FightThrough
+ 000003BF  EB 1B			jmp FightThrough
+
+ 000003C1			Search:
+ 000003C1  BA 00003B16 R		mov edx, OFFSET Lv4Intel
+ 000003C6  E8 00000000 E		call writestring
+ 000003CB  BA 00003CAE R		mov edx, OFFSET Lv4IntelAns
+					;call writestring
+ 000003D0  E8 00000000 E		call readint
+
+ 000003D5  83 F8 01			cmp eax, 1
+ 000003D8  74 18			je EliteFight
+ 000003DA  EB 00			jmp FightThrough
+
+				;---------- Level 5 dialogue
+
+ 000003DC			FightThrough:
+ 000003DC  BA 0000547B R		mov edx, OFFSET Lv5Fight
+ 000003E1  E8 00000000 E		call writestring
+ 000003E6  BA 000055AC R		mov edx, OFFSET Lv5FightFin
+					;call writestring
+					exit
+ 000003EB  6A 00	   *	    push   +000000000h
+ 000003ED  E8 00000000 E   *	    call   ExitProcess
+
+ 000003F2			EliteFight:
+ 000003F2  BA 00005153 R		mov edx, OFFSET Lv5FightElite
+ 000003F7  E8 00000000 E		call writestring
+ 000003FC  BA 00005466 R		mov edx, OFFSET Lv5FightEliteFin
+					;call writestring
+					exit
+ 00000401  6A 00	   *	    push   +000000000h
+ 00000403  E8 00000000 E   *	    call   ExitProcess
+
+ 00000408  C3			ret
+ 00000409			RightofShip endp
+
+ 00000409			main PROC
+
+ 00000409  BA 00000000 R		mov edx, OFFSET Introduction
+ 0000040E  E8 00000000 E		call writestring
+ 00000413  BA 00000226 R		mov edx, OFFSET IntroChoice
+					;call writestring
+ 00000418  E8 00000000 E		call readint
+
+ 0000041D  83 F8 01			cmp eax, 1
+ 00000420  74 07			je Back
+ 00000422  83 F8 02			cmp eax, 2
+ 00000425  74 07			je Bottom
+ 00000427  EB 0A			jmp Right
+
+ 00000429			Back:
+ 00000429  E8 FFFFFBD2			call BackofShip
+
+ 0000042E			Bottom:
+ 0000042E  E8 FFFFFD21			call BottomofShip
+
+ 00000433			Right:
+ 00000433  E8 FFFFFE74			call RightofShip
+
+					exit
+ 00000438  6A 00	   *	    push   +000000000h
+ 0000043A  E8 00000000 E   *	    call   ExitProcess
+ 0000043F			main ENDP
+
+				END main
+Microsoft (R) Macro Assembler Version 14.16.27045.0	    12/05/21 15:24:51
+MASM Template						(main.asm  Symbols 2 - 1
+
+
+
+
+Structures and Unions:
+
+                N a m e                  Size
+                                         Offset      Type
+
+CONSOLE_CURSOR_INFO  . . . . . .	 00000008
+  dwSize . . . . . . . . . . . .	 00000000	 DWord
+  bVisible . . . . . . . . . . .	 00000004	 DWord
+CONSOLE_SCREEN_BUFFER_INFO . . .	 00000016
+  dwSize . . . . . . . . . . . .	 00000000	 DWord
+  dwCursorPosition . . . . . . .	 00000004	 DWord
+  wAttributes  . . . . . . . . .	 00000008	 Word
+  srWindow . . . . . . . . . . .	 0000000A	 QWord
+  dwMaximumWindowSize  . . . . .	 00000012	 DWord
+COORD  . . . . . . . . . . . . .	 00000004
+  X  . . . . . . . . . . . . . .	 00000000	 Word
+  Y  . . . . . . . . . . . . . .	 00000002	 Word
+FILETIME . . . . . . . . . . . .	 00000008
+  loDateTime . . . . . . . . . .	 00000000	 DWord
+  hiDateTime . . . . . . . . . .	 00000004	 DWord
+FOCUS_EVENT_RECORD . . . . . . .	 00000004
+  bSetFocus  . . . . . . . . . .	 00000000	 DWord
+FPU_ENVIRON  . . . . . . . . . .	 0000001C
+  controlWord  . . . . . . . . .	 00000000	 Word
+  statusWord . . . . . . . . . .	 00000004	 Word
+  tagWord  . . . . . . . . . . .	 00000008	 Word
+  instrPointerOffset . . . . . .	 0000000C	 DWord
+  instrPointerSelector . . . . .	 00000010	 DWord
+  operandPointerOffset . . . . .	 00000014	 DWord
+  operandPointerSelector . . . .	 00000018	 Word
+INPUT_RECORD . . . . . . . . . .	 00000014
+  EventType  . . . . . . . . . .	 00000000	 Word
+  Event  . . . . . . . . . . . .	 00000004	 XmmWord
+  bKeyDown . . . . . . . . . . .	 00000000	 DWord
+  wRepeatCount . . . . . . . . .	 00000004	 Word
+  wVirtualKeyCode  . . . . . . .	 00000006	 Word
+  wVirtualScanCode . . . . . . .	 00000008	 Word
+  uChar  . . . . . . . . . . . .	 0000000A	 Word
+  UnicodeChar  . . . . . . . . .	 00000000	 Word
+  AsciiChar  . . . . . . . . . .	 00000000	 Byte
+  dwControlKeyState  . . . . . .	 0000000C	 DWord
+  dwMousePosition  . . . . . . .	 00000000	 DWord
+  dwButtonState  . . . . . . . .	 00000004	 DWord
+  dwMouseControlKeyState . . . .	 00000008	 DWord
+  dwEventFlags . . . . . . . . .	 0000000C	 DWord
+  dwSize . . . . . . . . . . . .	 00000000	 DWord
+  dwCommandId  . . . . . . . . .	 00000000	 DWord
+  bSetFocus  . . . . . . . . . .	 00000000	 DWord
+KEY_EVENT_RECORD . . . . . . . .	 00000010
+  bKeyDown . . . . . . . . . . .	 00000000	 DWord
+  wRepeatCount . . . . . . . . .	 00000004	 Word
+  wVirtualKeyCode  . . . . . . .	 00000006	 Word
+  wVirtualScanCode . . . . . . .	 00000008	 Word
+  uChar  . . . . . . . . . . . .	 0000000A	 Word
+  UnicodeChar  . . . . . . . . .	 00000000	 Word
+  AsciiChar  . . . . . . . . . .	 00000000	 Byte
+  dwControlKeyState  . . . . . .	 0000000C	 DWord
+MENU_EVENT_RECORD  . . . . . . .	 00000004
+  dwCommandId  . . . . . . . . .	 00000000	 DWord
+MOUSE_EVENT_RECORD . . . . . . .	 00000010
+  dwMousePosition  . . . . . . .	 00000000	 DWord
+  dwButtonState  . . . . . . . .	 00000004	 DWord
+  dwMouseControlKeyState . . . .	 00000008	 DWord
+  dwEventFlags . . . . . . . . .	 0000000C	 DWord
+SMALL_RECT . . . . . . . . . . .	 00000008
+  Left . . . . . . . . . . . . .	 00000000	 Word
+  Top  . . . . . . . . . . . . .	 00000002	 Word
+  Right  . . . . . . . . . . . .	 00000004	 Word
+  Bottom . . . . . . . . . . . .	 00000006	 Word
+SYSTEMTIME . . . . . . . . . . .	 00000010
+  wYear  . . . . . . . . . . . .	 00000000	 Word
+  wMonth . . . . . . . . . . . .	 00000002	 Word
+  wDayOfWeek . . . . . . . . . .	 00000004	 Word
+  wDay . . . . . . . . . . . . .	 00000006	 Word
+  wHour  . . . . . . . . . . . .	 00000008	 Word
+  wMinute  . . . . . . . . . . .	 0000000A	 Word
+  wSecond  . . . . . . . . . . .	 0000000C	 Word
+  wMilliseconds  . . . . . . . .	 0000000E	 Word
+WINDOW_BUFFER_SIZE_RECORD  . . .	 00000004
+  dwSize . . . . . . . . . . . .	 00000000	 DWord
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+FLAT . . . . . . . . . . . . . .	GROUP
+STACK  . . . . . . . . . . . . .	32 Bit	 00001000 Para	  Stack	  'STACK'	 
+_DATA  . . . . . . . . . . . . .	32 Bit	 000058D2 Para	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 0000043F Para	  Public  'CODE'	
+
+
+Procedures, parameters, and locals:
+
+                N a m e                 Type     Value    Attr
+
+BackofShip . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000154 Public STDCALL
+  Hack . . . . . . . . . . . . .	L Near	 00000020 _TEXT	
+  Proceed  . . . . . . . . . . .	L Near	 00000044 _TEXT	
+  Attention  . . . . . . . . . .	L Near	 0000005F _TEXT	
+  ActiveCamo . . . . . . . . . .	L Near	 0000007A _TEXT	
+  GoBack . . . . . . . . . . . .	L Near	 0000009E _TEXT	
+  Coop . . . . . . . . . . . . .	L Near	 000000B9 _TEXT	
+  CamoInventory  . . . . . . . .	L Near	 000000D4 _TEXT	
+  Search . . . . . . . . . . . .	L Near	 000000E0 _TEXT	
+  Jackals  . . . . . . . . . . .	L Near	 000000FB _TEXT	
+  UseCamo  . . . . . . . . . . .	L Near	 00000111 _TEXT	
+  FightThrough . . . . . . . . .	L Near	 00000127 _TEXT	
+  EliteFight . . . . . . . . . .	L Near	 0000013D _TEXT	
+BottomofShip . . . . . . . . . .	P Near	 00000154 _TEXT	Length= 00000158 Public STDCALL
+  Eliminate  . . . . . . . . . .	L Near	 0000016F _TEXT	
+  Ignore . . . . . . . . . . . .	L Near	 0000018A _TEXT	
+  Continue . . . . . . . . . . .	L Near	 000001A5 _TEXT	
+  AnotherRoute . . . . . . . . .	L Near	 000001C0 _TEXT	
+  KeepExploring  . . . . . . . .	L Near	 000001D6 _TEXT	
+  Proceed  . . . . . . . . . . .	L Near	 000001F1 _TEXT	
+  UnknownTech  . . . . . . . . .	L Near	 00000207 _TEXT	
+  UnknownTablet  . . . . . . . .	L Near	 00000222 _TEXT	
+  HunterFight  . . . . . . . . .	L Near	 0000023D _TEXT	
+  IgnoreHunter . . . . . . . . .	L Near	 00000253 _TEXT	
+  FightElitesTech  . . . . . . .	L Near	 00000269 _TEXT	
+  FightElitesTablet  . . . . . .	L Near	 0000027F _TEXT	
+  FightThrough . . . . . . . . .	L Near	 00000295 _TEXT	
+CloseFile  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+CloseHandle  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+Clrscr . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+CreateFileA  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+CreateOutputFile . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+Crlf . . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+Delay  . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+DumpMem  . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+DumpRegs . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+ExitProcess  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+FileTimeToDosDateTime  . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+FileTimeToSystemTime . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+FlushConsoleInputBuffer  . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+FormatMessageA . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+GetCommandLineA  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+GetCommandTail . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+GetConsoleCP . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+GetConsoleCursorInfo . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+GetConsoleMode . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+GetConsoleScreenBufferInfo . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+GetDateTime  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+GetFileTime  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+GetKeyState  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+GetLastError . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+GetLocalTime . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+GetMaxXY . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+GetMseconds  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+GetNumberOfConsoleInputEvents  .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+GetProcessHeap . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+GetStdHandle . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+GetSystemTime  . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+GetTextColor . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+GetTickCount . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+Gotoxy . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+HeapAlloc  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+HeapCreate . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+HeapDestroy  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+HeapFree . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+HeapSize . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+IsDigit  . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+LocalFree  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+MessageBoxA  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+MsgBoxAsk  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+MsgBox . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+OpenInputFile  . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+ParseDecimal32 . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+ParseInteger32 . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+PeekConsoleInputA  . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+Random32 . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+RandomRange  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+Randomize  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+ReadChar . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+ReadConsoleA . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+ReadConsoleInputA  . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+ReadDec  . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+ReadFile . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+ReadFloat  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+ReadFromFile . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+ReadHex  . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+ReadInt  . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+ReadKeyFlush . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+ReadKey  . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+ReadString . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+RightofShip  . . . . . . . . . .	P Near	 000002AC _TEXT	Length= 0000015D Public STDCALL
+  Left . . . . . . . . . . . . .	L Near	 000002C7 _TEXT	
+  Right  . . . . . . . . . . . .	L Near	 000002E7 _TEXT	
+  RoomAhead  . . . . . . . . . .	L Near	 00000302 _TEXT	
+  RoomBehind . . . . . . . . . .	L Near	 0000031D _TEXT	
+  StandGround  . . . . . . . . .	L Near	 00000333 _TEXT	
+  LeftAgain  . . . . . . . . . .	L Near	 00000349 _TEXT	
+  Further  . . . . . . . . . . .	L Near	 00000364 _TEXT	
+  North  . . . . . . . . . . . .	L Near	 0000037A _TEXT	
+  South  . . . . . . . . . . . .	L Near	 00000390 _TEXT	
+  Coop . . . . . . . . . . . . .	L Near	 000003A6 _TEXT	
+  Search . . . . . . . . . . . .	L Near	 000003C1 _TEXT	
+  FightThrough . . . . . . . . .	L Near	 000003DC _TEXT	
+  EliteFight . . . . . . . . . .	L Near	 000003F2 _TEXT	
+SetConsoleCursorInfo . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+SetConsoleCursorPosition . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+SetConsoleMode . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+SetConsoleScreenBufferSize . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+SetConsoleTextAttribute  . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+SetConsoleTitleA . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+SetConsoleWindowInfo . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+SetFilePointer . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+SetLocalTime . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+SetTextColor . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+ShowFPUStack . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+Sleep  . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+StrLength  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+Str_compare  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+Str_copy . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+Str_length . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+Str_trim . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+Str_ucase  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+SystemTimeToFileTime . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+WaitMsg  . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+WriteBinB  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+WriteBin . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+WriteChar  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+WriteConsoleA  . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+WriteConsoleOutputAttribute  . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+WriteConsoleOutputCharacterA . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+WriteDec . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+WriteFile  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+WriteFloat . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+WriteHexB  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+WriteHex . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+WriteInt . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+WriteStackFrameName  . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+WriteStackFrame  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+WriteString  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+WriteToFile  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+WriteWindowsMsg  . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+main . . . . . . . . . . . . . .	P Near	 00000409 _TEXT	Length= 00000036 Public STDCALL
+  Back . . . . . . . . . . . . .	L Near	 00000429 _TEXT	
+  Bottom . . . . . . . . . . . .	L Near	 0000042E _TEXT	
+  Right  . . . . . . . . . . . .	L Near	 00000433 _TEXT	
+printf . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
+scanf  . . . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
+wsprintfA  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External C
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+@CodeSize  . . . . . . . . . . .	Number	 00000000h   
+@DataSize  . . . . . . . . . . .	Number	 00000000h   
+@Interface . . . . . . . . . . .	Number	 00000003h   
+@Model . . . . . . . . . . . . .	Number	 00000007h   
+@code  . . . . . . . . . . . . .	Text   	 _TEXT
+@data  . . . . . . . . . . . . .	Text   	 FLAT
+@fardata?  . . . . . . . . . . .	Text   	 FLAT
+@fardata . . . . . . . . . . . .	Text   	 FLAT
+@stack . . . . . . . . . . . . .	Text   	 FLAT
+ALT_MASK . . . . . . . . . . . .	Number	 00000003h   
+CAPSLOCK_ON  . . . . . . . . . .	Number	 00000080h   
+CREATE_ALWAYS  . . . . . . . . .	Number	 00000002h   
+CREATE_NEW . . . . . . . . . . .	Number	 00000001h   
+CTRL_MASK  . . . . . . . . . . .	Number	 0000000Ch   
+CreateFile . . . . . . . . . . .	Text   	 CreateFileA
+DO_NOT_SHARE . . . . . . . . . .	Number	 00000000h   
+ENABLE_ECHO_INPUT  . . . . . . .	Number	 00000004h   
+ENABLE_LINE_INPUT  . . . . . . .	Number	 00000002h   
+ENABLE_MOUSE_INPUT . . . . . . .	Number	 00000010h   
+ENABLE_PROCESSED_INPUT . . . . .	Number	 00000001h   
+ENABLE_PROCESSED_OUTPUT  . . . .	Number	 00000001h   
+ENABLE_WINDOW_INPUT  . . . . . .	Number	 00000008h   
+ENABLE_WRAP_AT_EOL_OUTPUT  . . .	Number	 00000002h   
+ENHANCED_KEY . . . . . . . . . .	Number	 00000100h   
+FALSE  . . . . . . . . . . . . .	Number	 00000000h   
+FILE_APPEND_DATA . . . . . . . .	Number	 00000004h   
+FILE_ATTRIBUTE_ARCHIVE . . . . .	Number	 00000020h   
+FILE_ATTRIBUTE_COMPRESSED  . . .	Number	 00000800h   
+FILE_ATTRIBUTE_DEVICE  . . . . .	Number	 00000040h   
+FILE_ATTRIBUTE_DIRECTORY . . . .	Number	 00000010h   
+FILE_ATTRIBUTE_ENCRYPTED . . . .	Number	 00004000h   
+FILE_ATTRIBUTE_HIDDEN  . . . . .	Number	 00000002h   
+FILE_ATTRIBUTE_NORMAL  . . . . .	Number	 00000080h   
+FILE_ATTRIBUTE_NOT_CONTENT_INDEXED .	Number	 00002000h   
+FILE_ATTRIBUTE_OFFLINE . . . . .	Number	 00001000h   
+FILE_ATTRIBUTE_READONLY  . . . .	Number	 00000001h   
+FILE_ATTRIBUTE_REPARSE_POINT . .	Number	 00000400h   
+FILE_ATTRIBUTE_SPARSE_FILE . . .	Number	 00000200h   
+FILE_ATTRIBUTE_SYSTEM  . . . . .	Number	 00000004h   
+FILE_ATTRIBUTE_TEMPORARY . . . .	Number	 00000100h   
+FILE_BEGIN . . . . . . . . . . .	Number	 00000000h   
+FILE_CURRENT . . . . . . . . . .	Number	 00000001h   
+FILE_DELETE_CHILD  . . . . . . .	Number	 00000040h   
+FILE_END . . . . . . . . . . . .	Number	 00000002h   
+FILE_READ_DATA . . . . . . . . .	Number	 00000001h   
+FILE_SHARE_DELETE  . . . . . . .	Number	 00000004h   
+FILE_SHARE_READ  . . . . . . . .	Number	 00000001h   
+FILE_SHARE_WRITE . . . . . . . .	Number	 00000002h   
+FILE_WRITE_DATA  . . . . . . . .	Number	 00000002h   
+FOCUS_EVENT  . . . . . . . . . .	Number	 00000010h   
+FORMAT_MESSAGE_ALLOCATE_BUFFER .	Number	 00000100h   
+FORMAT_MESSAGE_FROM_SYSTEM . . .	Number	 00001000h   
+FormatMessage  . . . . . . . . .	Text   	 FormatMessageA
+GENERIC_ALL  . . . . . . . . . .	Number	 10000000h   
+GENERIC_EXECUTE  . . . . . . . .	Number	 20000000h   
+GENERIC_READ . . . . . . . . . .	Number	 -80000000h   
+GENERIC_WRITE  . . . . . . . . .	Number	 40000000h   
+GetCommandLine . . . . . . . . .	Text   	 GetCommandLineA
+HANDLE . . . . . . . . . . . . .	Text   	 DWORD
+HEAP_GENERATE_EXCEPTIONS . . . .	Number	 00000004h   
+HEAP_GROWABLE  . . . . . . . . .	Number	 00000002h   
+HEAP_NO_SERIALIZE  . . . . . . .	Number	 00000001h   
+HEAP_REALLOC_IN_PLACE_ONLY . . .	Number	 00000010h   
+HEAP_ZERO_MEMORY . . . . . . . .	Number	 00000008h   
+IDABORT  . . . . . . . . . . . .	Number	 00000003h   
+IDCANCEL . . . . . . . . . . . .	Number	 00000002h   
+IDCLOSE  . . . . . . . . . . . .	Number	 00000008h   
+IDCONTINUE . . . . . . . . . . .	Number	 0000000Bh   
+IDHELP . . . . . . . . . . . . .	Number	 00000009h   
+IDIGNORE . . . . . . . . . . . .	Number	 00000005h   
+IDNO . . . . . . . . . . . . . .	Number	 00000007h   
+IDOK . . . . . . . . . . . . . .	Number	 00000001h   
+IDRETRY  . . . . . . . . . . . .	Number	 00000004h   
+IDTIMEOUT  . . . . . . . . . . .	Number	 00007D00h   
+IDTRYAGAIN . . . . . . . . . . .	Number	 0000000Ah   
+IDYES  . . . . . . . . . . . . .	Number	 00000006h   
+INVALID_HANDLE_VALUE . . . . . .	Number	 -00000001h   
+IntroChoice  . . . . . . . . . .	Byte	 00000226 _DATA	
+Introduction . . . . . . . . . .	Byte	 00000000 _DATA	
+KBDOWN_FLAG  . . . . . . . . . .	Number	 00000001h   
+KEY_EVENT  . . . . . . . . . . .	Number	 00000001h   
+KEY_MASKS  . . . . . . . . . . .	Number	 0000001Fh   
+LEFT_ALT_PRESSED . . . . . . . .	Number	 00000002h   
+LEFT_CTRL_PRESSED  . . . . . . .	Number	 00000008h   
+LV4UnknownTabletAns  . . . . . .	Byte	 0000426C _DATA	
+Lv1Choice1BackAns  . . . . . . .	Byte	 000003AA _DATA	
+Lv1Choice1Back . . . . . . . . .	Byte	 00000279 _DATA	
+Lv1Choice2BottomAns  . . . . . .	Byte	 0000054A _DATA	
+Lv1Choice2Bottom . . . . . . . .	Byte	 00000406 _DATA	
+Lv1Choice3RightAns . . . . . . .	Byte	 000006C5 _DATA	
+Lv1Choice3Right  . . . . . . . .	Byte	 000005BF _DATA	
+Lv2Choice1EliminateAns . . . . .	Byte	 00000E9C _DATA	
+Lv2Choice1Eliminate  . . . . . .	Byte	 00000C1F _DATA	
+Lv2Choice1HackAns  . . . . . . .	Byte	 0000094C _DATA	
+Lv2Choice1Hack . . . . . . . . .	Byte	 000006FC _DATA	
+Lv2Choice1LeftAns  . . . . . . .	Byte	 00001481 _DATA	
+Lv2Choice1Left . . . . . . . . .	Byte	 000011F4 _DATA	
+Lv2Choice2IgnoreAns  . . . . . .	Byte	 00001196 _DATA	
+Lv2Choice2Ignore . . . . . . . .	Byte	 00000F16 _DATA	
+Lv2Choice2ProceedAns . . . . . .	Byte	 00000B89 _DATA	
+Lv2Choice2Proceed  . . . . . . .	Byte	 000009F2 _DATA	
+Lv2Choice2RightAns . . . . . . .	Byte	 00001619 _DATA	
+Lv2Choice2Right  . . . . . . . .	Byte	 00001537 _DATA	
+Lv3AttentionAns  . . . . . . . .	Byte	 0000198F _DATA	
+Lv3Attention . . . . . . . . . .	Byte	 00001663 _DATA	
+Lv3CamoAns . . . . . . . . . . .	Byte	 00001D5D _DATA	
+Lv3Camo  . . . . . . . . . . . .	Byte	 00001A47 _DATA	
+Lv3ContinueAns . . . . . . . . .	Byte	 00002140 _DATA	
+Lv3Continue  . . . . . . . . . .	Byte	 00001F4A _DATA	
+Lv3ExploringAns  . . . . . . . .	Byte	 000025A4 _DATA	
+Lv3Exploring . . . . . . . . . .	Byte	 0000249B _DATA	
+Lv3HideAheadAns  . . . . . . . .	Byte	 00002C9D _DATA	
+Lv3HideAhead . . . . . . . . . .	Byte	 000029E2 _DATA	
+Lv3HideBehindFin . . . . . . . .	Byte	 000030CC _DATA	
+Lv3HideBehind  . . . . . . . . .	Byte	 00002D19 _DATA	
+Lv3LeftAns . . . . . . . . . . .	Byte	 00003558 _DATA	
+Lv3Left  . . . . . . . . . . . .	Byte	 00003226 _DATA	
+Lv3MovingFin . . . . . . . . . .	Byte	 0000385D _DATA	
+Lv3Moving  . . . . . . . . . . .	Byte	 00003610 _DATA	
+Lv3ProceedFin  . . . . . . . . .	Byte	 000029D6 _DATA	
+Lv3Proceed . . . . . . . . . . .	Byte	 000026A2 _DATA	
+Lv3ReturnAns . . . . . . . . . .	Byte	 00001EAA _DATA	
+Lv3Return  . . . . . . . . . . .	Byte	 00001E14 _DATA	
+Lv3RouteFin  . . . . . . . . . .	Byte	 0000248F _DATA	
+Lv3Route . . . . . . . . . . . .	Byte	 0000219F _DATA	
+Lv3StandFin  . . . . . . . . . .	Byte	 0000321A _DATA	
+Lv3Stand . . . . . . . . . . . .	Byte	 000030D8 _DATA	
+Lv4CooperateAns  . . . . . . . .	Byte	 00003A8B _DATA	
+Lv4Cooperate . . . . . . . . . .	Byte	 00003869 _DATA	
+Lv4HunterFightFin  . . . . . . .	Byte	 00004858 _DATA	
+Lv4HunterFight . . . . . . . . .	Byte	 0000458D _DATA	
+Lv4IgnoreFin . . . . . . . . . .	Byte	 00004581 _DATA	
+Lv4Ignore  . . . . . . . . . . .	Byte	 000042EE _DATA	
+Lv4IntelAns  . . . . . . . . . .	Byte	 00003CAE _DATA	
+Lv4Intel . . . . . . . . . . . .	Byte	 00003B16 _DATA	
+Lv4JackalsFin  . . . . . . . . .	Byte	 00003F3F _DATA	
+Lv4Jackals . . . . . . . . . . .	Byte	 00003D53 _DATA	
+Lv4NorthFin  . . . . . . . . . .	Byte	 00004BAD _DATA	
+Lv4North . . . . . . . . . . . .	Byte	 00004864 _DATA	
+Lv4SouthFin  . . . . . . . . . .	Byte	 00004D3F _DATA	
+Lv4South . . . . . . . . . . . .	Byte	 00004BC3 _DATA	
+Lv4UnknownTablet . . . . . . . .	Byte	 00004176 _DATA	
+Lv4UnknownTechAns  . . . . . . .	Byte	 000040EE _DATA	
+Lv4UnknownTech . . . . . . . . .	Byte	 00003F4B _DATA	
+Lv5ElitesFin . . . . . . . . . .	Byte	 000058BB _DATA	
+Lv5Elites  . . . . . . . . . . .	Byte	 000055B8 _DATA	
+Lv5FightEliteFin . . . . . . . .	Byte	 00005466 _DATA	
+Lv5FightElite  . . . . . . . . .	Byte	 00005153 _DATA	
+Lv5FightFin  . . . . . . . . . .	Byte	 000055AC _DATA	
+Lv5Fight . . . . . . . . . . . .	Byte	 0000547B _DATA	
+Lv5UseCamoFin  . . . . . . . . .	Byte	 0000513E _DATA	
+Lv5UseCamo . . . . . . . . . . .	Byte	 00004D4B _DATA	
+MB_ABORTRETRYIGNORE  . . . . . .	Number	 00000002h   
+MB_APPLMODAL . . . . . . . . . .	Number	 00000000h   
+MB_CANCELTRYCONTINUE . . . . . .	Number	 00000006h   
+MB_DEFBUTTON1  . . . . . . . . .	Number	 00000000h   
+MB_DEFBUTTON2  . . . . . . . . .	Number	 00000100h   
+MB_DEFBUTTON3  . . . . . . . . .	Number	 00000200h   
+MB_DEFBUTTON4  . . . . . . . . .	Number	 00000300h   
+MB_HELP  . . . . . . . . . . . .	Number	 00004000h   
+MB_ICONASTERISK  . . . . . . . .	Number	 00000040h   
+MB_ICONERROR . . . . . . . . . .	Number	 00000010h   
+MB_ICONEXCLAMATION . . . . . . .	Number	 00000030h   
+MB_ICONHAND  . . . . . . . . . .	Number	 00000010h   
+MB_ICONINFORMATION . . . . . . .	Number	 00000040h   
+MB_ICONQUESTION  . . . . . . . .	Number	 00000020h   
+MB_ICONSTOP  . . . . . . . . . .	Number	 00000010h   
+MB_ICONWARNING . . . . . . . . .	Number	 00000030h   
+MB_OKCANCEL  . . . . . . . . . .	Number	 00000001h   
+MB_OK  . . . . . . . . . . . . .	Number	 00000000h   
+MB_RETRYCANCEL . . . . . . . . .	Number	 00000005h   
+MB_SYSTEMMODAL . . . . . . . . .	Number	 00001000h   
+MB_TASKMODAL . . . . . . . . . .	Number	 00002000h   
+MB_USERICON  . . . . . . . . . .	Number	 00000080h   
+MB_YESNOCANCEL . . . . . . . . .	Number	 00000003h   
+MB_YESNO . . . . . . . . . . . .	Number	 00000004h   
+MENU_EVENT . . . . . . . . . . .	Number	 00000008h   
+MOUSE_EVENT  . . . . . . . . . .	Number	 00000002h   
+MessageBox . . . . . . . . . . .	Text   	 MessageBoxA
+NULL . . . . . . . . . . . . . .	Number	 00000000h   
+NUMLOCK_ON . . . . . . . . . . .	Number	 00000020h   
+OPEN_ALWAYS  . . . . . . . . . .	Number	 00000004h   
+OPEN_EXISTING  . . . . . . . . .	Number	 00000003h   
+PeekConsoleInput . . . . . . . .	Text   	 PeekConsoleInputA
+RIGHT_ALT_PRESSED  . . . . . . .	Number	 00000001h   
+RIGHT_CTRL_PRESSED . . . . . . .	Number	 00000004h   
+ReadConsoleInput . . . . . . . .	Text   	 ReadConsoleInputA
+ReadConsole  . . . . . . . . . .	Text   	 ReadConsoleA
+SCROLLLOCK_ON  . . . . . . . . .	Number	 00000040h   
+SHIFT_MASK . . . . . . . . . . .	Number	 00000010h   
+SHIFT_PRESSED  . . . . . . . . .	Number	 00000010h   
+STD_ERROR_HANDLE . . . . . . . .	Number	 -0000000Ch   
+STD_INPUT_HANDLE . . . . . . . .	Number	 -0000000Ah   
+STD_OUTPUT_HANDLE  . . . . . . .	Number	 -0000000Bh   
+SetConsoleTitle  . . . . . . . .	Text   	 SetConsoleTitleA
+TAB  . . . . . . . . . . . . . .	Number	 00000009h   
+TRUE . . . . . . . . . . . . . .	Number	 00000001h   
+TRUNCATE_EXISTING  . . . . . . .	Number	 00000005h   
+VK_11  . . . . . . . . . . . . .	Number	 000000BDh   
+VK_12  . . . . . . . . . . . . .	Number	 000000BBh   
+VK_ADD . . . . . . . . . . . . .	Number	 0000006Bh   
+VK_BACK  . . . . . . . . . . . .	Number	 00000008h   
+VK_CANCEL  . . . . . . . . . . .	Number	 00000003h   
+VK_CAPITAL . . . . . . . . . . .	Number	 00000014h   
+VK_CLEAR . . . . . . . . . . . .	Number	 0000000Ch   
+VK_CONTROL . . . . . . . . . . .	Number	 00000011h   
+VK_DECIMAL . . . . . . . . . . .	Number	 0000006Eh   
+VK_DELETE  . . . . . . . . . . .	Number	 0000002Eh   
+VK_DIVIDE  . . . . . . . . . . .	Number	 0000006Fh   
+VK_DOWN  . . . . . . . . . . . .	Number	 00000028h   
+VK_END . . . . . . . . . . . . .	Number	 00000023h   
+VK_ESCAPE  . . . . . . . . . . .	Number	 0000001Bh   
+VK_EXECUTE . . . . . . . . . . .	Number	 0000002Bh   
+VK_F10 . . . . . . . . . . . . .	Number	 00000079h   
+VK_F11 . . . . . . . . . . . . .	Number	 0000007Ah   
+VK_F12 . . . . . . . . . . . . .	Number	 0000007Bh   
+VK_F13 . . . . . . . . . . . . .	Number	 0000007Ch   
+VK_F14 . . . . . . . . . . . . .	Number	 0000007Dh   
+VK_F15 . . . . . . . . . . . . .	Number	 0000007Eh   
+VK_F16 . . . . . . . . . . . . .	Number	 0000007Fh   
+VK_F17 . . . . . . . . . . . . .	Number	 00000080h   
+VK_F18 . . . . . . . . . . . . .	Number	 00000081h   
+VK_F19 . . . . . . . . . . . . .	Number	 00000082h   
+VK_F1  . . . . . . . . . . . . .	Number	 00000070h   
+VK_F20 . . . . . . . . . . . . .	Number	 00000083h   
+VK_F21 . . . . . . . . . . . . .	Number	 00000084h   
+VK_F22 . . . . . . . . . . . . .	Number	 00000085h   
+VK_F23 . . . . . . . . . . . . .	Number	 00000086h   
+VK_F24 . . . . . . . . . . . . .	Number	 00000087h   
+VK_F2  . . . . . . . . . . . . .	Number	 00000071h   
+VK_F3  . . . . . . . . . . . . .	Number	 00000072h   
+VK_F4  . . . . . . . . . . . . .	Number	 00000073h   
+VK_F5  . . . . . . . . . . . . .	Number	 00000074h   
+VK_F6  . . . . . . . . . . . . .	Number	 00000075h   
+VK_F7  . . . . . . . . . . . . .	Number	 00000076h   
+VK_F8  . . . . . . . . . . . . .	Number	 00000077h   
+VK_F9  . . . . . . . . . . . . .	Number	 00000078h   
+VK_HELP  . . . . . . . . . . . .	Number	 0000002Fh   
+VK_HOME  . . . . . . . . . . . .	Number	 00000024h   
+VK_INSERT  . . . . . . . . . . .	Number	 0000002Dh   
+VK_LBUTTON . . . . . . . . . . .	Number	 00000001h   
+VK_LCONTROL  . . . . . . . . . .	Number	 000000A2h   
+VK_LEFT  . . . . . . . . . . . .	Number	 00000025h   
+VK_LMENU . . . . . . . . . . . .	Number	 000000A4h   
+VK_LSHIFT  . . . . . . . . . . .	Number	 000000A0h   
+VK_MENU  . . . . . . . . . . . .	Number	 00000012h   
+VK_MULTIPLY  . . . . . . . . . .	Number	 0000006Ah   
+VK_NEXT  . . . . . . . . . . . .	Number	 00000022h   
+VK_NUMLOCK . . . . . . . . . . .	Number	 00000090h   
+VK_NUMPAD0 . . . . . . . . . . .	Number	 00000060h   
+VK_NUMPAD1 . . . . . . . . . . .	Number	 00000061h   
+VK_NUMPAD2 . . . . . . . . . . .	Number	 00000062h   
+VK_NUMPAD3 . . . . . . . . . . .	Number	 00000063h   
+VK_NUMPAD4 . . . . . . . . . . .	Number	 00000064h   
+VK_NUMPAD5 . . . . . . . . . . .	Number	 00000065h   
+VK_NUMPAD6 . . . . . . . . . . .	Number	 00000066h   
+VK_NUMPAD7 . . . . . . . . . . .	Number	 00000067h   
+VK_NUMPAD8 . . . . . . . . . . .	Number	 00000068h   
+VK_NUMPAD9 . . . . . . . . . . .	Number	 00000069h   
+VK_PAUSE . . . . . . . . . . . .	Number	 00000013h   
+VK_PRINT . . . . . . . . . . . .	Number	 0000002Ah   
+VK_PRIOR . . . . . . . . . . . .	Number	 00000021h   
+VK_RBUTTON . . . . . . . . . . .	Number	 00000002h   
+VK_RCONTROL  . . . . . . . . . .	Number	 000000A3h   
+VK_RETURN  . . . . . . . . . . .	Number	 0000000Dh   
+VK_RIGHT . . . . . . . . . . . .	Number	 00000027h   
+VK_RMENU . . . . . . . . . . . .	Number	 000000A5h   
+VK_RSHIFT  . . . . . . . . . . .	Number	 000000A1h   
+VK_SCROLL  . . . . . . . . . . .	Number	 00000091h   
+VK_SEPARATER . . . . . . . . . .	Number	 0000006Ch   
+VK_SHIFT . . . . . . . . . . . .	Number	 00000010h   
+VK_SNAPSHOT  . . . . . . . . . .	Number	 0000002Ch   
+VK_SPACE . . . . . . . . . . . .	Number	 00000020h   
+VK_SUBTRACT  . . . . . . . . . .	Number	 0000006Dh   
+VK_TAB . . . . . . . . . . . . .	Number	 00000009h   
+VK_UP  . . . . . . . . . . . . .	Number	 00000026h   
+WINDOW_BUFFER_SIZE_EVENT . . . .	Number	 00000004h   
+WriteConsoleOutputCharacter  . .	Text   	 WriteConsoleOutputCharacterA
+WriteConsole . . . . . . . . . .	Text   	 WriteConsoleA
+black  . . . . . . . . . . . . .	Number	 00000000h   
+blue . . . . . . . . . . . . . .	Number	 00000001h   
+brown  . . . . . . . . . . . . .	Number	 00000006h   
+camouflage . . . . . . . . . . .	Word	 000058D0 _DATA	
+cyan . . . . . . . . . . . . . .	Number	 00000003h   
+exit . . . . . . . . . . . . . .	Text   	 INVOKE ExitProcess,0
+gray . . . . . . . . . . . . . .	Number	 00000008h   
+green  . . . . . . . . . . . . .	Number	 00000002h   
+lightBlue  . . . . . . . . . . .	Number	 00000009h   
+lightCyan  . . . . . . . . . . .	Number	 0000000Bh   
+lightGray  . . . . . . . . . . .	Number	 00000007h   
+lightGreen . . . . . . . . . . .	Number	 0000000Ah   
+lightMagenta . . . . . . . . . .	Number	 0000000Dh   
+lightRed . . . . . . . . . . . .	Number	 0000000Ch   
+magenta  . . . . . . . . . . . .	Number	 00000005h   
+red  . . . . . . . . . . . . . .	Number	 00000004h   
+white  . . . . . . . . . . . . .	Number	 0000000Fh   
+wsprintf . . . . . . . . . . . .	Text   	 wsprintfA
+yellow . . . . . . . . . . . . .	Number	 0000000Eh   
+
+	   0 Warnings
+	   0 Errors
